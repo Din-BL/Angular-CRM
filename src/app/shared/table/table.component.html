@@ -1,0 +1,26 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th *ngIf="item.first" scope="col">First Name</th>
+            <th *ngIf="item.last" scope="col">Last Name</th>
+            <th *ngIf="item.full" scope="col">Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th *ngIf="item.birthday" scope="col">Birthday</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">{{1}}
+                <ng-content></ng-content>
+            </th>
+            <td *ngIf="item.first">{{item.first}}</td>
+            <td *ngIf="item.last">{{item.last}}</td>
+            <td *ngIf="item.full">{{item.full}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.email}}</td>
+            <td *ngIf="item.birthday">{{item.birthday}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ThemeComponent } from './theme/theme.component';
 import { TitleComponent } from './title/title.component';
+import { TableComponent } from './table/table.component';
 
 
 
@@ -13,7 +14,8 @@ import { TitleComponent } from './title/title.component';
     FooterComponent,
     NavbarComponent,
     ThemeComponent,
-    TitleComponent
+    TitleComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { TitleComponent } from './title/title.component';
   exports: [
     FooterComponent,
     NavbarComponent,
-    TitleComponent
+    TitleComponent,
+    TableComponent
   ]
 })
 export class SharedModule { }

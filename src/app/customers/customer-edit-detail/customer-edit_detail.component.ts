@@ -3,8 +3,7 @@ import { Title } from 'src/app/core/type.model';
 
 @Component({
   selector: 'customer-edit-detail',
-  templateUrl: './customer-edit-detail.component.html',
-  styleUrls: ['./customer-edit-detail.component.scss']
+  templateUrl: './customer-edit-detail.component.html'
 })
 export class CustomerEditDetailComponent {
   getTitle: Title = {

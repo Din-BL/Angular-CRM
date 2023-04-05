@@ -3,8 +3,7 @@ import { Title } from 'src/app/core/type.model';
 
 @Component({
   selector: 'employee-page',
-  templateUrl: './employee-page.component.html',
-  styleUrls: ['./employee-page.component.scss']
+  templateUrl: './employee-page.component.html'
 })
 export class EmployeePageComponent {
 
