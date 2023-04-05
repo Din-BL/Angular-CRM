@@ -1,0 +1,40 @@
+<main class="bg-dark">
+
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" class="row g-3">
+
+        <h1 class="display-6 text-center pb-2">{{'log in'| titlecase}}</h1>
+
+        <div ngModelGroup="userData" #userData="ngModelGroup">
+            <div class="mb-3 col-auto">
+                <input type="email" ngModel name="email" #email="ngModel" class="form-control" placeholder="Email" email
+                    required>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                    <span *ngIf="email.errors?.['required']">email is required</span>
+                    <span *ngIf="email.errors?.['email']"> incorrect email pattern
+                        {{email.errors?.['email']}} </span>
+                </div>
+            </div>
+            <div class="mb-3 col-auto">
+                <input ngModel name="password" #password="ngModel" required minlength="8" maxlength="12" type="password"
+                    class="form-control" placeholder="Password">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                    <span *ngIf="password.errors?.['required']">password is required</span>
+                    <span *ngIf="password.errors?.['minlength']">password must be at least
+                        {{password.errors?.['minlength'].requiredLength}} characters</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-auto form-check">
+            <input [ngModel]=" false" #checkbox="ngModel" required type="checkbox" name="checkbox" type="checkbox"
+                class="form-check-input" id="exampleCheck1">
+            <label *ngIf="!checkbox.control.value; else check" class="form-check-label" required for="exampleCheck1">
+                Im not a robot</label>
+            <ng-template #check>
+                You are verified
+            </ng-template>
+        </div>
+        <div class="col-auto">
+            <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary mb-3">Confirm</button>
+        </div>
+    </form>
+</main>

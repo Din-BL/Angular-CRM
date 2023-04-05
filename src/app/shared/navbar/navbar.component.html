@@ -1,0 +1,25 @@
+<nav style="border-bottom: 1px solid white ;
+" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <ng-content></ng-content>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a [ngClass]="{inactive:true}" routerLinkActive="nav-link active" aria-current=" page"
+                    routerLink="customers">Customers</a>
+                <a [ngClass]="{inactive:true}" routerLinkActive="nav-link active" aria-current=" page"
+                    routerLink="employees">Employees</a>
+            </div>
+            <div class="navbar-nav">
+                <a [ngClass]="{inactive:true}" routerLinkActive="nav-link active" aria-current="page"
+                    routerLink="signup">Sign Up</a>
+                <a [ngClass]="{inactive:true}" routerLinkActive="nav-link active" aria-current="page"
+                    routerLink="login">Log in</a>
+                <app-theme></app-theme>
+            </div>
+        </div>
+    </div>
+</nav>

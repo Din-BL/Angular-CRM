@@ -1,0 +1,28 @@
+<app-title [title]="getTitle"></app-title>
+
+<form class="row g-3 mb-3">
+    <div class="col-md-6">
+        <label for="first" class="form-label"><span class="text-danger">*</span> First Name</label>
+        <input type="text" class="form-control" id="first">
+    </div>
+    <div class="col-md-6">
+        <label for="last" class="form-label"><span class="text-danger">*</span> First Last</label>
+        <input type="text" class="form-control" id="last">
+    </div>
+    <div class="col-md-6">
+        <label for="email" class="form-label"><span class="text-danger">*</span> Email</label>
+        <input type="email" class="form-control" id="email">
+    </div>
+    <div class="col-md-6">
+        <label for="phone" class="form-label"><span class="text-danger">*</span> Phone</label>
+        <input type="tel" class="form-control" id="phone">
+    </div>
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Address</label>
+        <input type="text" class="form-control" id="inputAddress">
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+        <button type="submit" class="btn btn-secondary mx-1">Cancel</button>
+        <button type="submit" class="btn btn-primary mx-1">Update</button>
+    </div>
+</form>
