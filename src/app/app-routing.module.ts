@@ -4,16 +4,15 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CustomerPageComponent } from './customers/customer-page/customer-page.component';
-import { CustomerEditComponent } from './customers/customer-edit/customer-edit.component';
-import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
 import { EmployeePageComponent } from './employees/employee-page/employee-page.component';
+import { CustomerEditDetailComponent } from './customers/customer-edit-detail/customer-edit_detail.component';
 
 
 const routes: Routes = [
   {
     path: 'customers', component: CustomerPageComponent,
-    children: [{ path: ':id', component: CustomerEditComponent },
-    { path: ':id', component: CustomerDetailComponent }]
+    children: [{ path: ':id/edit', component: CustomerEditDetailComponent },
+    { path: ':id', component: CustomerEditDetailComponent }]
   },
   { path: '', redirectTo: 'customers', pathMatch: 'full' },
   { path: 'signup', component: SignupComponent },

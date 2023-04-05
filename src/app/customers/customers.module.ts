@@ -1,10 +1,9 @@
+import { CustomerEditDetailComponent } from './customer-edit-detail/customer-edit_detail.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerPageComponent } from './customer-page/customer-page.component';
 import { CustomerAddComponent } from './customer-add/customer-add.component';
 import { CustomerItemComponent } from './customer-item/customer-item.component';
-import { CustomerEditComponent } from './customer-edit/customer-edit.component';
-import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -14,8 +13,7 @@ import { SharedModule } from '../shared/shared.module';
     CustomerPageComponent,
     CustomerAddComponent,
     CustomerItemComponent,
-    CustomerEditComponent,
-    CustomerDetailComponent
+    CustomerEditDetailComponent
   ],
   imports: [
     CommonModule,
