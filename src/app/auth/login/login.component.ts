@@ -8,10 +8,8 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent {
 
-  @ViewChild('myForm') formData!: NgForm
-
   onSubmit(model: NgForm): void {
     console.log(model);
-    this.formData.reset()
+    model.reset()
   }
 }

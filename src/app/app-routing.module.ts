@@ -5,7 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CustomerPageComponent } from './customers/customer-page/customer-page.component';
 import { EmployeePageComponent } from './employees/employee-page/employee-page.component';
-import { CustomerEditDetailComponent } from './customers/customer-edit-detail/customer-edit_detail.component';
+import { CustomerEditDetailComponent } from './customers/customer-edit-detail/customer-edit-detail.component';
 
 
 const routes: Routes = [

@@ -6,7 +6,7 @@ import { SessionService } from '././core/session.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements AfterViewInit {
   constructor(private session: SessionService) { }

@@ -1,15 +1,16 @@
-<form class="row g-2 mb-4">
+<form [formGroup]="addForm.customerForm" (ngSubmit)="onSubmit()" class="row g-2 mb-4">
     <div class="col">
-        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+        <input formControlName="first" type="text" class="form-control" placeholder="First name"
+            aria-label="First name">
     </div>
     <div class="col">
-        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+        <input formControlName="last" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
     </div>
     <div class="col">
-        <input type="tel" class="form-control" placeholder="Phone" aria-label="Phone">
+        <input formControlName="phone" type="tel" class="form-control" placeholder="Phone" aria-label="Phone">
     </div>
     <div class="col">
-        <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+        <input formControlName="email" type="email" class="form-control" placeholder="Email" aria-label="Email">
     </div>
     <div class="col">
         <button type="submit" class="btn btn-primary">

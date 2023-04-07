@@ -1,9 +1,9 @@
 <main class="bg-dark">
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="row g-3">
         <h1 class="text-center display-6 pb-5">{{'sign up'| titlecase}}</h1>
         <div class="col-auto mb-3">
-            <input formControlName="email" #emailInput type="email" class="form-control" placeholder="Email"
+            <input formControlName="email" type="email" class="form-control" placeholder="Email"
                 aria-describedby="emailHelp">
 
             <div *ngIf="email?.invalid && (email?.touched || email?.dirty )" class="text-danger">
@@ -21,6 +21,6 @@
             </div>
 
         </div>
-        <button [disabled]="form.invalid" type="submit" class="btn btn-primary ">Submit</button>
+        <button [disabled]="signupForm.invalid" type="submit" class="btn btn-primary ">Submit</button>
     </form>
 </main>
