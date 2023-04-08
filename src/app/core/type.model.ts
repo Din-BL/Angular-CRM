@@ -3,7 +3,7 @@ export interface Title {
     class: string
 }
 
-export interface Table {
+export interface Item {
     first?: string,
     last?: string,
     full?: string,

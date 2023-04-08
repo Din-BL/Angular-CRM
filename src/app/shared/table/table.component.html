@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table-hover mt-4">
     <thead>
         <tr>
             <th scope="col">No.</th>
@@ -11,9 +11,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of items">
-            <th scope="row">{{1}}
-                <ng-content></ng-content>
+        <tr *ngFor="let item of items; let i = index">
+            <th scope="row">{{i + 1}}
+                <div *ngIf="icons" style="display: inline;">
+                    <i (click)="onDetail()" class="bi bi-eye-slash"></i>
+                    <i (click)="onEdit()" class="bi bi-pencil"></i>
+                    <i class="bi bi-trash"></i>
+                </div>
             </th>
             <td *ngIf="item.first">{{item.first}}</td>
             <td *ngIf="item.last">{{item.last}}</td>

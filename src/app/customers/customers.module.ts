@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerPageComponent } from './customer-page/customer-page.component';
 import { CustomerAddComponent } from './customer-add/customer-add.component';
-import { CustomerItemComponent } from './customer-item/customer-item.component';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { RouterModule } from '@angular/router';
@@ -12,7 +11,6 @@ import { RouterModule } from '@angular/router';
   declarations: [
     CustomerPageComponent,
     CustomerAddComponent,
-    CustomerItemComponent,
     CustomerEditDetailComponent
   ],
   imports: [
