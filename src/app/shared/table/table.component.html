@@ -2,16 +2,16 @@
     <thead>
         <tr>
             <th scope="col">No.</th>
-            <th *ngIf="item.first" scope="col">First Name</th>
-            <th *ngIf="item.last" scope="col">Last Name</th>
-            <th *ngIf="item.full" scope="col">Name</th>
+            <th *ngIf="items![0].first" scope="col">First Name</th>
+            <th *ngIf="items![0].last" scope="col">Last Name</th>
+            <th *ngIf="items![0].full" scope="col">Name</th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
-            <th *ngIf="item.birthday" scope="col">Birthday</th>
+            <th *ngIf="items![0].birthday" scope="col">Birthday</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let item of items">
             <th scope="row">{{1}}
                 <ng-content></ng-content>
             </th>

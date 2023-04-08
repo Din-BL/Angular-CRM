@@ -6,6 +6,7 @@ import { CustomerAddComponent } from './customer-add/customer-add.component';
 import { CustomerItemComponent } from './customer-item/customer-item.component';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CoreModule } from '../core/core.module';
   imports: [
     CommonModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    RouterModule
   ]
 })
 export class CustomersModule { }
