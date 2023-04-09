@@ -3,26 +3,35 @@
 <form [formGroup]="editForm.customerForm" (ngSubmit)="onSubmit()" class="row g-3 mb-3">
     <div class="col-md-6">
         <label for="first" class="form-label"><span class="text-danger">*</span> First Name</label>
-        <input formControlName="first" type="text" class="form-control" id="first">
+        <input [hidden]="!editMode" formControlName="first" type="text" class="form-control" id="first">
+        <input [hidden]="editMode" class="form-control" type="text" value="readonly" disabled readonly>
     </div>
     <div class="col-md-6">
         <label for="last" class="form-label"><span class="text-danger">*</span> Last Name</label>
-        <input formControlName="last" type="text" class="form-control" id="last">
+        <input [hidden]="!editMode" formControlName="last" type="text" class="form-control" id="last">
+        <input [hidden]="editMode" class="form-control" type="text" value="readonly" disabled readonly>
     </div>
     <div class="col-md-6">
         <label for="email" class="form-label"><span class="text-danger">*</span> Email</label>
-        <input formControlName="email" type="email" class="form-control" id="email">
+        <input [hidden]="!editMode" formControlName="email" type="email" class="form-control" id="email">
+        <input [hidden]="editMode" class="form-control" type="email" value="readonly" disabled readonly>
+
     </div>
     <div class="col-md-6">
         <label for="phone" class="form-label"><span class="text-danger">*</span> Phone</label>
-        <input formControlName="phone" type="tel" class="form-control" id="phone">
+        <input [hidden]="!editMode" formControlName="phone" type="tel" class="form-control" id="phone">
+        <input [hidden]="editMode" class="form-control" type="phone" value="readonly" disabled readonly>
+
     </div>
     <div class="col-12">
         <label for="inputAddress" class="form-label">Address</label>
-        <input formControlName="address" type="text" class="form-control" id="inputAddress">
+        <input [hidden]="!editMode" formControlName="address" type="text" class="form-control" id="inputAddress">
+        <input [hidden]="editMode" class="form-control" type="text" value="readonly" disabled readonly>
+
     </div>
     <div class="col-12 d-flex justify-content-center">
-        <button type="button" class="btn btn-secondary mx-1">Cancel</button>
-        <button [disabled]="editForm.customerForm.invalid" type="submit" class="btn btn-primary mx-1">Update</button>
+        <button [hidden]="!editMode" type="button" class="btn btn-secondary mx-1">Cancel</button>
+        <button [hidden]="!editMode" [disabled]="editForm.customerForm.invalid" type="submit"
+            class="btn btn-primary mx-1">Update</button>
     </div>
 </form>

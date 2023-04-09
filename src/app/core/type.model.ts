@@ -9,5 +9,6 @@ export interface Item {
     full?: string,
     phone?: string,
     email?: string,
-    birthday?: string
+    birthday?: string,
+    detail?: boolean
 }

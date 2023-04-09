@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormService } from 'src/app/core/form.service';
+import { ValidationService } from 'src/app/core/validation.service';
 import Swal from 'sweetalert2'
 
 
@@ -7,11 +7,11 @@ import Swal from 'sweetalert2'
   selector: 'customer-add',
   templateUrl: './customer-add.component.html',
   styles: [`.form-control.ng-dirty.ng-invalid.ng-touched{border: 1px solid red;}`],
-  providers: [FormService]
+  providers: [ValidationService]
 })
 export class CustomerAddComponent implements OnInit {
 
-  constructor(public addForm: FormService) { }
+  constructor(public addForm: ValidationService) { }
 
   ngOnInit(): void {
     this.addForm.customerForm
