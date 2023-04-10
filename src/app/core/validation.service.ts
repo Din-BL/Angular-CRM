@@ -15,8 +15,4 @@ export class ValidationService {
     email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(6)]),
     address: new FormControl('', Validators.minLength(6))
   })
-
-  // get email() {
-  //   return this.customerForm.get('email')
-  // }
 }

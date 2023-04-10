@@ -19,7 +19,7 @@ import { TableComponent } from './table/table.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     FooterComponent,

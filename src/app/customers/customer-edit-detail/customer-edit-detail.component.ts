@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/core/validation.service';
 import { Title } from 'src/app/core/type.model';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'customer-edit-detail',
   templateUrl: './customer-edit-detail.component.html',
-  styles: [`.form-control.ng-dirty.ng-invalid.ng-touched{border: 1px solid red;}`]
+  providers: [ValidationService]
 })
 export class CustomerEditDetailComponent implements OnInit {
 
@@ -24,7 +25,15 @@ export class CustomerEditDetailComponent implements OnInit {
     this.editForm.customerForm
   }
 
+  getError(field: string): FormControl {
+    return this.editForm.customerForm.get(field) as FormControl;
+  }
+
   onSubmit() {
     console.log(this.editForm.customerForm);
+  }
+
+  onCancel() {
+    this.router.navigate(['/'])
   }
 }

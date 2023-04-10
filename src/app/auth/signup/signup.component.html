@@ -1,26 +1,26 @@
 <main class="bg-dark">
 
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="row g-3">
-        <h1 class="text-center display-6 pb-5">{{'sign up'| titlecase}}</h1>
+        <h1 class="text-center display-6 pb-5">{{'sign up'| titlecase}}
+            <i class="bi bi-person-fill-lock"></i>
+        </h1>
         <div class="col-auto mb-3">
-            <input formControlName="email" type="email" class="form-control" placeholder="Email"
-                aria-describedby="emailHelp">
+            <input formControlName="email" type="email" class="form-control" placeholder="Email">
 
-            <div *ngIf="email?.invalid && (email?.touched || email?.dirty )" class="text-danger">
+            <small *ngIf="email?.invalid && (email?.touched || email?.dirty )" class="text-danger">
                 <span *ngIf="email?.errors?.['email']">incorrect pattern</span>
                 <span *ngIf="email?.getError('required')">email is required</span>
-            </div>
+            </small>
         </div>
         <div class="col-auto mb-3">
             <input formControlName="password" type="password" class="form-control" placeholder="Password">
 
-            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
+            <small *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
                 <span *ngIf="password?.errors?.['minlength']">password length must be
                     {{password?.errors?.['minlength'].requiredLength}} characters</span>
                 <span *ngIf="password?.errors?.['required']">password is required</span>
-            </div>
-
+            </small>
         </div>
-        <button [disabled]="signupForm.invalid" type="submit" class="btn btn-primary ">Submit</button>
+        <button [disabled]="signupForm.invalid" type="submit" class="btn btn-primary">Submit</button>
     </form>
 </main>

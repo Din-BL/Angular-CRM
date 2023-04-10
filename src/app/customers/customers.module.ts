@@ -6,12 +6,14 @@ import { CustomerAddComponent } from './customer-add/customer-add.component';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { RouterModule } from '@angular/router';
+import { CustomersErrorComponent } from './customers-error/customers-error.component';
 
 @NgModule({
   declarations: [
     CustomerPageComponent,
     CustomerAddComponent,
-    CustomerEditDetailComponent
+    CustomerEditDetailComponent,
+    CustomersErrorComponent
   ],
   imports: [
     CommonModule,

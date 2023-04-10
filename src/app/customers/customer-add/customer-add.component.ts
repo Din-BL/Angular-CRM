@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ValidationService } from 'src/app/core/validation.service';
 import Swal from 'sweetalert2'
 
@@ -6,7 +7,6 @@ import Swal from 'sweetalert2'
 @Component({
   selector: 'customer-add',
   templateUrl: './customer-add.component.html',
-  styles: [`.form-control.ng-dirty.ng-invalid.ng-touched{border: 1px solid red;}`],
   providers: [ValidationService]
 })
 export class CustomerAddComponent implements OnInit {
@@ -15,6 +15,10 @@ export class CustomerAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.addForm.customerForm
+  }
+
+  getError(field: string): FormControl {
+    return this.addForm.customerForm.get(field) as FormControl;
   }
 
   onSubmit() {
