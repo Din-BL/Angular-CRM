@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(6)]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)])
     })
   }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/core/validation.service';
-import { Title } from 'src/app/core/type.model';
-import { Router } from '@angular/router';
+import { Item, Title } from 'src/app/core/type.model';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { ApiService } from 'src/app/core/api.service';
 
 @Component({
   selector: 'customer-edit-detail',
@@ -17,12 +18,21 @@ export class CustomerEditDetailComponent implements OnInit {
   }
 
   editMode?: boolean
+  id!: number
+  customer!: Item
 
-  constructor(public editForm: ValidationService, private router: Router) { }
+  constructor(public editForm: ValidationService, private router: Router,
+    private route: ActivatedRoute, private customerApi: ApiService) { }
 
   ngOnInit(): void {
     this.editMode = this.router.url.includes('edit')
     this.editForm.customerForm
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = (params['id']);
+          this.customer = this.customerApi.getCustomer(this.id)
+        })
   }
 
   getError(field: string): FormControl {

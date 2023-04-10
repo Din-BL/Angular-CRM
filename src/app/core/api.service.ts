@@ -6,24 +6,25 @@ import { Item } from './type.model';
 })
 export class ApiService {
 
-  constructor() { }
-
   customers: Array<Item> = [
     {
       first: 'Mark',
       last: 'Otto',
       phone: '050-352-3245',
-      email: 'Din@Gmail.com'
+      email: 'Din@Gmail.com',
+      address: 'East Main Street in Portage, Mich'
     }, {
       first: 'Dor',
       last: 'Cohen',
       phone: '050-352-3245',
-      email: 'Dor@Gmail.com'
+      email: 'Dor@Gmail.com',
+      address: '1234 E. Main St. in Portage, Mich'
     }, {
       first: 'Nitzan',
       last: 'Sigel',
       phone: '050-352-3245',
-      email: 'Nitzan@Gmail.com'
+      email: 'Nitzan@Gmail.com',
+      address: '2333 E. Beltline Ave. SE in Grand Rapids, Mich'
     }
   ]
   employees: Array<Item> = [
@@ -47,4 +48,7 @@ export class ApiService {
     }
   ]
 
+  getCustomer(index: number): Item {
+    return this.customers[index]
+  }
 }

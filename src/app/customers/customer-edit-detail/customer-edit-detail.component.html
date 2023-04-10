@@ -4,33 +4,32 @@
     <div class="col-md-6">
         <label for="first" class="form-label"><span class="text-danger">*</span> First Name</label>
         <input [hidden]="!editMode" formControlName="first" type="text" class="form-control" id="first">
-        <input [hidden]="editMode" class="form-control" type="text" value="readonly" disabled readonly>
+        <input [hidden]="editMode" class="form-control" type="text" value="{{customer.first}}" disabled readonly>
         <customers-error [errorMsg]="getError('first')"></customers-error>
     </div>
     <div class="col-md-6">
         <label for="last" class="form-label"><span class="text-danger">*</span> Last Name</label>
         <input [hidden]="!editMode" formControlName="last" type="text" class="form-control" id="last">
-        <input [hidden]="editMode" class="form-control" type="text" value="readonly" disabled readonly>
+        <input [hidden]="editMode" class="form-control" type="text" value="{{customer.last}}" disabled readonly>
         <customers-error [errorMsg]="getError('last')"></customers-error>
     </div>
     <div class="col-md-6">
         <label for="email" class="form-label"><span class="text-danger">*</span> Email</label>
         <input [hidden]="!editMode" formControlName="email" type="email" class="form-control" id="email">
-        <input [hidden]="editMode" class="form-control" type="email" value="readonly" disabled readonly>
+        <input [hidden]="editMode" class="form-control" type="email" value="{{customer.email}}" disabled readonly>
         <customers-error [errorMsg]="getError('email')"></customers-error>
 
     </div>
     <div class="col-md-6">
         <label for="phone" class="form-label"><span class="text-danger">*</span> Phone</label>
         <input [hidden]="!editMode" formControlName="phone" type="tel" class="form-control" id="phone">
-        <input [hidden]="editMode" class="form-control" type="phone" value="readonly" disabled readonly>
+        <input [hidden]="editMode" class="form-control" type="phone" value="{{customer.phone}}" disabled readonly>
         <customers-error [errorMsg]="getError('phone')"></customers-error>
-
     </div>
     <div class="col-12">
         <label for="inputAddress" class="form-label">Address</label>
         <input [hidden]="!editMode" formControlName="address" type="text" class="form-control" id="inputAddress">
-        <input [hidden]="editMode" class="form-control" type="text" value="readonly" disabled readonly>
+        <input [hidden]="editMode" class="form-control" type="text" value="{{customer.address}}" disabled readonly>
         <customers-error [errorMsg]="getError('address')"></customers-error>
     </div>
     <div class="col-12 d-flex justify-content-center">

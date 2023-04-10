@@ -9,6 +9,7 @@ export interface Item {
     full?: string,
     phone: string,
     email: string,
+    address?: string,
     birthday?: string,
     detail?: boolean
 }

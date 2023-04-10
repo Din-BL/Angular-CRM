@@ -15,7 +15,7 @@
             <th scope="row">{{i + 1}}
                 <div *ngIf="icons" style="display: inline;">
                     <i [ngClass]=eyeToggle(i) (click)="onDetail(i)"></i>
-                    <i class="bi bi-pencil" (click)="onEdit()"></i>
+                    <i class="bi bi-pencil" (click)="onEdit(i)"></i>
                     <i class="bi bi-trash"></i>
                 </div>
             </th>
