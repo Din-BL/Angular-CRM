@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Item } from 'src/app/core/type.model';
 
 @Component({
@@ -7,7 +7,7 @@ import { Item } from 'src/app/core/type.model';
   templateUrl: './table.component.html',
   styles: [`.bi {margin-left: 10px;}`]
 })
-export class TableComponent {
+export class TableComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
@@ -23,17 +23,33 @@ export class TableComponent {
     detail: false
   }]
 
+  id?: number
+
+  ngOnInit(): void {
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = Number(params['id']);
+        })
+  }
+
   onEdit() {
-    this.router.navigate(['1/edit'], { relativeTo: this.route })
+    if (this.router.url.includes('edit') || this.router.url.includes('id')) ""
+    else {
+      this.router.navigate(['id/edit'], { relativeTo: this.route })
+    }
   }
   onDetail(index: number) {
-    if (this.router.url == '/customers/1') {
-      this.router.navigate(['/'], { relativeTo: this.route })
-      this.items![index].detail = !this.items![index].detail
-    }
+    if (this.router.url.includes('edit')) ""
     else {
-      this.router.navigate(['1'], { relativeTo: this.route })
-      this.items![index].detail = !this.items![index].detail
+      if (this.router.url == '/customers/id') {
+        this.router.navigate(['/'], { relativeTo: this.route })
+        this.items![index].detail = !this.items![index].detail
+      }
+      else {
+        this.router.navigate(['id'], { relativeTo: this.route })
+        this.items![index].detail = !this.items![index].detail
+      }
     }
   }
 
@@ -44,6 +60,4 @@ export class TableComponent {
       return 'bi bi-eye'
     }
   }
-
-
 }

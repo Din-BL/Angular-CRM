@@ -36,6 +36,6 @@
     <div class="col-12 d-flex justify-content-center">
         <button [hidden]="!editMode" (click)="onCancel()" type="button" class="btn btn-secondary mx-1">Cancel</button>
         <button [hidden]="!editMode" [disabled]="editForm.customerForm.invalid" type="submit"
-            class="btn btn-primary mx-1">Update</button>
+            class="btn btn-primary mx-1"> <i class="bi bi-arrow-repeat"></i> Update</button>
     </div>
 </form>
