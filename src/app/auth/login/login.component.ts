@@ -1,5 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +9,10 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent {
 
+  constructor(private router: Router) { }
+
   onSubmit(model: NgForm): void {
     console.log(model);
-    model.reset()
+    this.router.navigate(['customers'])
   }
 }

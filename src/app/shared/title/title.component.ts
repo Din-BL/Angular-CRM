@@ -3,8 +3,7 @@ import { Title } from 'src/app/core/type.model';
 
 @Component({
   selector: 'app-title',
-  templateUrl: './title.component.html',
-  styleUrls: ['./title.component.scss']
+  templateUrl: './title.component.html'
 })
 export class TitleComponent {
   @Input() title: Title = {

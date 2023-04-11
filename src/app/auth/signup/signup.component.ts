@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +10,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 
 export class SignupComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('emailInput') emailFiled!: ElementRef
+  @ViewChild('emailField') emailFiled!: ElementRef
 
   signupForm!: FormGroup
 
@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.emailFiled.nativeElement.focus()
+    // this.emailFiled.nativeElement.focus()
   }
 
   constructor(private router: Router, private route: ActivatedRoute) { }

@@ -8,7 +8,6 @@ import { TitleComponent } from './title/title.component';
 import { TableComponent } from './table/table.component';
 
 
-
 @NgModule({
   declarations: [
     FooterComponent,
@@ -19,7 +18,7 @@ import { TableComponent } from './table/table.component';
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule
   ],
   exports: [
     FooterComponent,

@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Item } from './type.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+  constructor(private http: HttpClient) { }
 
   customers: Array<Item> = [
     {
@@ -50,5 +54,26 @@ export class ApiService {
 
   getCustomer(index: number): Item {
     return this.customers[index]
+  }
+
+  //////// Http Request ////////
+
+  server = 'http://localhost:3000/'
+
+  POST<DynamicType>(endpoint: string, data: DynamicType): Observable<DynamicType> {
+    return this.http.post<DynamicType>(
+      `${this.server}${endpoint}`,
+      data,
+      {
+        // headers: {
+        //     'Content-Type': 'application/json',
+        //     'x-auth-token': this.getToken()
+        // }
+      }
+    )
+  }
+
+  addProject(project: Item): Observable<Item> {
+    return this.POST<Item>('projects', project);
   }
 }

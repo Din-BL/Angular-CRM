@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -11,4 +11,6 @@ export class SessionService {
   homeRedirect() {
     this.router.navigate(['customers'])
   }
+
+  themeMode = new EventEmitter<boolean>()
 }

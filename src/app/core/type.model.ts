@@ -11,5 +11,6 @@ export interface Item {
     email: string,
     address?: string,
     birthday?: string,
-    detail?: boolean
+    detail?: boolean,
+    [key: string]: any
 }

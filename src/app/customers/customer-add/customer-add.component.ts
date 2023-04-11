@@ -29,7 +29,7 @@ export class CustomerAddComponent implements OnInit {
       })
     }
     else {
-      // Create a customer
+      this.addForm.customerForm.reset()
     }
   }
 }
