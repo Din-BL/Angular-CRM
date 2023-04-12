@@ -4,12 +4,13 @@ export interface Title {
 }
 
 export interface Item {
-    first?: string,
-    last?: string,
+    _id?: string | null,
+    first?: string | null;
+    last?: string | null;
     full?: string,
-    phone: string,
-    email: string,
-    address?: string,
+    phone?: string | null;
+    email?: string | null,
+    address?: string | null;
     birthday?: string,
     detail?: boolean,
     [key: string]: any

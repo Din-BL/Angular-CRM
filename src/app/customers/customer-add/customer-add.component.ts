@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ApiService } from 'src/app/core/api.service';
 import { ValidationService } from 'src/app/core/validation.service';
 import Swal from 'sweetalert2'
 
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2'
 })
 export class CustomerAddComponent implements OnInit {
 
-  constructor(public addForm: ValidationService) { }
+  constructor(public addForm: ValidationService, private customerApi: ApiService) { }
 
   ngOnInit(): void {
     this.addForm.customerForm
@@ -29,6 +30,16 @@ export class CustomerAddComponent implements OnInit {
       })
     }
     else {
+      console.log(this.addForm.customerForm.value);
+
+      this.customerApi.addCustomer(this.addForm.customerForm.value)
+        .subscribe((data) => {
+          this.customerApi.customers.push(data)
+        },
+          (error) => {
+            console.log(error);
+          })
+
       this.addForm.customerForm.reset()
     }
   }

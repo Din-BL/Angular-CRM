@@ -19,6 +19,10 @@ export class CustomersErrorComponent {
       return 'This field is required';
     }
 
+    if (formControl.getError('pattern')) {
+      return 'Email pattern is incorrect';
+    }
+
     const maxlengthErr = formControl.getError('maxlength');
     if (maxlengthErr) {
       return `Cannot be longer than ${maxlengthErr.requiredLength} chr`;

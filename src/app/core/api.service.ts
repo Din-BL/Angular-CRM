@@ -60,20 +60,35 @@ export class ApiService {
 
   server = 'http://localhost:3000/'
 
-  POST<DynamicType>(endpoint: string, data: DynamicType): Observable<DynamicType> {
-    return this.http.post<DynamicType>(
-      `${this.server}${endpoint}`,
-      data,
-      {
-        // headers: {
-        //     'Content-Type': 'application/json',
-        //     'x-auth-token': this.getToken()
-        // }
-      }
-    )
+  addCustomer(customer: Item): Observable<Item> {
+    return this.http.post(this.server + 'customers', customer)
   }
 
-  addProject(project: Item): Observable<Item> {
-    return this.POST<Item>('projects', project);
-  }
+
+
+
+
+
+
+
+
+
+
+
+  // POST<DynamicType>(endpoint: string, data: DynamicType): Observable<DynamicType> {
+  //   return this.http.post<DynamicType>(
+  //     `${this.server}${endpoint}`,
+  //     data,
+  //     {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'x-auth-token': this.getToken()
+  //       }
+  //     }
+  //   )
+  // }
+
+  // addProject(customer: Item): Observable<Item> {
+  //   return this.POST<Item>('customers', customer);
+  // }
 }

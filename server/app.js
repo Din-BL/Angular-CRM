@@ -23,6 +23,7 @@ app.use(headers);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/employees', auth, employeesRouter);
-app.use('/customers', auth, customersRouter);
+app.use('/customers', customersRouter);
+// app.use('/customers', auth, customersRouter);
 
 module.exports = app;
