@@ -10,8 +10,9 @@ export class ThemeComponent {
   constructor(private theme: SessionService) { }
 
   darkMode = false
+
   toggleMode() {
     this.darkMode = !this.darkMode
-    this.theme.themeMode.emit(this.darkMode)
+    this.theme.themeMode.next(this.darkMode)
   }
 }

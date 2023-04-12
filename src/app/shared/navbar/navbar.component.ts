@@ -1,19 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { SessionService } from 'src/app/core/session.service';
 
 @Component({
   selector: 'navbar',
-  templateUrl: './navbar.component.html',
-  styles: [`.inactive {color: rgba(255, 255, 255, 0.55);text-decoration: none; padding:5px}`]
+  templateUrl: './navbar.component.html'
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
+
   themeColor = false
+
   constructor(private theme: SessionService) { }
+
+  private activatedSub!: Subscription
 
   ngOnInit(): void {
     this.theme.themeMode.subscribe(colorStatus => {
       this.themeColor = colorStatus
     })
+  }
+  ngOnDestroy(): void {
+    this.activatedSub.unsubscribe()
   }
   onColorChanged(style: string) {
     return { [style]: this.themeColor ? 'black' : 'white' };
