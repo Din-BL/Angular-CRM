@@ -52,7 +52,7 @@ export class ApiService {
     }
   ]
 
-  getCustomer(index: number): Item {
+  getCustomerId(index: number): Item {
     return this.customers[index]
   }
 
@@ -60,8 +60,12 @@ export class ApiService {
 
   server = 'http://localhost:3000/'
 
+  getCustomer(): Observable<Item[]> {
+    return this.http.get<Item[]>(this.server + 'customers')
+  }
+
   addCustomer(customer: Item): Observable<Item> {
-    return this.http.post(this.server + 'customers', customer)
+    return this.http.post<Item>(this.server + 'customers', customer)
   }
 
 

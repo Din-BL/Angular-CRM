@@ -13,7 +13,10 @@ export class CustomerPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.customers = this.api.customers
-
+    // this.api.getCustomer().subscribe({
+    //   next: (data: Item[]) => this.customers = data,
+    //   error: (error: any) => console.log(error)
+    // })
   }
   getTitle: Title = {
     name: 'Customers',

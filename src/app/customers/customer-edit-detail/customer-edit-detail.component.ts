@@ -89,7 +89,7 @@ export class CustomerEditDetailComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = (params['id']);
-          this.customer = this.customerApi.getCustomer(this.id)
+          this.customer = this.customerApi.getCustomerId(this.id)
           this.fields.forEach((field) => {
             this.setFormValue(field, this.customer[field] as Item)
           })
