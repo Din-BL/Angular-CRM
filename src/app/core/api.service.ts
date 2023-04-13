@@ -64,9 +64,13 @@ export class ApiService {
     return this.http.get<Item[]>(this.server + 'customers')
   }
 
-  addCustomer(customer: Item): Observable<Item> {
-    return this.http.post<Item>(this.server + 'customers', customer)
+  addCustomer(customer: Item) {
+    this.http.post<Item>(this.server + 'customers', customer).subscribe({
+      next: data => this.customers?.push(data),
+      error: error => console.log(error)
+    })
   }
+
 
 
 
