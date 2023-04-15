@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/core/api.service';
 import { Item } from 'src/app/core/type.model';
 
 @Component({
@@ -9,37 +10,35 @@ import { Item } from 'src/app/core/type.model';
 })
 export class TableComponent {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ApiService) { }
 
   @Input() icons?: boolean
 
-  @Input() items?: Array<Item> = [{
-    first: '',
-    last: '',
-    full: '',
-    phone: '',
-    email: '',
-    birthday: '',
-    detail: false
-  }]
+  @Input() items?: Array<Item>
 
-  onEdit(index: number) {
+  onEdit(item: Item) {
     if (this.router.url.includes('edit') || this.router.url.length > 10) "";
-
     else {
-      this.router.navigate([`${index}/edit`], { relativeTo: this.route })
+      this.router.navigate([`${item._id}/edit`], { relativeTo: this.route })
     }
   }
-  onDetail(index: number) {
+  onDetail(item: Item, index: number) {
     if (this.router.url.includes('edit')) ""
-    else if (this.router.url == `/customers/${index}`) {
+    else if (this.router.url == `/customers/${item._id}`) {
       this.router.navigate(['/'], { relativeTo: this.route })
       this.items![index].detail = !this.items![index].detail
     }
     else {
-      this.router.navigate([index], { relativeTo: this.route })
+      this.router.navigate([`${item._id}`], { relativeTo: this.route })
       this.items![index].detail = !this.items![index].detail
     }
+  }
+
+  onDelete(item: Item) {
+    this.api.deleteCustomer(item._id as string).subscribe({
+      next: () => this.items = this.items!.filter(currItem => currItem._id !== item._id),
+      error: error => console.log(error)
+    })
   }
 
   eyeToggle(index: number): string {

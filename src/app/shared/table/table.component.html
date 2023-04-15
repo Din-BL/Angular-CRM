@@ -2,21 +2,21 @@
     <thead>
         <tr>
             <th scope="col">No.</th>
-            <th *ngIf="items![0].first" scope="col">First Name</th>
-            <th *ngIf="items![0].last" scope="col">Last Name</th>
-            <th *ngIf="items![0].full" scope="col">Name</th>
+            <th *ngIf="items && items![0].first" scope="col">First Name</th>
+            <th *ngIf="items && items![0].last" scope="col">Last Name</th>
+            <th *ngIf="items && items![0].full" scope="col">Name</th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
-            <th *ngIf="items![0].birthday" scope="col">Birthday</th>
+            <th *ngIf="items && items![0].birthday" scope="col">Birthday</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of items; let i = index">
             <th scope="row">{{i + 1}}
                 <div *ngIf="icons" style="display: inline;">
-                    <i [ngClass]=eyeToggle(i) (click)="onDetail(i)"></i>
-                    <i class="bi bi-pencil" (click)="onEdit(i)"></i>
-                    <i class="bi bi-trash"></i>
+                    <i [ngClass]=eyeToggle(i) (click)="onDetail(item,i)"></i>
+                    <i class="bi bi-pencil" (click)="onEdit(item)"></i>
+                    <i class="bi bi-trash" (click)="onDelete(item)"></i>
                 </div>
             </th>
             <td *ngIf="item.first">{{item.first}}</td>

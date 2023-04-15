@@ -10,17 +10,29 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  //////// Http Request ////////
+  //////// Customer ////////
 
   server = 'http://localhost:3000/'
 
   getCustomers(): Observable<Item[]> {
     return this.http.get<Item[]>(this.server + 'customers')
   }
+  getCustomer(id: string): Observable<Item> {
+    return this.http.get<Item>(this.server + `customers/${id}`)
+  }
+  getCustomerEdit(id: string): Observable<Item> {
+    return this.http.get<Item>(this.server + `customers/${id}/edit`)
+  }
 
   addCustomer(customer: Item): Observable<Item> {
     return this.http.post<Item>(this.server + 'customers', customer)
   }
+
+  deleteCustomer(id: string): Observable<Item> {
+    return this.http.delete<Item>(this.server + `customers/${id}`)
+  }
+  //////// Employee ////////
+
 
   createEmployees() {
     this.http.post<Item[]>(this.server + 'employees/init', "").subscribe({
@@ -32,6 +44,8 @@ export class ApiService {
   getEmployees(): Observable<Item[]> {
     return this.http.get<Item[]>(this.server + 'employees')
   }
+
+
 
 
 
