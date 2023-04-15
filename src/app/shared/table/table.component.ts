@@ -36,8 +36,8 @@ export class TableComponent {
 
   onDelete(item: Item) {
     this.api.deleteCustomer(item._id as string).subscribe({
-      next: () => this.items = this.items!.filter(currItem => currItem._id !== item._id),
-      error: error => console.log(error)
+      next: () => this.items = this.items?.filter(customer => customer._id !== item._id),
+      error: error => console.log(error.message)
     })
   }
 

@@ -17,7 +17,6 @@ router.post("/init", (req, res) => {
                 await Employee.deleteMany({});
                 const employeeData = JSON.parse(data);
                 Employee.insertMany(employeeData.employees);
-                res.status(200).send('Inserted Data');
             }
         });
     } catch (error) {

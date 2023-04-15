@@ -61,6 +61,10 @@ export class CustomerEditDetailComponent implements OnInit {
   }
 
   onSubmit() {
+    this.customerApi.editCustomer(this.id, this.editForm.customerForm.value).subscribe({
+      next: data => console.log(data),
+      error: error => console.log(error.message),
+    })
     this.router.navigate(['/'])
   }
 

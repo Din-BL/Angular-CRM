@@ -2,12 +2,16 @@
     <thead>
         <tr>
             <th scope="col">No.</th>
-            <th *ngIf="items && items![0].first" scope="col">First Name</th>
-            <th *ngIf="items && items![0].last" scope="col">Last Name</th>
-            <th *ngIf="items && items![0].full" scope="col">Name</th>
+            <!-- <th *ngIf="items && items![0].first" scope="col">First Name</th> -->
+            <!-- <th *ngIf="items && items![0].last" scope="col">Last Name</th> -->
+            <!-- <th *ngIf="items && items![0].full" scope="col">Name</th> -->
+            <th *ngIf="items?.[0]?.first" scope="col">First Name</th>
+            <th *ngIf="items?.[0]?.last" scope="col">First Name</th>
+            <th *ngIf="items?.[0]?.full" scope="col">First Name</th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
-            <th *ngIf="items && items![0].birthday" scope="col">Birthday</th>
+            <!-- <th *ngIf="items && items![0].birthday" scope="col">Birthday</th> -->
+            <th *ngIf="items?.[0]?.birthday" scope="col">First Name</th>
         </tr>
     </thead>
     <tbody>

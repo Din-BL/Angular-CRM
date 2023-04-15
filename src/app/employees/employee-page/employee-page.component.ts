@@ -15,8 +15,11 @@ export class EmployeePageComponent implements OnInit {
   ngOnInit(): void {
     this.employeeApi.createEmployees()
     this.employeeApi.getEmployees().subscribe({
-      next: data => this.employees = data,
-      error: error => console.log(error)
+      next: data => {
+        this.employees = data,
+          console.log(this.employees);
+      },
+      error: error => console.log(error.message)
     })
   }
 

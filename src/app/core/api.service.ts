@@ -23,24 +23,23 @@ export class ApiService {
   getCustomerEdit(id: string): Observable<Item> {
     return this.http.get<Item>(this.server + `customers/${id}/edit`)
   }
-
   addCustomer(customer: Item): Observable<Item> {
     return this.http.post<Item>(this.server + 'customers', customer)
   }
-
-  deleteCustomer(id: string): Observable<Item> {
-    return this.http.delete<Item>(this.server + `customers/${id}`)
+  editCustomer(id: string, data: Item): Observable<Item> {
+    return this.http.put<Item>(this.server + `customers/${id}`, data)
+  }
+  deleteCustomer(id: string): Observable<void> {
+    return this.http.delete<void>(this.server + `customers/${id}`)
   }
   //////// Employee ////////
 
-
   createEmployees() {
-    this.http.post<Item[]>(this.server + 'employees/init', "").subscribe({
+    this.http.post<void>(this.server + 'employees/init', "").subscribe({
       next: data => console.log(data),
-      error: error => console.log(error)
+      error: error => console.log(error.message)
     })
   }
-
   getEmployees(): Observable<Item[]> {
     return this.http.get<Item[]>(this.server + 'employees')
   }

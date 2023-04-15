@@ -14,7 +14,7 @@ export class CustomerPageComponent implements OnInit {
   ngOnInit(): void {
     this.customerApi.getCustomers().subscribe({
       next: data => this.customers = data,
-      error: error => console.log(error)
+      error: error => console.log(error.message)
     })
   }
 
