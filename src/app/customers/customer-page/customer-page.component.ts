@@ -7,13 +7,17 @@ import { Item, Title } from 'src/app/core/type.model';
   templateUrl: './customer-page.component.html'
 })
 export class CustomerPageComponent implements OnInit {
-  constructor(public api: ApiService) { }
+  constructor(public customerApi: ApiService) { }
 
   customers?: Item[]
 
   ngOnInit(): void {
-    this.customers = this.api.customers
+    this.customerApi.getCustomers().subscribe({
+      next: data => this.customers = data,
+      error: error => console.log(error)
+    })
   }
+
   getTitle: Title = {
     name: 'Customers',
     class: 'bi bi-person-fill'

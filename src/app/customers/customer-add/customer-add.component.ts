@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/core/api.service';
+import { Item } from 'src/app/core/type.model';
 import { ValidationService } from 'src/app/core/validation.service';
 import Swal from 'sweetalert2'
 
@@ -11,6 +12,8 @@ import Swal from 'sweetalert2'
   providers: [ValidationService]
 })
 export class CustomerAddComponent implements OnInit {
+
+  @Input() items?: Array<Item>
 
   constructor(public addForm: ValidationService, private customerApi: ApiService) { }
 
@@ -30,7 +33,10 @@ export class CustomerAddComponent implements OnInit {
       })
     }
     else {
-      this.customerApi.addCustomer(this.addForm.customerForm.value)
+      this.customerApi.addCustomer(this.addForm.customerForm.value).subscribe({
+        next: data => this.items?.push(data),
+        error: error => console.log(error)
+      })
       this.addForm.customerForm.reset()
     }
   }

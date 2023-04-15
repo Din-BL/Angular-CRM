@@ -82,18 +82,18 @@ export class CustomerEditDetailComponent implements OnInit {
   fields: Array<string> = ['first', 'last', 'email', 'phone', 'address']
 
   ngOnInit(): void {
-    this.editMode = this.router.url.includes('edit')
-    this.editForm.customerForm
+    // this.editMode = this.router.url.includes('edit')
+    // this.editForm.customerForm
 
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = (params['id']);
-          this.customer = this.customerApi.getCustomerId(this.id)
-          this.fields.forEach((field) => {
-            this.setFormValue(field, this.customer[field] as Item)
-          })
-        })
+    // this.route.params
+    //   .subscribe(
+    //     (params: Params) => {
+    //       this.id = (params['id']);
+    //       this.customer = this.customerApi.getCustomerId(this.id)
+    //       this.fields.forEach((field) => {
+    //         this.setFormValue(field, this.customer[field] as Item)
+    //       })
+    //     })
   }
 
   setFormValue(field: string, value: any) {

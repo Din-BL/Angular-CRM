@@ -2,15 +2,16 @@
 
 const express = require("express");
 const router = express.Router();
-const Customers = require("../models/customer");
+const Customer = require("../models/customer");
 // const User = require("../models/user");
 const { userValidate, userAuthenticate } = require("../utils/middleware");
+
 
 // Endpoints
 
 router.delete("/init", async (req, res) => {
   try {
-    const reset = await Customers.deleteMany();
+    const reset = await Customer.deleteMany();
     if (!reset.deletedCount) return res.status(404).send("There are no registered customers");
     res.status(200).send(`Number of Customers that's been removed: ${reset.deletedCount}`);
   } catch (error) {
@@ -23,10 +24,10 @@ router.post("/", /* userAuthenticate, userValidate, */  async (req, res) => {
     // const user = await User.findOne({ email: req.user.sub });
     // if (!user) return res.status(404).send("User doest exist");
     // if (!user.biz) return res.status(403).send("Must be a business owner");
-    const customers = new Customers(req.body);
+    const customer = new Customer(req.body);
     // customers.user_id = user.id;
-    await customers.save();
-    res.status(201).json(customers);
+    await customer.save();
+    res.status(201).json(customer);
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -34,7 +35,7 @@ router.post("/", /* userAuthenticate, userValidate, */  async (req, res) => {
 
 router.get("/:id", /*userAuthenticate,*/ async (req, res) => {
   try {
-    const findCustomer = await Customers.findById(req.params.id);
+    const findCustomer = await Customer.findById(req.params.id);
     if (!findCustomer) return res.status(404).send("Customer doest exist");
     res.status(200).json(findCustomer);
   } catch (error) {
@@ -44,7 +45,7 @@ router.get("/:id", /*userAuthenticate,*/ async (req, res) => {
 
 router.put("/:id",/* userAuthenticate,*/ async (req, res) => {
   try {
-    const updateCustomer = await Customers.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const updateCustomer = await Customer.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
     if (!updateCustomer) return res.status(404).send("Customer doest exist");
     res.status(201).json(updateBusiness);
   } catch (error) {
@@ -54,7 +55,7 @@ router.put("/:id",/* userAuthenticate,*/ async (req, res) => {
 
 router.delete("/:id", /*userAuthenticate,*/ async (req, res) => {
   try {
-    const deleteCustomer = await Customers.findByIdAndDelete(req.params.id);
+    const deleteCustomer = await Customer.findByIdAndDelete(req.params.id);
     if (!deleteCustomer) return res.status(404).send("Customer doest exist");
     res.status(200).send("Customer been deleted");
   } catch (error) {
@@ -67,7 +68,7 @@ router.get("", /*userAuthenticate,*/ async (req, res) => {
     // const userInfo = await User.findOne({ email: req.user.sub });
     // if (!userInfo) return res.status(404).send("User doest exist");
     // const findCustomers = await Customers.find({ user_id: userInfo.id });
-    const findCustomers = await Customers.find({});/*Temporary*/
+    const findCustomers = await Customer.find({});/*Temporary*/
     // if (!findCustomers) return res.status(404).send("User has no registered businesses");
     res.status(200).json(findCustomers);
   } catch (error) {

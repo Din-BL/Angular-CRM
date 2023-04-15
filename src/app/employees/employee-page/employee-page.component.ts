@@ -8,12 +8,16 @@ import { Item, Title } from 'src/app/core/type.model';
 })
 export class EmployeePageComponent implements OnInit {
 
-  constructor(private api: ApiService) { }
+  constructor(private employeeApi: ApiService) { }
 
   employees?: Array<Item>
 
   ngOnInit(): void {
-    this.employees = this.api.employees
+    this.employeeApi.createEmployees()
+    this.employeeApi.getEmployees().subscribe({
+      next: data => this.employees = data,
+      error: error => console.log(error)
+    })
   }
 
   getTitle: Title = {
