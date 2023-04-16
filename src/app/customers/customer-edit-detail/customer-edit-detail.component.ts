@@ -4,6 +4,7 @@ import { Item, Title } from 'src/app/core/type.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/core/api.service';
+import { SessionService } from 'src/app/core/session.service';
 
 @Component({
   selector: 'customer-edit-detail',
@@ -22,7 +23,7 @@ export class CustomerEditDetailComponent implements OnInit {
   customer!: Item
 
   constructor(public editForm: ValidationService, private router: Router,
-    private route: ActivatedRoute, private customerApi: ApiService) { }
+    private route: ActivatedRoute, private customerApi: ApiService, private customerUrl: SessionService) { }
 
   fields: Array<string> = ['first', 'last', 'email', 'phone', 'address']
 
@@ -33,6 +34,7 @@ export class CustomerEditDetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = (params['id']);
+        this.customerUrl.customerID.next(this.id)
         if (this.router.url.includes('edit')) {
           this.customer = this.customerApi.getCustomerEdit(this.id).subscribe({
             next: data => {

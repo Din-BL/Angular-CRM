@@ -14,4 +14,5 @@ export class SessionService {
   }
 
   themeMode = new Subject<boolean>()
+  customerID = new Subject<string>()
 }

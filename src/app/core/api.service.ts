@@ -32,6 +32,7 @@ export class ApiService {
   deleteCustomer(id: string): Observable<void> {
     return this.http.delete<void>(this.server + `customers/${id}`)
   }
+
   //////// Employee ////////
 
   createEmployees() {

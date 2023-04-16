@@ -33,25 +33,28 @@ router.post("/", /* userAuthenticate, userValidate, */  async (req, res) => {
   }
 });
 
-router.get("/:id", /*userAuthenticate,*/ async (req, res) => {
+// Middleware function
+const getCustomer = async (req, res, next) => {
   try {
     const findCustomer = await Customer.findById(req.params.id);
-    if (!findCustomer) return res.status(404).send("Customer doest exist");
-    res.status(200).json(findCustomer);
+    if (!findCustomer) {
+      return res.status(404).send("Customer does not exist");
+    }
+    req.customer = findCustomer;
+    next();
   } catch (error) {
     res.status(400).send(error.message);
   }
+};
+
+router.get("/:id", getCustomer, async (req, res) => {
+  res.status(200).json(req.customer);
 });
 
-router.get("/:id/edit", /*userAuthenticate,*/ async (req, res) => {
-  try {
-    const findCustomer = await Customer.findById(req.params.id);
-    if (!findCustomer) return res.status(404).send("Customer doest exist");
-    res.status(200).json(findCustomer);
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
+router.get("/:id/edit", getCustomer, async (req, res) => {
+  res.status(200).json(req.customer);
 });
+
 
 router.put("/:id",/* userAuthenticate,*/ async (req, res) => {
   try {
