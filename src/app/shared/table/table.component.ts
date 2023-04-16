@@ -12,16 +12,15 @@ import { Item } from 'src/app/core/type.model';
 export class TableComponent implements OnInit {
 
   ngOnInit(): void {
-    this.customerUrl.customerID.subscribe((id) => {
+    this.customerInfo.customerID.subscribe((id) => {
       this.customerId = id
-      console.log(this.customerId);
     })
   }
 
   customerId = ''
 
   constructor(private router: Router, private route: ActivatedRoute,
-    private api: ApiService, private customerUrl: SessionService) { }
+    private api: ApiService, private customerInfo: SessionService) { }
 
   @Input() icons?: boolean
 
@@ -31,10 +30,10 @@ export class TableComponent implements OnInit {
     if (this.router.url.includes('edit') || this.router.url.length > 10) "";
     else {
       this.router.navigate([`${item._id}/edit`], { relativeTo: this.route })
+      this.customerInfo.addCustomer.next(true)
     }
   }
   onDetail(item: Item, index: number) {
-
     if (this.router.url.includes('edit')) ""
     else {
       if (this.customerId) {
@@ -42,12 +41,14 @@ export class TableComponent implements OnInit {
         else {
           this.router.navigate(['/'], { relativeTo: this.route })
           this.items![index].detail = !this.items![index].detail
+          this.customerInfo.addCustomer.next(this.items![index].detail as boolean)
           this.customerId = ""
         }
       }
       else {
         this.router.navigate([`${item._id}`], { relativeTo: this.route })
         this.items![index].detail = !this.items![index].detail
+        this.customerInfo.addCustomer.next(this.items![index].detail as boolean)
       }
     }
   }

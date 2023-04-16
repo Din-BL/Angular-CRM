@@ -60,7 +60,7 @@ router.put("/:id",/* userAuthenticate,*/ async (req, res) => {
   try {
     const updateCustomer = await Customer.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
     if (!updateCustomer) return res.status(404).send("Customer doest exist");
-    res.status(201).json(updateBusiness);
+    res.status(201).json(updateCustomer);
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -70,7 +70,7 @@ router.delete("/:id", /*userAuthenticate,*/ async (req, res) => {
   try {
     const deleteCustomer = await Customer.findByIdAndDelete(req.params.id);
     if (!deleteCustomer) return res.status(404).send("Customer doest exist");
-    res.status(200).send("Customer been deleted");
+    res.status(200).json("Customer been deleted");
   } catch (error) {
     res.status(400).send(error.message);
   }

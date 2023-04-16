@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/core/api.service';
+import { SessionService } from 'src/app/core/session.service';
 import { Item } from 'src/app/core/type.model';
 import { ValidationService } from 'src/app/core/validation.service';
 import Swal from 'sweetalert2'
@@ -15,10 +16,13 @@ export class CustomerAddComponent implements OnInit {
 
   @Input() items?: Array<Item>
 
-  constructor(public addForm: ValidationService, private customerApi: ApiService) { }
+  constructor(public addForm: ValidationService, private customerApi: ApiService, private btnStatus: SessionService) { }
+
+  addStatus?: boolean
 
   ngOnInit(): void {
     this.addForm.customerForm
+    this.btnStatus.addCustomer.subscribe(status => this.addStatus = status)
   }
 
   getError(field: string): FormControl {

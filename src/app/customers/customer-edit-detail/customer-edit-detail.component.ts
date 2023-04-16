@@ -23,7 +23,7 @@ export class CustomerEditDetailComponent implements OnInit {
   customer!: Item
 
   constructor(public editForm: ValidationService, private router: Router,
-    private route: ActivatedRoute, private customerApi: ApiService, private customerUrl: SessionService) { }
+    private route: ActivatedRoute, private customerApi: ApiService, private customerInfo: SessionService) { }
 
   fields: Array<string> = ['first', 'last', 'email', 'phone', 'address']
 
@@ -34,7 +34,6 @@ export class CustomerEditDetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = (params['id']);
-        this.customerUrl.customerID.next(this.id)
         if (this.router.url.includes('edit')) {
           this.customer = this.customerApi.getCustomerEdit(this.id).subscribe({
             next: data => {
@@ -46,6 +45,7 @@ export class CustomerEditDetailComponent implements OnInit {
             error: error => console.log(error.message)
           })
         } else {
+          this.customerInfo.customerID.next(this.id)
           this.customer = this.customerApi.getCustomer(this.id).subscribe({
             next: data => this.customer = data,
             error: error => console.log(error.message)
@@ -64,13 +64,13 @@ export class CustomerEditDetailComponent implements OnInit {
 
   onSubmit() {
     this.customerApi.editCustomer(this.id, this.editForm.customerForm.value).subscribe({
-      next: data => console.log(data),
+      next: () => this.router.navigate(['/']),
       error: error => console.log(error.message),
     })
-    this.router.navigate(['/'])
   }
 
   onCancel() {
     this.router.navigate(['/'])
+    this.customerInfo.addCustomer.next(false)
   }
 }
