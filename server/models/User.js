@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      minlength: 3,
+      minlength: 2,
       maxlength: 30,
     },
     email: {
@@ -24,10 +24,6 @@ const userSchema = new mongoose.Schema(
       trim: true,
       minlength: 8,
       maxlength: 128,
-    },
-    biz: {
-      type: Boolean,
-      default: false,
     },
   },
   {

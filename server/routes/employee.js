@@ -5,7 +5,7 @@ const router = express.Router();
 const Employee = require("../models/employee");
 // const User = require("../models/user");
 const fs = require("fs");
-const { userValidate, userAuthenticate } = require("../utils/middleware");
+const { userAuthenticate } = require("../utils/middleware");
 
 // Endpoints
 
@@ -16,7 +16,8 @@ router.post("/init", (req, res) => {
             else {
                 await Employee.deleteMany({});
                 const employeeData = JSON.parse(data);
-                Employee.insertMany(employeeData.employees);
+                await Employee.insertMany(employeeData.employees);
+                res.status(200).json('Inserted employees')
             }
         });
     } catch (error) {

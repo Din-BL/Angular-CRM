@@ -10,6 +10,15 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  //////// User ////////
+
+  registerUser(user: User): Observable<User> {
+    return this.http.post<User>(this.server + 'register', user)
+  }
+  loginUser(user: User): Observable<User> {
+    return this.http.post<User>(this.server + 'login', user)
+  }
+
   //////// Customer ////////
 
   server = 'http://localhost:3000/'
@@ -35,22 +44,10 @@ export class ApiService {
 
   //////// Employee ////////
 
-  createEmployees() {
-    this.http.post<void>(this.server + 'employees/init', "").subscribe({
-      next: data => console.log(data),
-      error: error => console.log(error.message)
-    })
+  createEmployees(): Observable<void> {
+    return this.http.post<void>(this.server + 'employees/init', "")
   }
   getEmployees(): Observable<Item[]> {
     return this.http.get<Item[]>(this.server + 'employees')
-  }
-
-  //////// User ////////
-
-  registerUser(user: User): Observable<User> {
-    return this.http.post<User>(this.server + 'register', user)
-  }
-  loginUser(user: User): Observable<User> {
-    return this.http.post<User>(this.server + 'login', user)
   }
 }

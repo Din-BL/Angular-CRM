@@ -4,5 +4,7 @@
 
     <employee-search></employee-search>
 
-    <app-table [items]="employees"></app-table>
+    <div *ngIf="!isLoading">
+        <app-table [items]="employees"></app-table>
+    </div>
 </div>
