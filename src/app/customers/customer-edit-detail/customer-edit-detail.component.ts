@@ -66,7 +66,8 @@ export class CustomerEditDetailComponent implements OnInit {
     this.customerApi.editCustomer(this.id, this.editForm.customerForm.value).subscribe({
       next: data => {
         this.customerInfo.editCustomer.next(data),
-          this.router.navigate(['/'])
+          this.customerInfo.addCustomer.next(false)
+        this.router.navigate(['/'])
       },
       error: error => console.log(error.message),
     })

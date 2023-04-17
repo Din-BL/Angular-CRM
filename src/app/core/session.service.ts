@@ -18,4 +18,5 @@ export class SessionService {
   customerID = new Subject<string>()
   addCustomer = new Subject<boolean>()
   editCustomer = new Subject<Item>()
+  searchEmployee = new Subject<string>()
 }

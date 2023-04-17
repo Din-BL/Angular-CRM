@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/core/api.service';
+import { SessionService } from 'src/app/core/session.service';
 import { Item, Title } from 'src/app/core/type.model';
 
 @Component({
@@ -8,9 +9,10 @@ import { Item, Title } from 'src/app/core/type.model';
 })
 export class EmployeePageComponent implements OnInit {
 
-  constructor(private employeeApi: ApiService) { }
+  constructor(private employeeApi: ApiService, private employee: SessionService) { }
 
   employees?: Array<Item>
+  searchEmployee?: string
 
   ngOnInit(): void {
     this.employeeApi.createEmployees()
@@ -21,6 +23,7 @@ export class EmployeePageComponent implements OnInit {
       },
       error: error => console.log(error.message)
     })
+    this.employee.searchEmployee.subscribe((data) => this.searchEmployee = data)
   }
 
   getTitle: Title = {
