@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
 import { SessionService } from 'src/app/core/session.service';
 import { Item } from 'src/app/core/type.model';
@@ -70,8 +70,7 @@ export class TableComponent implements OnInit {
     if (this.router.url.includes('edit') || this.router.url.length > 10) "";
     else {
       this.api.deleteCustomer(item._id as string).subscribe({
-        next: () => this.items = this.items?.filter(customer => customer._id !== item._id),
-        error: error => console.log(error.message)
+        next: () => this.items = this.items?.filter(customer => customer._id !== item._id)
       })
     }
   }

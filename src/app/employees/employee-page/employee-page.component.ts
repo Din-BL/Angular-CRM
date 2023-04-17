@@ -19,8 +19,7 @@ export class EmployeePageComponent implements OnInit {
     //   next: data => {
     //     this.employees = data,
     //       console.log(this.employees);
-    //   },
-    //   error: error => console.log(error.message)
+    //   }
     // })
   }
 

@@ -1,11 +1,8 @@
 <main class="bg-dark">
-
     <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" class="row g-3">
-
         <h1 class="display-6 text-center pb-2">{{'log in'| titlecase}}
             <i class="bi bi-person-fill-lock"></i>
         </h1>
-
         <div ngModelGroup="userData" #userData="ngModelGroup">
             <div class="mb-3 col-auto">
                 <input type="email" ngModel name="email" #email="ngModel" class="form-control" placeholder="Email" email
@@ -16,7 +13,7 @@
                 </small>
             </div>
             <div class="mb-3 col-auto">
-                <input ngModel name="password" #password="ngModel" required minlength="6" maxlength="12" type="password"
+                <input ngModel name="password" #password="ngModel" required minlength="8" maxlength="12" type="password"
                     class="form-control" placeholder="Password">
                 <small *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
                     <span *ngIf="password.errors?.['required']">Password is required</span>
@@ -37,5 +34,7 @@
         <div class="col-auto">
             <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary mb-3">Confirm</button>
         </div>
+        <p class="text-danger text-center" *ngIf="errorStatus"><strong>{{errorMsg}}</strong></p>
+
     </form>
 </main>

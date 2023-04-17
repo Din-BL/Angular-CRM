@@ -35,13 +35,13 @@ export class CustomerAddComponent implements OnInit {
         icon: 'error',
         title: 'Incorrect Form'
       })
-    }
-    else {
+    } else {
       this.customerApi.addCustomer(this.addForm.customerForm.value).subscribe({
-        next: data => this.items?.push(data),
-        error: error => console.log(error)
+        next: data => {
+          this.items?.push(data),
+            this.addForm.customerForm.reset()
+        }
       })
-      this.addForm.customerForm.reset()
     }
   }
 }

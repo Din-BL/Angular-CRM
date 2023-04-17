@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/core/api.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,25 +9,23 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 
-export class SignupComponent implements OnInit, AfterViewInit {
-
-  @ViewChild('emailField') emailFiled!: ElementRef
+export class SignupComponent implements OnInit {
 
   signupForm!: FormGroup
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(6)]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+      name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(6), Validators.pattern(/^\S+@\S+\.\S+$/)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)])
     })
   }
 
-  ngAfterViewInit(): void {
-    // this.emailFiled.nativeElement.focus()
+  constructor(private router: Router, private registerApi: ApiService) { }
+
+  get name() {
+    return this.signupForm.get('name')
   }
-
-  constructor(private router: Router, private route: ActivatedRoute) { }
-
   get email() {
     return this.signupForm.get('email')
   }
@@ -34,8 +33,9 @@ export class SignupComponent implements OnInit, AfterViewInit {
     return this.signupForm.get('password')
   }
   onSubmit() {
-    console.log(this.signupForm);
-    this.router.navigate(['/login'], { relativeTo: this.route })
+    this.registerApi.registerUser(this.signupForm.value).subscribe({
+      next: (() => this.router.navigate(['login']))
+    })
   }
 }
 

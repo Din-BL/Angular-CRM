@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/core/api.service';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,23 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private loginApi: ApiService) { }
 
-  onSubmit(model: NgForm): void {
-    console.log(model);
-    this.router.navigate(['customers'])
+  errorStatus = false
+  errorMsg = ""
+
+  onSubmit(user: NgForm): void {
+    this.loginApi.loginUser(user.value.userData).subscribe({
+      next: (() => this.router.navigate(['customers'])),
+      error: ((error) => {
+        this.errorMsg = error.error
+        user.reset(),
+          this.errorStatus = true
+        setTimeout(() => {
+          this.errorStatus = false
+        }, 2000);
+
+      })
+    })
   }
 }

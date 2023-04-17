@@ -15,3 +15,10 @@ export interface Item {
     detail?: boolean,
     [key: string]: any
 }
+
+export interface User {
+    _id?: string | null,
+    name?: string | null;
+    email: string
+    password: string;
+}

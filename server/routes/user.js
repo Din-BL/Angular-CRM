@@ -11,15 +11,15 @@ const jwt = require("jsonwebtoken");
 
 // Endpoints
 
-router.delete("/init", async (req, res) => {
-  try {
-    const reset = await User.deleteMany();
-    if (!reset.deletedCount) return res.status(404).send("There are no registered users");
-    res.status(200).send(`Number of users that's been removed: ${reset.deletedCount}`);
-  } catch (error) {
-    res.sendStatus(400);
-  }
-});
+// router.delete("/init", async (req, res) => {
+//   try {
+//     const reset = await User.deleteMany();
+//     if (!reset.deletedCount) return res.status(404).send("There are no registered users");
+//     res.status(200).send(`Number of users that's been removed: ${reset.deletedCount}`);
+//   } catch (error) {
+//     res.sendStatus(400);
+//   }
+// });
 
 router.post("/register", userValidate, async (req, res) => {
   try {
@@ -46,7 +46,7 @@ router.post("/login", userValidate, async (req, res) => {
       const token = jwt.sign(payload, config.get("ACCESS_TOKEN_SECRET"));
       findUser = findUser.toObject();
       findUser.token = token;
-      res.status(200).json(_.pick(findUser, ["_id", "biz", "token"]));
+      res.status(200).json(_.pick(findUser, ["_id", "token"]));
     } else res.status(400).send("Incorrect password");
   } catch (error) {
     res.status(400).send(error.message);
@@ -57,7 +57,7 @@ router.get("/", userAuthenticate, async (req, res) => {
   try {
     const userDetails = await User.findOne({ email: req.user.sub });
     if (!userDetails) return res.status(404).send("User doest exist");
-    res.status(200).json(_.pick(userDetails, ["_id", "name", "email", "biz"]));
+    res.status(200).json(_.pick(userDetails, ["_id", "name", "email"]));
   } catch (error) {
     res.status(400).send(error.message);
   }

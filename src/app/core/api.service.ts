@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Item } from './type.model';
+import { Item, User } from './type.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -45,25 +45,12 @@ export class ApiService {
     return this.http.get<Item[]>(this.server + 'employees')
   }
 
+  //////// User ////////
 
-
-
-
-
-  // POST<DynamicType>(endpoint: string, data: DynamicType): Observable<DynamicType> {
-  //   return this.http.post<DynamicType>(
-  //     `${this.server}${endpoint}`,
-  //     data,
-  //     {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'x-auth-token': this.getToken()
-  //       }
-  //     }
-  //   )
-  // }
-
-  // addProject(customer: Item): Observable<Item> {
-  //   return this.POST<Item>('customers', customer);
-  // }
+  registerUser(user: User): Observable<User> {
+    return this.http.post<User>(this.server + 'register', user)
+  }
+  loginUser(user: User): Observable<User> {
+    return this.http.post<User>(this.server + 'login', user)
+  }
 }

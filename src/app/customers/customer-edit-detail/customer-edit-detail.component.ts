@@ -41,14 +41,12 @@ export class CustomerEditDetailComponent implements OnInit {
                 this.fields.forEach((field) => {
                   this.setFormValue(field, this.customer[field] as Item)
                 })
-            },
-            error: error => console.log(error.message)
+            }
           })
         } else {
           this.customerInfo.customerID.next(this.id)
           this.customer = this.customerApi.getCustomer(this.id).subscribe({
-            next: data => this.customer = data,
-            error: error => console.log(error.message)
+            next: data => this.customer = data
           })
         }
       })
@@ -68,8 +66,7 @@ export class CustomerEditDetailComponent implements OnInit {
         this.customerInfo.editCustomer.next(data),
           this.customerInfo.addCustomer.next(false)
         this.router.navigate(['/'])
-      },
-      error: error => console.log(error.message),
+      }
     })
   }
 
