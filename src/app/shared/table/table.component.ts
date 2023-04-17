@@ -12,9 +12,11 @@ import { Item } from 'src/app/core/type.model';
 export class TableComponent implements OnInit {
 
   ngOnInit(): void {
-    this.customerInfo.customerID.subscribe((id) => {
-      this.customerId = id
-    })
+    this.customerInfo.customerID.subscribe((id) => this.customerId = id),
+      this.customerInfo.editCustomer.subscribe((customer) => {
+        const index = this.items?.findIndex((item) => item._id === customer._id);
+        if (index !== -1) this.items![index as number] = customer;
+      })
   }
 
   customerId = ''
@@ -54,10 +56,13 @@ export class TableComponent implements OnInit {
   }
 
   onDelete(item: Item) {
-    this.api.deleteCustomer(item._id as string).subscribe({
-      next: () => this.items = this.items?.filter(customer => customer._id !== item._id),
-      error: error => console.log(error.message)
-    })
+    if (this.router.url.includes('edit') || this.router.url.length > 10) "";
+    else {
+      this.api.deleteCustomer(item._id as string).subscribe({
+        next: () => this.items = this.items?.filter(customer => customer._id !== item._id),
+        error: error => console.log(error.message)
+      })
+    }
   }
 
   eyeToggle(index: number): string {
