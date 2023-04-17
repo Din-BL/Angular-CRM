@@ -21,7 +21,10 @@ export class TableComponent implements OnInit {
     } else {
       this.employeeList = this.items
       this.itemInfo.searchEmployee.subscribe((data) => {
-        this.items = this.employeeList?.filter((employee) => employee.full?.startsWith(data as string))
+        this.items = this.employeeList?.filter((employee) =>
+          employee.full?.toLowerCase().startsWith(data.toLowerCase()) ||
+          employee.full?.toUpperCase().startsWith(data.toUpperCase())
+        );
       })
     }
   }
