@@ -12,17 +12,25 @@ import { Item } from 'src/app/core/type.model';
 export class TableComponent implements OnInit {
 
   ngOnInit(): void {
-    this.customerInfo.customerID.subscribe((id) => this.customerId = id),
-      this.customerInfo.editCustomer.subscribe((customer) => {
-        const index = this.items?.findIndex((item) => item._id === customer._id);
-        if (index !== -1) this.items![index as number] = customer;
+    if (this.router.url.includes('customers')) {
+      this.itemInfo.customerID.subscribe((id) => this.customerId = id),
+        this.itemInfo.editCustomer.subscribe((customer) => {
+          const index = this.items?.findIndex((item) => item._id === customer._id);
+          if (index !== -1) this.items![index as number] = customer;
+        })
+    } else {
+      this.employeeList = this.items
+      this.itemInfo.searchEmployee.subscribe((data) => {
+        this.items = this.employeeList?.filter((employee) => employee.full?.startsWith(data as string))
       })
+    }
   }
 
   customerId = ''
+  employeeList?: Array<Item>
 
   constructor(private router: Router, private route: ActivatedRoute,
-    private api: ApiService, private customerInfo: SessionService) { }
+    private api: ApiService, private itemInfo: SessionService) { }
 
   @Input() icons?: boolean
 
@@ -32,7 +40,7 @@ export class TableComponent implements OnInit {
     if (this.router.url.includes('edit') || this.router.url.length > 10) "";
     else {
       this.router.navigate([`${item._id}/edit`], { relativeTo: this.route })
-      this.customerInfo.addCustomer.next(true)
+      this.itemInfo.addCustomer.next(true)
     }
   }
   onDetail(item: Item, index: number) {
@@ -43,14 +51,14 @@ export class TableComponent implements OnInit {
         else {
           this.router.navigate(['/'], { relativeTo: this.route })
           this.items![index].detail = !this.items![index].detail
-          this.customerInfo.addCustomer.next(this.items![index].detail as boolean)
+          this.itemInfo.addCustomer.next(this.items![index].detail as boolean)
           this.customerId = ""
         }
       }
       else {
         this.router.navigate([`${item._id}`], { relativeTo: this.route })
         this.items![index].detail = !this.items![index].detail
-        this.customerInfo.addCustomer.next(this.items![index].detail as boolean)
+        this.itemInfo.addCustomer.next(this.items![index].detail as boolean)
       }
     }
   }
