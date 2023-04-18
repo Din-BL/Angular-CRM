@@ -13,7 +13,7 @@ export class CustomerPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerApi.getCustomers().subscribe({
-      next: data => this.customers = data
+      next: (data: Person[]) => this.customers = data
     })
   }
 

@@ -3,17 +3,11 @@ const config = require("config");
 const { registerSchema, loginSchema, customerSchema } = require("./Validations");
 
 module.exports.userValidate = (req, res, next) => {
-  if (req.baseUrl === "/customers") {
-    schema = customerSchema;
-  } else {
-    req.path === "/register" ? (schema = registerSchema) : (schema = loginSchema);
-  }
+  if (req.baseUrl === "/customers") schema = customerSchema;
+  else req.path === "/register" ? (schema = registerSchema) : (schema = loginSchema);
   const { error } = schema.validate(req.body);
-  if (error) {
-    res.status(400).send(error.details);
-  } else {
-    next();
-  }
+  if (error) res.status(400).send(error.details);
+  else next();
 };
 
 module.exports.userAuthenticate = (req, res, next) => {

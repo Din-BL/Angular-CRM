@@ -32,7 +32,7 @@ const customer = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  // user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 
 

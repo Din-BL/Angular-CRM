@@ -17,7 +17,7 @@ export class EmployeePageComponent implements OnInit {
     this.employeeApi.createEmployees().subscribe({
       next: (() => {
         this.employeeApi.getEmployees().subscribe({
-          next: data => {
+          next: (data: Person[]) => {
             this.employees = data
             this.isLoading = false;
           }

@@ -36,7 +36,7 @@ export class CustomerEditDetailComponent implements OnInit {
         this.id = (params['id']);
         if (this.router.url.includes('edit')) {
           this.customer = this.customerApi.getCustomerEdit(this.id).subscribe({
-            next: data => {
+            next: (data: Person) => {
               this.customer = data,
                 this.fields.forEach((field) => {
                   this.setFormValue(field, this.customer[field] as Person)
@@ -46,7 +46,7 @@ export class CustomerEditDetailComponent implements OnInit {
         } else {
           this.customerInfo.customerID.next(this.id)
           this.customer = this.customerApi.getCustomer(this.id).subscribe({
-            next: data => this.customer = data
+            next: (data: Person) => this.customer = data
           })
         }
       })
@@ -62,7 +62,7 @@ export class CustomerEditDetailComponent implements OnInit {
 
   onSubmit() {
     this.customerApi.editCustomer(this.id, this.editForm.customerForm.value).subscribe({
-      next: data => {
+      next: (data: Person) => {
         this.customerInfo.editCustomer.next(data),
           this.customerInfo.addCustomer.next(false)
         this.router.navigate(['/'])
