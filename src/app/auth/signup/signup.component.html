@@ -4,11 +4,11 @@
             <i class="bi bi-person-fill-lock"></i>
         </h1>
         <div class="col-auto">
-            <input formControlName="name" type="text" class="form-control" placeholder="Name">
-            <small *ngIf="name?.invalid && (name?.touched || name?.dirty )" class="text-danger">
-                <span *ngIf="name?.getError('required')">Name is required</span>
-                <span *ngIf="name?.errors?.['minlength']">Name must be at least
-                    {{name?.errors?.['minlength'].requiredLength}} characters</span>
+            <input formControlName="username" type="text" class="form-control" placeholder="Username">
+            <small *ngIf="username?.invalid && (username?.touched || username?.dirty )" class="text-danger">
+                <span *ngIf="username?.getError('required')">Username is required</span>
+                <span *ngIf="username?.errors?.['minlength']">Username must be at least
+                    {{username?.errors?.['minlength'].requiredLength}} characters</span>
             </small>
         </div>
         <div class="col-auto">

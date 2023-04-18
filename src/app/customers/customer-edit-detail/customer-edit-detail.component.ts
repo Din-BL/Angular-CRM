@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/core/validation.service';
-import { Item, Title } from 'src/app/core/type.model';
+import { Person, Title } from 'src/app/core/type.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/core/api.service';
-import { SessionService } from 'src/app/core/session.service';
+import { SessionService } from 'src/app/core/assists.service';
 
 @Component({
   selector: 'customer-edit-detail',
@@ -20,7 +20,7 @@ export class CustomerEditDetailComponent implements OnInit {
 
   editMode?: boolean
   id!: string
-  customer!: Item
+  customer!: Person
 
   constructor(public editForm: ValidationService, private router: Router,
     private route: ActivatedRoute, private customerApi: ApiService, private customerInfo: SessionService) { }
@@ -39,7 +39,7 @@ export class CustomerEditDetailComponent implements OnInit {
             next: data => {
               this.customer = data,
                 this.fields.forEach((field) => {
-                  this.setFormValue(field, this.customer[field] as Item)
+                  this.setFormValue(field, this.customer[field] as Person)
                 })
             }
           })

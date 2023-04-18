@@ -5,30 +5,30 @@
             <!-- <th *ngIf="items && items![0].first" scope="col">First Name</th> -->
             <!-- <th *ngIf="items && items![0].last" scope="col">Last Name</th> -->
             <!-- <th *ngIf="items && items![0].full" scope="col">Name</th> -->
-            <th *ngIf="items?.[0]?.first" scope="col">First Name</th>
-            <th *ngIf="items?.[0]?.last" scope="col">First Name</th>
-            <th *ngIf="items?.[0]?.full" scope="col">First Name</th>
+            <th *ngIf="users?.[0]?.first" scope="col">First Name</th>
+            <th *ngIf="users?.[0]?.last" scope="col">First Name</th>
+            <th *ngIf="users?.[0]?.full" scope="col">First Name</th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
             <!-- <th *ngIf="items && items![0].birthday" scope="col">Birthday</th> -->
-            <th *ngIf="items?.[0]?.birthday" scope="col">Birthday</th>
+            <th *ngIf="users?.[0]?.birthday" scope="col">Birthday</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of items; let i = index">
+        <tr *ngFor="let user of users; let i = index">
             <th scope="row">{{i + 1}}
                 <div *ngIf="icons" style="display: inline;">
-                    <i [ngClass]=eyeToggle(i) (click)="onDetail(item,i)"></i>
-                    <i class="bi bi-pencil" (click)="onEdit(item)"></i>
-                    <i class="bi bi-trash" (click)="onDelete(item)"></i>
+                    <i [ngClass]=eyeToggle(i) (click)="onDetail(user,i)"></i>
+                    <i class="bi bi-pencil" (click)="onEdit(user)"></i>
+                    <i class="bi bi-trash" (click)="onDelete(user)"></i>
                 </div>
             </th>
-            <td *ngIf="item.first">{{item.first}}</td>
-            <td *ngIf="item.last">{{item.last}}</td>
-            <td *ngIf="item.full">{{item.full}}</td>
-            <td>{{item.phone}}</td>
-            <td>{{item.email}}</td>
-            <td *ngIf="item.birthday">{{item.birthday}}</td>
+            <td *ngIf="user.first">{{user.first}}</td>
+            <td *ngIf="user.last">{{user.last}}</td>
+            <td *ngIf="user.full">{{user.full}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.email}}</td>
+            <td *ngIf="user.birthday">{{user.birthday}}</td>
         </tr>
     </tbody>
 </table>

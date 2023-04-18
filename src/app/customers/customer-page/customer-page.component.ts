@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/core/api.service';
-import { Item, Title } from 'src/app/core/type.model';
+import { Person, Title } from 'src/app/core/type.model';
 
 @Component({
   selector: 'customer-page',
@@ -9,7 +9,7 @@ import { Item, Title } from 'src/app/core/type.model';
 export class CustomerPageComponent implements OnInit {
   constructor(public customerApi: ApiService) { }
 
-  customers?: Item[]
+  customers?: Person[]
 
   ngOnInit(): void {
     this.customerApi.getCustomers().subscribe({

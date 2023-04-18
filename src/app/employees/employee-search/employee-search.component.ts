@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SessionService } from 'src/app/core/session.service';
+import { SessionService } from 'src/app/core/assists.service';
 
 @Component({
   selector: 'employee-search',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { Item } from './type.model';
+import { Person } from './type.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,6 @@ export class SessionService {
   themeMode = new Subject<boolean>()
   customerID = new Subject<string>()
   addCustomer = new Subject<boolean>()
-  editCustomer = new Subject<Item>()
+  editCustomer = new Subject<Person>()
   searchEmployee = new Subject<string>()
 }

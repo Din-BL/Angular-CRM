@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { SessionService } from '././core/session.service';
+import { SessionService } from './core/assists.service';
 
 
 @Component({

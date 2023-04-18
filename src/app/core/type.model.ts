@@ -3,7 +3,7 @@ export interface Title {
     class: string
 }
 
-export interface Item {
+export interface Person {
     _id?: string | null,
     first?: string | null;
     last?: string | null;
@@ -19,6 +19,6 @@ export interface Item {
 export interface User {
     _id?: string | null,
     name?: string | null;
-    email: string
+    email: string;
     password: string;
 }

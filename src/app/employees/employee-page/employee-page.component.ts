@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/core/api.service';
-import { Item, Title } from 'src/app/core/type.model';
+import { Person, Title } from 'src/app/core/type.model';
 
 @Component({
   selector: 'employee-page',
@@ -10,7 +10,7 @@ export class EmployeePageComponent implements OnInit {
 
   constructor(private employeeApi: ApiService) { }
 
-  employees?: Array<Item>
+  employees?: Array<Person>
   isLoading = true
 
   ngOnInit(): void {

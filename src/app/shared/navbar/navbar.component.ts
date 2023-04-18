@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { SessionService } from 'src/app/core/session.service';
+import { SessionService } from 'src/app/core/assists.service';
 
 @Component({
   selector: 'navbar',
