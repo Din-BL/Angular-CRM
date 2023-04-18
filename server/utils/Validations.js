@@ -12,11 +12,11 @@ module.exports.loginSchema = Joi.object({
 });
 
 module.exports.customerSchema = Joi.object({
-  first: Joi.string().min(2).max(30).required(),
-  last: Joi.string().min(2).max(30).required(),
+  first_name: Joi.string().min(2).max(30).required(),
+  last_name: Joi.string().min(2).max(30).required(),
   phone: Joi.string().trim().required().min(9),
   email: Joi.string().trim().lowercase().email().required(),
-  address: Joi.string().trim().allow('')
+  address: Joi.string().trim().allow(null)
 });
 
 module.exports.employeeSchema = Joi.object({

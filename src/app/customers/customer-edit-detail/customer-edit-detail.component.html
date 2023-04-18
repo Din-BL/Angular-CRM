@@ -3,15 +3,16 @@
 <form [formGroup]="editForm.customerForm" (ngSubmit)="onSubmit()" class="row g-3 mb-3">
     <div class="col-md-6">
         <label for="first_name" class="form-label"><span class="text-danger">*</span> First Name</label>
-        <input [hidden]="!editMode" formControlName="first" type="text" class="form-control" id="first_name">
-        <input [hidden]="editMode" class="form-control" type="text" value="{{customer['first']}}" disabled readonly>
-        <customers-error [errorMsg]="getError('first')"></customers-error>
+        <input [hidden]="!editMode" formControlName="first_name" type="text" class="form-control" id="first_name">
+        <input [hidden]="editMode" class="form-control" type="text" value="{{customer['first_name']}}" disabled
+            readonly>
+        <customers-error [errorMsg]="getError('first_name')"></customers-error>
     </div>
     <div class="col-md-6">
         <label for="last_name" class="form-label"><span class="text-danger">*</span> Last Name</label>
-        <input [hidden]="!editMode" formControlName="last" type="text" class="form-control" id="last_name">
-        <input [hidden]="editMode" class="form-control" type="text" value="{{customer['last']}}" disabled readonly>
-        <customers-error [errorMsg]="getError('last')"></customers-error>
+        <input [hidden]="!editMode" formControlName="last_name" type="text" class="form-control" id="last_name">
+        <input [hidden]="editMode" class="form-control" type="text" value="{{customer['last_name']}}" disabled readonly>
+        <customers-error [errorMsg]="getError('last_name')"></customers-error>
     </div>
     <div class="col-md-6">
         <label for="email" class="form-label"><span class="text-danger">*</span> Email</label>

@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const customer = new mongoose.Schema({
-  first: {
+  first_name: {
     type: String,
     required: true,
     trim: true,
     minlength: 2,
     maxlength: 30,
   },
-  last: {
+  last_name: {
     type: String,
     required: true,
     trim: true,

@@ -1,11 +1,11 @@
 <form [formGroup]="addForm.customerForm" (ngSubmit)="onSubmit()" class="row g-2">
     <div class="col">
-        <input formControlName="first" type="text" class="form-control" placeholder="First name">
-        <customers-error [errorMsg]="getError('first')"></customers-error>
+        <input formControlName="first_name" type="text" class="form-control" placeholder="First name">
+        <customers-error [errorMsg]="getError('first_name')"></customers-error>
     </div>
     <div class="col">
-        <input formControlName="last" type="text" class="form-control" placeholder="Last name">
-        <customers-error [errorMsg]="getError('last')"></customers-error>
+        <input formControlName="last_name" type="text" class="form-control" placeholder="Last name">
+        <customers-error [errorMsg]="getError('last_name')"></customers-error>
     </div>
     <div class="col">
         <input formControlName="phone" type="tel" class="form-control" placeholder="Phone">

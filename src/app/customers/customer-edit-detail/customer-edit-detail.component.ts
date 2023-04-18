@@ -25,7 +25,7 @@ export class CustomerEditDetailComponent implements OnInit {
   constructor(public editForm: ValidationService, private router: Router,
     private route: ActivatedRoute, private customerApi: ApiService, private customerInfo: SessionService) { }
 
-  fields: Array<string> = ['first', 'last', 'email', 'phone', 'address']
+  fields: Array<string> = ['first_name', 'last_name', 'email', 'phone', 'address']
 
   ngOnInit(): void {
     this.editMode = this.router.url.includes('edit')

@@ -12,7 +12,6 @@ import { Person } from 'src/app/core/type.model';
 export class TableComponent implements OnInit {
 
   ngOnInit(): void {
-
     if (this.router.url.includes('customers')) {
       this.personInfo.customerID.subscribe((id) => this.customerId = id),
         this.personInfo.editCustomer.subscribe((customer: Person) => {

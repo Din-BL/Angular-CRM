@@ -2,15 +2,11 @@
     <thead>
         <tr>
             <th scope="col">No.</th>
-            <!-- <th *ngIf="items && items![0].first" scope="col">First Name</th> -->
-            <!-- <th *ngIf="items && items![0].last" scope="col">Last Name</th> -->
-            <!-- <th *ngIf="items && items![0].full" scope="col">Name</th> -->
-            <th *ngIf="users?.[0]?.first" scope="col">First Name</th>
-            <th *ngIf="users?.[0]?.last" scope="col">Last Name</th>
+            <th *ngIf="users?.[0]?.['first_name']" scope="col">First Name</th>
+            <th *ngIf="users?.[0]?.['last_name']" scope="col">Last Name</th>
             <th *ngIf="users?.[0]?.full" scope="col">Full Name</th>
             <th scope="col">Phone</th>
             <th scope="col">Email</th>
-            <!-- <th *ngIf="items && items![0].birthday" scope="col">Birthday</th> -->
             <th *ngIf="users?.[0]?.birthday" scope="col">Birthday</th>
         </tr>
     </thead>
@@ -23,8 +19,8 @@
                     <i class="bi bi-trash" (click)="onDelete(user)"></i>
                 </div>
             </th>
-            <td *ngIf="user.first">{{user.first}}</td>
-            <td *ngIf="user.last">{{user.last}}</td>
+            <td *ngIf="user['first_name']">{{user['first_name']}}</td>
+            <td *ngIf="user['last_name']">{{user['last_name']}}</td>
             <td *ngIf="user.full">{{user.full}}</td>
             <td>{{user.phone}}</td>
             <td>{{user.email}}</td>
