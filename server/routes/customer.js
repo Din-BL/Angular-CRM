@@ -19,11 +19,10 @@ router.delete("/init", async (req, res) => {
   }
 });
 
-router.post("/", /* userAuthenticate, userValidate, */  async (req, res) => {
+router.post("/", /* userAuthenticate, */  userValidate, async (req, res) => {
   try {
     // const user = await User.findOne({ email: req.user.sub });
     // if (!user) return res.status(404).send("User doest exist");
-    // if (!user.biz) return res.status(403).send("Must be a business owner");
     const customer = new Customer(req.body);
     // customers.user_id = user.id;
     await customer.save();

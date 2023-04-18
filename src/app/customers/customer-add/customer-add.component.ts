@@ -19,6 +19,7 @@ export class CustomerAddComponent implements OnInit {
   constructor(public addForm: ValidationService, private customerApi: ApiService, private btnStatus: SessionService) { }
 
   addStatus?: boolean
+  errorMsg?: string
 
   ngOnInit(): void {
     this.addForm.customerForm
@@ -30,18 +31,19 @@ export class CustomerAddComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.addForm.customerForm.invalid) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Incorrect Form'
-      })
-    } else {
-      this.customerApi.addCustomer(this.addForm.customerForm.value).subscribe({
-        next: data => {
-          this.users?.push(data),
-            this.addForm.customerForm.reset()
-        }
-      })
-    }
+    this.customerApi.addCustomer(this.addForm.customerForm.value).subscribe({
+      next: data => {
+        this.users?.push(data),
+          this.addForm.customerForm.reset()
+      },
+      error: error => {
+        this.errorMsg = error.error[0].message
+        Swal.fire({
+          icon: 'error',
+          title: this.errorMsg
+        })
+      }
+    })
   }
 }
+

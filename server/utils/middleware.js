@@ -8,9 +8,9 @@ module.exports.userValidate = (req, res, next) => {
   } else {
     req.path === "/register" ? (schema = registerSchema) : (schema = loginSchema);
   }
-  const { error } = schema.validate(req.body, { abortEarly: false });
+  const { error } = schema.validate(req.body);
   if (error) {
-    res.status(400).send(error.details.map((msg) => msg.message));
+    res.status(400).send(error.details);
   } else {
     next();
   }
