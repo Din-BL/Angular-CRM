@@ -16,6 +16,7 @@ router.post("/register", userValidate, async (req, res) => {
     const user = await User.create(req.body);
     res.status(201).json(_.pick(user, ["_id", "name", "email"]));
   } catch (error) {
+    if (error.message.includes("username")) return res.status(400).send("Username already exists");
     if (error.message.includes("email")) return res.status(400).send("Email already exists");
     res.status(400).send(error.message);
   }
