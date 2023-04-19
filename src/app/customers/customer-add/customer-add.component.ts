@@ -37,7 +37,7 @@ export class CustomerAddComponent implements OnInit {
           this.addForm.customerForm.reset()
       },
       error: error => {
-        this.errorMsg = error.error[0].message
+        this.errorMsg = error.error[0].message ? error.error[0].message : error.error
         Swal.fire({
           icon: 'error',
           title: this.errorMsg

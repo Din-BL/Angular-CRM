@@ -16,7 +16,7 @@ module.exports.customerSchema = Joi.object({
   last_name: Joi.string().min(2).max(30).required(),
   phone: Joi.string().trim().required().min(9),
   email: Joi.string().trim().lowercase().email().required(),
-  address: Joi.string().trim().allow(null)
+  address: Joi.string().trim().allow(null, '')
 });
 
 module.exports.employeeSchema = Joi.object({

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
+import { User } from 'src/app/core/type.model';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,10 @@ export class LoginComponent {
 
   onSubmit(user: NgForm): void {
     this.loginApi.loginUser(user.value.userData).subscribe({
-      next: (() => this.router.navigate(['customers'])),
+      next: ((data: User) => {
+        if (data.token) this.loginApi.setToken(data.token)
+        this.router.navigate(['customers'])
+      }),
       error: ((error) => {
         this.errorMsg = error.error
         user.reset(),

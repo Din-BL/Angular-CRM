@@ -9,12 +9,12 @@ const { userValidate, userAuthenticate } = require("../utils/middleware");
 
 // Endpoints
 
-router.post("/", /* userAuthenticate, */  userValidate, async (req, res) => {
+router.post("/", userAuthenticate, userValidate, async (req, res) => {
   try {
-    // const user = await User.findOne({ email: req.user.sub });
-    // if (!user) return res.status(404).send("User doest exist");
+    const user = await User.findOne({ email: req.user.sub });
+    if (!user) return res.status(404).send("User doest exist");
     const customer = new Customer(req.body);
-    // customer.user_id = user.id;
+    customer.user_id = user.id;
     await customer.save();
     res.status(201).json(customer);
   } catch (error) {
@@ -23,6 +23,7 @@ router.post("/", /* userAuthenticate, */  userValidate, async (req, res) => {
 });
 
 // Middleware function
+
 const getCustomer = async (req, res, next) => {
   try {
     const findCustomer = await Customer.findById(req.params.id);
@@ -36,16 +37,16 @@ const getCustomer = async (req, res, next) => {
   }
 };
 
-router.get("/:id", getCustomer, async (req, res) => {
+router.get("/:id", userAuthenticate, getCustomer, async (req, res) => {
   res.status(200).json(req.customer);
 });
 
-router.get("/:id/edit", getCustomer, async (req, res) => {
+router.get("/:id/edit", userAuthenticate, getCustomer, async (req, res) => {
   res.status(200).json(req.customer);
 });
 
 
-router.put("/:id",/* userAuthenticate,*/userValidate, async (req, res) => {
+router.put("/:id", userAuthenticate, userValidate, async (req, res) => {
   try {
     const updateCustomer = await Customer.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
     if (!updateCustomer) return res.status(404).send("Customer doest exist");
@@ -55,7 +56,7 @@ router.put("/:id",/* userAuthenticate,*/userValidate, async (req, res) => {
   }
 });
 
-router.delete("/:id", /*userAuthenticate,*/ async (req, res) => {
+router.delete("/:id", userAuthenticate, async (req, res) => {
   try {
     const deleteCustomer = await Customer.findByIdAndDelete(req.params.id);
     if (!deleteCustomer) return res.status(404).send("Customer doest exist");
@@ -65,13 +66,12 @@ router.delete("/:id", /*userAuthenticate,*/ async (req, res) => {
   }
 });
 
-router.get("", /*userAuthenticate,*/ async (req, res) => {
+router.get("", userAuthenticate, async (req, res) => {
   try {
-    // const userInfo = await User.findOne({ email: req.user.sub });
-    // if (!userInfo) return res.status(404).send("User doest exist");
-    // const findCustomers = await Customer.find({ user_id: userInfo.id });
-    const findCustomers = await Customer.find({});/*Temporary*/
-    if (!findCustomers) return res.status(404).send("User has no registered businesses");
+    const userInfo = await User.findOne({ email: req.user.sub });
+    if (!userInfo) return res.status(404).send("User doest exist");
+    const findCustomers = await Customer.find({ user_id: userInfo.id });
+    if (!findCustomers) return res.status(404).send("User has no registered customers");
     res.status(200).json(findCustomers);
   } catch (error) {
     res.status(400).send(error.message);
