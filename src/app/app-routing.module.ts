@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CustomerPageComponent } from './customers/customer-page/customer-page.component';
@@ -15,7 +14,7 @@ const routes: Routes = [
     { path: ':id', component: CustomerEditDetailComponent }]
   },
   { path: '', redirectTo: 'customers', pathMatch: 'full' },
-  { path: 'signup', component: SignupComponent },
+  // { path: 'logout', component: },
   { path: 'login', component: LoginComponent },
   { path: 'employees', component: EmployeePageComponent },
   { path: 'not-found', component: NotFoundComponent },

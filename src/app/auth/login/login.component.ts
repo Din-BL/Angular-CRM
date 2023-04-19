@@ -11,26 +11,55 @@ import { User } from 'src/app/core/type.model';
 })
 export class LoginComponent {
 
-  constructor(private router: Router, private loginApi: ApiService) { }
+  constructor(private router: Router, private authApi: ApiService) { }
 
+  registered = true
   errorStatus = false
   errorMsg = ""
 
-  onSubmit(user: NgForm): void {
-    this.loginApi.loginUser(user.value.userData).subscribe({
-      next: ((data: User) => {
-        if (data.token) this.loginApi.setToken(data.token)
-        this.router.navigate(['customers'])
-      }),
-      error: ((error) => {
-        this.errorMsg = error.error
-        user.reset(),
-          this.errorStatus = true
-        setTimeout(() => {
-          this.errorStatus = false
-        }, 2000);
+  authStatus(value?: boolean): string {
+    if (value) {
+      return this.registered ? 'Sign Up' : 'Log In'
+    }
+    return this.registered ? 'Log In' : 'Sign Up'
+  }
 
+  authMode(): boolean {
+    return this.registered = !this.registered
+  }
+
+  onSubmit(user: NgForm): void {
+    if (this.registered) {
+      this.authApi.loginUser(user.value.userData).subscribe({
+        next: ((data: User) => {
+          if (data.token) this.authApi.setToken(data.token)
+          this.router.navigate(['customers'])
+        }),
+        error: ((error) => {
+          this.errorMsg = error.error
+          user.reset(),
+            this.errorStatus = true
+          setTimeout(() => {
+            this.errorStatus = false
+          }, 2000);
+        })
       })
-    })
+    } else {
+      this.authApi.registerUser(user.value.userData).subscribe({
+        next: (() => {
+          user.reset()
+          this.registered = true
+        }),
+        error: ((error) => {
+          this.errorMsg = error.error
+          user.reset(),
+            this.errorStatus = true
+          setTimeout(() => {
+            this.errorStatus = false
+          }, 2000);
+        })
+      })
+    }
+
   }
 }

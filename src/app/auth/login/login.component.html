@@ -1,9 +1,18 @@
 <main class="bg-dark">
     <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" class="row g-3">
-        <h1 class="display-6 text-center pb-2">{{'log in'| titlecase}}
+        <h1 class="display-6 text-center pb-2">{{authStatus()}}
             <i class="bi bi-person-fill-lock"></i>
         </h1>
         <div ngModelGroup="userData" #userData="ngModelGroup">
+            <div *ngIf="!registered" class="mb-3 col-auto">
+                <input type="text" ngModel name="username" #username="ngModel" class="form-control"
+                    placeholder="Username" required minlength="2">
+                <small *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+                    <span *ngIf="username.errors?.['required']">Username is required</span>
+                    <span *ngIf="username.errors?.['minlength']">Username must be at least
+                        {{username.errors?.['minlength'].requiredLength}} characters</span>
+                </small>
+            </div>
             <div class="mb-3 col-auto">
                 <input type="email" ngModel name="email" #email="ngModel" class="form-control" placeholder="Email" email
                     required minlength="6">
@@ -22,7 +31,7 @@
                 </small>
             </div>
         </div>
-        <div class="col-auto form-check">
+        <div *ngIf="registered" class="col-auto form-check">
             <input [ngModel]=" false" #checkbox="ngModel" required type="checkbox" name="checkbox" type="checkbox"
                 class="form-check-input" id="exampleCheck1">
             <label *ngIf="!checkbox.control.value; else check" class="form-check-label" required for="exampleCheck1">
@@ -32,9 +41,9 @@
             </ng-template>
         </div>
         <div class="col-auto">
-            <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary mb-3">Confirm</button>
+            <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary mb-3">{{authStatus()}}</button>
         </div>
         <p class="text-danger text-center" *ngIf="errorStatus"><strong>{{errorMsg}}</strong></p>
-
+        <small (click)="authMode()" class="nav-link">{{authStatus(true)}}</small>
     </form>
 </main>
