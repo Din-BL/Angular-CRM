@@ -11,7 +11,7 @@ export class CustomersErrorComponent {
 
   error(): string {
     const formControl = this.errorMsg;
-    if (!formControl || !formControl.errors || !formControl.dirty || !formControl.touched) {
+    if (!formControl || !formControl.errors || !formControl.touched) {
       return '';
     }
 

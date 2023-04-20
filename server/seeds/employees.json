@@ -17,6 +17,24 @@
       "email": "bob.johnson@example.com",
       "phone": "555-555-5555",
       "birthday": "1985-11-15"
+    },
+    {
+      "full": "Emily Davis",
+      "email": "emily.davis@example.com",
+      "phone": "+1 555-123-4567",
+      "birthday": "1995-03-20"
+    },
+    {
+      "full": "Mark Wilson",
+      "email": "mark.wilson@example.com",
+      "phone": "+44 (20) 8765-4321",
+      "birthday": "1978-07-22"
+    },
+    {
+      "full": "Karen Lee",
+      "email": "karen.lee@example.com",
+      "phone": "555-987-6543",
+      "birthday": "1989-12-05"
     }
   ]
 }
