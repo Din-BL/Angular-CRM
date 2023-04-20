@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
@@ -9,15 +9,11 @@ import { User } from 'src/app/core/type.model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   constructor(private router: Router, private authApi: ApiService) { }
 
-  ngOnInit(): void {
-    this.emailField?.nativeElement.focus()
-  }
-
-  @ViewChild('emailRef') emailField?: ElementRef
+  @ViewChild('myForm') formField!: NgForm
 
   registered = true
   errorStatus = false
@@ -30,12 +26,9 @@ export class LoginComponent implements OnInit {
     return this.registered ? 'Log In' : 'Sign Up'
   }
 
-
-  authMode(): boolean {
-    if (this.emailField && this.emailField.nativeElement) {
-      this.emailField.nativeElement.className = 'form-control.ng-invalid';
-    }
-    return this.registered = !this.registered
+  authMode(): void {
+    this.formField.reset()
+    this.registered = !this.registered;
   }
 
   onSubmit(user: NgForm): void {

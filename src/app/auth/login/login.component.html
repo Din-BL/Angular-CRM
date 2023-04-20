@@ -14,8 +14,8 @@
                 </small>
             </div>
             <div class="mb-3 col-auto">
-                <input type="email" ngModel name="email" #emailRef #email="ngModel" class="form-control"
-                    placeholder="Email" email required minlength="6">
+                <input type="email" ngModel name="email" #email="ngModel" class="form-control" placeholder="Email" email
+                    required minlength="6">
                 <small *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
                     <span *ngIf="email.errors?.['required']">Email is required</span>
                     <span *ngIf="email.errors?.['email']">Incorrect email pattern</span>
