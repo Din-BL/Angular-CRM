@@ -5,20 +5,26 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CustomerPageComponent } from './customers/customer-page/customer-page.component';
 import { EmployeePageComponent } from './employees/employee-page/employee-page.component';
 import { CustomerEditDetailComponent } from './customers/customer-edit-detail/customer-edit-detail.component';
+import { AuthService } from './core/auth.service';
 
 
 const routes: Routes = [
   {
-    path: 'customers', component: CustomerPageComponent,
-    children: [{ path: ':id/edit', component: CustomerEditDetailComponent },
-    { path: ':id', component: CustomerEditDetailComponent }]
+    // redirectTo: 'customers', pathMatch: 'full',
+    path: '', canActivateChild: [AuthService],
+    children: [
+      {
+        path: 'customers', component: CustomerPageComponent,
+        children: [{ path: ':id/edit', component: CustomerEditDetailComponent },
+        { path: ':id', component: CustomerEditDetailComponent }]
+      },
+      { path: 'employees', component: EmployeePageComponent },
+    ]
   },
-  { path: '', redirectTo: 'customers', pathMatch: 'full' },
   // { path: 'logout', component: },
   { path: 'login', component: LoginComponent },
-  { path: 'employees', component: EmployeePageComponent },
   { path: 'not-found', component: NotFoundComponent },
-  { path: '**', redirectTo: 'not-found' }
+  { path: '**', redirectTo: 'not-found' },
 ];
 
 @NgModule({

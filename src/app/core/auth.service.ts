@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
+import { Observable, Subject, catchError, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements CanActivateChild {
 
-  constructor() { }
-
+  constructor(private router: Router) { }
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | boolean | Promise<boolean> {
+    if (this.getToken()) return true
+    return this.router.navigate(['login']);
+  }
   authenticated = new Subject<string | null>()
 
   setToken(value: string) {
