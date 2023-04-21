@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
+import { AuthService } from 'src/app/core/auth.service';
 import { User } from 'src/app/core/type.model';
 
 @Component({
@@ -11,7 +12,7 @@ import { User } from 'src/app/core/type.model';
 })
 export class LoginComponent {
 
-  constructor(private router: Router, private authApi: ApiService) { }
+  constructor(private router: Router, private loginApi: ApiService, private auth: AuthService) { }
 
   @ViewChild('myForm') formField!: NgForm
 
@@ -33,10 +34,13 @@ export class LoginComponent {
 
   onSubmit(user: NgForm): void {
     if (this.registered) {
-      this.authApi.loginUser(user.value.userData).subscribe({
+      this.loginApi.loginUser(user.value.userData).subscribe({
         next: ((data: User) => {
-          if (data.token) this.authApi.setToken(data.token)
-          this.router.navigate(['customers'])
+          if (data.token) {
+            this.auth.setToken(data.token)
+            this.auth.authenticated.next(this.auth.getToken())
+            this.router.navigate(['customers'])
+          }
         }),
         error: ((error) => {
           this.errorMsg = error.error
@@ -48,7 +52,7 @@ export class LoginComponent {
         })
       })
     } else {
-      this.authApi.registerUser(user.value.userData).subscribe({
+      this.loginApi.registerUser(user.value.userData).subscribe({
         next: (() => {
           user.reset()
           this.registered = true
