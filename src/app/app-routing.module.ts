@@ -21,7 +21,6 @@ const routes: Routes = [
       { path: 'employees', component: EmployeePageComponent },
     ]
   },
-  // { path: 'logout', component: },
   { path: 'login', component: LoginComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: 'not-found' },

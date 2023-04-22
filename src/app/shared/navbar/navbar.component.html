@@ -17,7 +17,7 @@
             </div>
             <div class="navbar-nav">
                 <a *ngIf="isAuthenticated" class="nav-link" routerLinkActive="active" aria-current="page"
-                    routerLink="logout">Log Out</a>
+                    (click)="logOut()" routerLink="login">Log Out</a>
                 <a *ngIf="!isAuthenticated" class="nav-link" routerLinkActive="active" aria-current="page"
                     routerLink="login">Log in</a>
                 <theme></theme>
