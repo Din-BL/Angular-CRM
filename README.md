@@ -13,6 +13,7 @@ To run the app, you need to open two terminals: one for the Angular server and o
 Angular Server<br>
 Open a terminal in the root directory of the project.<br>
 Run ng serve --open to start the Angular server and open a browser window.<br>
+
 REST API Server<br>
 Open a new terminal in the root directory of the project.<br>
 Run npm start to start the REST API server.<br>
