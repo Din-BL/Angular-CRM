@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
 import { SessionService } from 'src/app/core/assists.service';
 import { Person } from 'src/app/core/type.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-table',
@@ -69,9 +70,28 @@ export class TableComponent implements OnInit {
   onDelete(item: Person) {
     if (this.router.url.includes('edit') || this.router.url.length > 10) "";
     else {
-      this.api.deleteCustomer(item._id as string).subscribe({
-        next: () => this.users = this.users?.filter(customer => customer._id !== item._id)
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.api.deleteCustomer(item._id as string).subscribe({
+            next: () => this.users = this.users?.filter(customer => customer._id !== item._id)
+          })
+          Swal.fire(
+            'Deleted!',
+            `${item['first_name']} ${item['last_name']} has been deleted.`,
+            'success'
+          )
+        }
       })
+
+
     }
   }
 

@@ -5,6 +5,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/core/api.service';
 import { SessionService } from 'src/app/core/assists.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'customer-edit-detail',
@@ -65,6 +66,13 @@ export class CustomerEditDetailComponent implements OnInit {
       next: (data: Person) => {
         this.customerInfo.editCustomer.next(data),
           this.customerInfo.addCustomer.next(false)
+        Swal.fire({
+          position: 'top',
+          icon: 'success',
+          title: `${data['first_name']} has been updated`,
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.router.navigate([''])
       }
     })
