@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const config = require("config");
 const User = require("../models/user");
-const { userValidate } = require("../utils/middleware");
+const { userValidate, userAuthenticate } = require("../utils/middleware");
 const jwt = require("jsonwebtoken");
 
 // Endpoints
@@ -39,6 +39,16 @@ router.post("/login", userValidate, async (req, res) => {
       findUser.token = token;
       res.status(200).json(_.pick(findUser, ["_id", "token"]));
     } else res.status(400).send("Incorrect password");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+router.get("/", userAuthenticate, async (req, res) => {
+  try {
+    const userDetails = await User.findOne({ email: req.user.sub });
+    if (!userDetails) return res.status(404).send("User doest exist");
+    res.status(200).json(_.pick(userDetails, ["_id", "username", "email"]));
   } catch (error) {
     res.status(400).send(error.message);
   }

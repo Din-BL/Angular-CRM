@@ -21,6 +21,11 @@ export class ApiService {
   loginUser(user: User): Observable<User> {
     return this.http.post<User>(this.server + 'login', user)
   }
+  getUser(): Observable<User> {
+    return this.http.get<User>(this.server, {
+      headers: { "authorization": this.auth.getToken() }
+    })
+  }
 
   //////// Customer ////////
 

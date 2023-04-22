@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ApiService } from 'src/app/core/api.service';
 import { SessionService } from 'src/app/core/assists.service';
 import { AuthService } from 'src/app/core/auth.service';
 
@@ -12,12 +12,17 @@ export class NavbarComponent implements OnDestroy {
 
   themeColor = false;
   isAuthenticated: string | null;
+  username?: string | null;
 
   private activatedSub!: Subscription;
 
-  constructor(private theme: SessionService, private auth: AuthService) {
+  constructor(private theme: SessionService, private auth: AuthService, private userApi: ApiService) {
     this.isAuthenticated = this.auth.getToken();
-    this.auth.authenticated.subscribe(token => this.isAuthenticated = token);
+    if (this.isAuthenticated) this.userApi.getUser().subscribe((user) => this.username = user.username)
+    this.auth.authenticated.subscribe(token => {
+      this.isAuthenticated = token
+      this.userApi.getUser().subscribe((user) => this.username = user.username)
+    });
     this.activatedSub = this.theme.themeMode.subscribe(colorStatus => this.themeColor = colorStatus);
   }
 
