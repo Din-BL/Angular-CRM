@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const Employee = require("../models/employee");
-// const User = require("../models/user");
+const User = require("../models/user");
 const fs = require("fs");
 const { userAuthenticate } = require("../utils/middleware");
 
@@ -26,13 +26,12 @@ router.post("/init", (req, res) => {
 
 });
 
-router.get("", /*userAuthenticate,*/ async (req, res) => {
+router.get("", userAuthenticate, async (req, res) => {
     try {
-        // const userInfo = await User.findOne({ email: req.user.sub });
-        // if (!userInfo) return res.status(404).send("User doest exist");
-        // const findCustomers = await Customers.find({ user_id: userInfo.id });
-        const findEmployees = await Employee.find({});/*Temporary*/
-        // if (!findCustomers) return res.status(404).send("User has no registered businesses");
+        const userInfo = await User.findOne({ email: req.user.sub });
+        if (!userInfo) return res.status(404).send("User doest exist");
+        const findEmployees = await Employee.find({});
+        if (!findEmployees) return res.status(404).send("User has no registered employees");
         res.status(200).json(findEmployees);
     } catch (error) {
         res.status(400).send(error.message);
