@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
@@ -10,9 +10,13 @@ import { User } from 'src/app/core/type.model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private loginApi: ApiService, private auth: AuthService) { }
+
+  ngOnInit(): void {
+    this.auth.authenticated.next(null)
+  }
 
   @ViewChild('myForm') formField!: NgForm
 

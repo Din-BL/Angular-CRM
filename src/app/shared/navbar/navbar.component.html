@@ -10,16 +10,14 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a *ngIf="isAuthenticated" class="nav-link" routerLinkActive="active" aria-current=" page"
+                <a *ngIf="isAuthenticated" class="nav-link" routerLinkActive="active"
                     routerLink="customers">Customers</a>
-                <a *ngIf="isAuthenticated" class="nav-link" routerLinkActive="active" aria-current=" page"
+                <a *ngIf="isAuthenticated" class="nav-link" routerLinkActive="active"
                     routerLink="employees">Employees</a>
             </div>
             <div class="navbar-nav"> <a *ngIf="isAuthenticated" class="nav-link text-primary">{{username}}</a>
-                <a *ngIf="isAuthenticated" class="nav-link" routerLinkActive="active" aria-current="page"
-                    (click)="logOut()" routerLink="login">Log Out</a>
-                <a *ngIf="!isAuthenticated" class="nav-link" routerLinkActive="active" aria-current="page"
-                    routerLink="login">Log in</a>
+                <a *ngIf="isAuthenticated" class="nav-link" (click)="logOut()" routerLink="login">Log Out</a>
+                <a *ngIf="!isAuthenticated" class="nav-link" routerLinkActive="active" routerLink="login">Log in</a>
                 <theme></theme>
             </div>
         </div>

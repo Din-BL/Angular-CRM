@@ -17,18 +17,17 @@ export class NavbarComponent implements OnDestroy {
   private activatedSub!: Subscription;
 
   constructor(private theme: SessionService, private auth: AuthService, private userApi: ApiService) {
-    this.isAuthenticated = this.auth.getToken();
-    if (this.isAuthenticated) this.userApi.getUser().subscribe((user) => this.username = user.username)
     this.auth.authenticated.subscribe(token => {
       this.isAuthenticated = token
       this.userApi.getUser().subscribe((user) => this.username = user.username)
     });
+    this.isAuthenticated = this.auth.getToken();
+    if (this.isAuthenticated) this.userApi.getUser().subscribe((user) => this.username = user.username)
     this.activatedSub = this.theme.themeMode.subscribe(colorStatus => this.themeColor = colorStatus);
   }
 
   logOut() {
     this.auth.deleteToken()
-    this.isAuthenticated = this.auth.getToken();
   }
 
   ngOnDestroy(): void {
