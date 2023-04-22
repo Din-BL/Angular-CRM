@@ -65,7 +65,7 @@ export class CustomerEditDetailComponent implements OnInit {
       next: (data: Person) => {
         this.customerInfo.editCustomer.next(data),
           this.customerInfo.addCustomer.next(false)
-        this.router.navigate(['/'])
+        this.router.navigate([''])
       }
     })
   }
