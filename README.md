@@ -1,5 +1,5 @@
 # CRM App
-This is a Customer Relationship Management (CRM) app built with Angular and a REST API server.
+This is a Customer Relationship Management (CRM) app built with Angular and a REST API server.<br>
 This README file explains how to run the app.
 
 Installation
