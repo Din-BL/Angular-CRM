@@ -67,13 +67,20 @@ export class CustomerEditDetailComponent implements OnInit {
         this.customerInfo.editCustomer.next(data),
           this.customerInfo.addCustomer.next(false)
         Swal.fire({
-          position: 'top',
           icon: 'success',
           title: `${data['first_name']} has been updated`,
           showConfirmButton: false,
           timer: 1500
         })
         this.router.navigate([''])
+      },
+      error: (error) => {
+        let errorMsg: string = error.error[0].message ? error.error[0].message : error.error
+        if (errorMsg.includes('E11000 duplicate key')) errorMsg = 'Email already exist'
+        Swal.fire({
+          icon: 'error',
+          title: errorMsg
+        })
       }
     })
   }

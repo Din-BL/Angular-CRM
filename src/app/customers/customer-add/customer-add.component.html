@@ -16,7 +16,7 @@
         <customers-error [errorMsg]="getError('email')"></customers-error>
     </div>
     <div class="col">
-        <button [disabled]="addStatus" type="submit" class="btn btn-primary">
+        <button [disabled]="addStatus || addForm.customerForm.invalid" type="submit" class="btn btn-primary">
             <i class="bi bi-plus-circle"></i> Add Customer
         </button>
     </div>
