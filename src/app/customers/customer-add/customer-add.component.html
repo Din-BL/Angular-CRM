@@ -1,18 +1,18 @@
 <form [formGroup]="addForm.customerForm" (ngSubmit)="onSubmit()" class="row g-2">
     <div class="col">
-        <input formControlName="first_name" type="text" class="form-control" placeholder="First name">
+        <input formControlName="first_name" type="text" [ngClass]="onInputClass(themeColor)" placeholder="First name">
         <customers-error [errorMsg]="getError('first_name')"></customers-error>
     </div>
     <div class="col">
-        <input formControlName="last_name" type="text" class="form-control" placeholder="Last name">
+        <input formControlName="last_name" type="text" [ngClass]="onInputClass(themeColor)" placeholder="Last name">
         <customers-error [errorMsg]="getError('last_name')"></customers-error>
     </div>
     <div class="col">
-        <input formControlName="phone" type="tel" class="form-control" placeholder="Phone">
+        <input formControlName="phone" type="tel" [ngClass]="onInputClass(themeColor)" placeholder="Phone">
         <customers-error [errorMsg]="getError('phone')"></customers-error>
     </div>
     <div class="col">
-        <input formControlName="email" type="email" class="form-control" placeholder="Email">
+        <input formControlName="email" type="email" [ngClass]="onInputClass(themeColor)" placeholder="Email">
         <customers-error [errorMsg]="getError('email')"></customers-error>
     </div>
     <div class="col">

@@ -19,6 +19,7 @@ export class CustomerEditDetailComponent implements OnInit {
     class: 'bi bi-pencil-fill'
   }
 
+  themeColor = false;
   editMode?: boolean
   id!: string
   customer!: Person
@@ -29,6 +30,7 @@ export class CustomerEditDetailComponent implements OnInit {
   fields: Array<string> = ['first_name', 'last_name', 'email', 'phone', 'address']
 
   ngOnInit(): void {
+    this.customerInfo.themeMode.subscribe(theme => this.themeColor = theme)
     this.editMode = this.router.url.includes('edit')
     this.editForm.customerForm
 
@@ -51,6 +53,10 @@ export class CustomerEditDetailComponent implements OnInit {
           })
         }
       })
+  }
+
+  onInputClass(theme: boolean): string {
+    return this.customerInfo.onInputClass(theme)
   }
 
   setFormValue(field: string, value: any) {

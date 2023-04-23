@@ -3,34 +3,42 @@
 <form [formGroup]="editForm.customerForm" (ngSubmit)="onSubmit()" class="row g-3 mb-3">
     <div class="col-md-6">
         <label for="first_name" class="form-label"><span class="text-danger">*</span> First Name</label>
-        <input [hidden]="!editMode" formControlName="first_name" type="text" class="form-control" id="first_name">
-        <input [hidden]="editMode" class="form-control" type="text" value="{{customer['first_name']}}" disabled
-            readonly>
+        <input [hidden]="!editMode" formControlName="first_name" type="text" [ngClass]="onInputClass(themeColor)"
+            id="first_name">
+        <input [hidden]="editMode" [ngClass]="onInputClass(themeColor)" type="text" value="{{customer['first_name']}}"
+            disabled readonly>
         <customers-error [errorMsg]="getError('first_name')"></customers-error>
     </div>
     <div class="col-md-6">
         <label for="last_name" class="form-label"><span class="text-danger">*</span> Last Name</label>
-        <input [hidden]="!editMode" formControlName="last_name" type="text" class="form-control" id="last_name">
-        <input [hidden]="editMode" class="form-control" type="text" value="{{customer['last_name']}}" disabled readonly>
+        <input [hidden]="!editMode" formControlName="last_name" type="text" [ngClass]="onInputClass(themeColor)"
+            id="last_name">
+        <input [hidden]="editMode" [ngClass]="onInputClass(themeColor)" type="text" value="{{customer['last_name']}}"
+            disabled readonly>
         <customers-error [errorMsg]="getError('last_name')"></customers-error>
     </div>
     <div class="col-md-6">
         <label for="email" class="form-label"><span class="text-danger">*</span> Email</label>
-        <input [hidden]="!editMode" formControlName="email" type="email" class="form-control" id="email">
-        <input [hidden]="editMode" class="form-control" type="email" value="{{customer.email}}" disabled readonly>
+        <input [hidden]="!editMode" formControlName="email" type="email" [ngClass]="onInputClass(themeColor)"
+            id="email">
+        <input [hidden]="editMode" [ngClass]="onInputClass(themeColor)" type="email" value="{{customer.email}}" disabled
+            readonly>
         <customers-error [errorMsg]="getError('email')"></customers-error>
 
     </div>
     <div class="col-md-6">
         <label for="phone" class="form-label"><span class="text-danger">*</span> Phone</label>
-        <input [hidden]="!editMode" formControlName="phone" type="tel" class="form-control" id="phone">
-        <input [hidden]="editMode" class="form-control" type="phone" value="{{customer.phone}}" disabled readonly>
+        <input [hidden]="!editMode" formControlName="phone" type="tel" [ngClass]="onInputClass(themeColor)" id="phone">
+        <input [hidden]="editMode" [ngClass]="onInputClass(themeColor)" type="phone" value="{{customer.phone}}" disabled
+            readonly>
         <customers-error [errorMsg]="getError('phone')"></customers-error>
     </div>
     <div class="col-12">
         <label for="inputAddress" class="form-label">Address</label>
-        <input [hidden]="!editMode" formControlName="address" type="text" class="form-control" id="inputAddress">
-        <input [hidden]="editMode" class="form-control" type="text" value="{{customer.address}}" disabled readonly>
+        <input [hidden]="!editMode" formControlName="address" type="text" [ngClass]="onInputClass(themeColor)"
+            id="inputAddress">
+        <input [hidden]="editMode" [ngClass]="onInputClass(themeColor)" type="text" value="{{customer.address}}"
+            disabled readonly>
         <customers-error [errorMsg]="getError('address')"></customers-error>
     </div>
     <div class="col-12 d-flex justify-content-center">

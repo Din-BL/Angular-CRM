@@ -1,11 +1,11 @@
-<main [ngClass]="onBackgroundClass(true)">
-    <form [ngClass]="onBackgroundClass()" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" class="row g-3">
-        <h1 [ngStyle]="onColorChanged('color')" class="display-6 text-center pb-2">{{authStatus()}}
+<main [ngClass]="onBackgroundClass(themeColor,true)">
+    <form [ngClass]="onBackgroundClass(themeColor)" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" class="row g-3">
+        <h1 [ngStyle]="onColorChanged('color',themeColor)" class="display-6 text-center pb-2">{{authStatus()}}
             <i class="bi bi-person-fill-lock"></i>
         </h1>
         <div ngModelGroup="userData" #userData="ngModelGroup">
             <div *ngIf="!registered" class="mb-3 col-auto">
-                <input type="text" ngModel name="username" #username="ngModel" [ngClass]="onInputClass()"
+                <input type="text" ngModel name="username" #username="ngModel" [ngClass]="onInputClass(themeColor)"
                     placeholder="Username" required minlength="2">
                 <small *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
                     <span *ngIf="username.errors?.['required']">Username is required</span>
@@ -14,8 +14,8 @@
                 </small>
             </div>
             <div class="mb-3 col-auto">
-                <input type="email" ngModel name="email" #email="ngModel" [ngClass]="onInputClass()" placeholder="Email"
-                    email required minlength="6">
+                <input type="email" ngModel name="email" #email="ngModel" [ngClass]="onInputClass(themeColor)"
+                    placeholder="Email" email required minlength="6">
                 <small *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
                     <span *ngIf="email.errors?.['required']">Email is required</span>
                     <span *ngIf="email.errors?.['email']">Incorrect email pattern</span>
@@ -23,7 +23,7 @@
             </div>
             <div class="mb-3 col-auto">
                 <input ngModel name="password" #password="ngModel" required minlength="8" maxlength="12" type="password"
-                    [ngClass]="onInputClass()" placeholder="Password">
+                    [ngClass]="onInputClass(themeColor)" placeholder="Password">
                 <small *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
                     <span *ngIf="password.errors?.['required']">Password is required</span>
                     <span *ngIf="password.errors?.['minlength']">Password must be at least
@@ -31,7 +31,7 @@
                 </small>
             </div>
         </div>
-        <div [ngStyle]="onColorChanged('color')" *ngIf="registered" class="col-auto form-check">
+        <div [ngStyle]="onColorChanged('color',themeColor)" *ngIf="registered" class="col-auto form-check">
             <input [ngModel]=" false" #checkbox="ngModel" required type="checkbox" name="checkbox" type="checkbox"
                 class="form-check-input" id="exampleCheck1">
             <label *ngIf="!checkbox.control.value; else check" class="form-check-label" required for="exampleCheck1">
@@ -44,7 +44,7 @@
             <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary mb-3">{{authStatus()}}</button>
         </div>
         <div class="d-flex justify-content-between">
-            <small [ngStyle]="onColorChanged('color')" style="cursor: pointer;" (click)="authMode()"
+            <small [ngStyle]="onColorChanged('color',themeColor)" style="cursor: pointer;" (click)="authMode()"
                 class="text-body-secondary">{{authStatus(true)}}</small>
             <p class="text-danger text-center" *ngIf="errorStatus"><strong>{{errorMsg}}</strong></p>
         </div>

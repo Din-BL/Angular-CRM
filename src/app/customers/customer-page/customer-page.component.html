@@ -1,10 +1,13 @@
-<div class="container" style="min-height: 85dvh;">
+<div [ngClass]="onBackgroundClass(themeColor)">
 
-    <app-title [title]="getTitle"></app-title>
+    <div class="container" style="min-height: 85dvh;">
 
-    <customer-add [users]="customers"></customer-add>
+        <app-title [title]="getTitle"></app-title>
 
-    <app-table [users]="customers" [icons]="true"></app-table>
+        <customer-add [users]="customers"></customer-add>
 
-    <router-outlet></router-outlet>
+        <app-table [users]="customers" [icons]="true"></app-table>
+
+        <router-outlet></router-outlet>
+    </div>
 </div>

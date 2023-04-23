@@ -1,5 +1,5 @@
 <header class="text-bg-secondary p-2 my-4 rounded ">
-    <h1 class="display-6 text-black">
+    <h1 [ngStyle]="onColorChanged('color',themeColor)" class="display-6">
         <i class="{{title.class}}"></i>{{title.name}}
     </h1>
 </header>

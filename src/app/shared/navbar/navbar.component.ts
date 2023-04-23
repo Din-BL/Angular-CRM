@@ -27,7 +27,7 @@ export class NavbarComponent {
     this.auth.deleteToken()
   }
 
-  onClassChanged() {
+  onColorChanged() {
     return this.themeColor ? 'navbar navbar-expand-lg navbar-dark bg-dark' : 'navbar navbar-expand-lg navbar-light bg-light'
   }
 }

@@ -16,13 +16,19 @@ export class CustomerAddComponent implements OnInit {
 
   @Input() users?: Array<Person>
 
-  constructor(public addForm: ValidationService, private customerApi: ApiService, private btnStatus: HelperService) { }
+  constructor(public addForm: ValidationService, private customerApi: ApiService, private propertyStatus: HelperService) { }
 
   addStatus?: boolean
+  themeColor = false;
 
   ngOnInit(): void {
     this.addForm.customerForm
-    this.btnStatus.addCustomer.subscribe(status => this.addStatus = status)
+    this.propertyStatus.addCustomer.subscribe(status => this.addStatus = status)
+    this.propertyStatus.themeMode.subscribe(theme => this.themeColor = theme)
+  }
+
+  onInputClass(theme: boolean): string {
+    return this.propertyStatus.onInputClass(theme)
   }
 
   getError(field: string): FormControl {

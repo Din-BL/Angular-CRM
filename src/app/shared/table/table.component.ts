@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class TableComponent implements OnInit {
 
   ngOnInit(): void {
+    this.personInfo.themeMode.subscribe(theme => this.themeColor = theme)
     if (this.router.url.includes('customers')) {
       this.personInfo.customerID.subscribe((id) => this.customerId = id),
         this.personInfo.editCustomer.subscribe((customer: Person) => {
@@ -30,8 +31,13 @@ export class TableComponent implements OnInit {
     }
   }
 
+  themeColor = false;
   customerId = ''
   employeeList?: Array<Person>
+
+  onColorChanged(style: string, theme: boolean) {
+    return this.personInfo.onColorChanged(style, theme)
+  }
 
   constructor(private router: Router, private route: ActivatedRoute,
     private api: ApiService, private personInfo: HelperService) { }
