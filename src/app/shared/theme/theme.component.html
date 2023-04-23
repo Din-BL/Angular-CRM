@@ -1,5 +1,6 @@
-<i *ngIf="darkMode; else lightMode" (click)="toggleMode()" class="bi bi-moon text-light ps-2"></i>
+<i *ngIf="darkMode; else lightMode" (click)="toggleMode()" style="cursor: pointer;"
+    class="bi bi-moon text-light ps-2"></i>
 
 <ng-template #lightMode>
-    <i (click)="toggleMode()" class="bi bi-sun text-dark ps-2"></i>
+    <i (click)="toggleMode()" style="cursor: pointer;" class="bi bi-sun text-dark ps-2"></i>
 </ng-template>
