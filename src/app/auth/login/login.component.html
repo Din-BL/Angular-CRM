@@ -43,8 +43,11 @@
         <div class="col-auto">
             <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary mb-3">{{authStatus()}}</button>
         </div>
-        <p class="text-danger text-center" *ngIf="errorStatus"><strong>{{errorMsg}}</strong></p>
-        <small [ngStyle]="onColorChanged('color')" style="cursor: pointer;" (click)="authMode()"
-            class="text-body-secondary">{{authStatus(true)}}</small>
+        <div class="d-flex justify-content-between">
+            <small [ngStyle]="onColorChanged('color')" style="cursor: pointer;" (click)="authMode()"
+                class="text-body-secondary">{{authStatus(true)}}</small>
+            <p class="text-danger text-center" *ngIf="errorStatus"><strong>{{errorMsg}}</strong></p>
+        </div>
+
     </form>
 </main>

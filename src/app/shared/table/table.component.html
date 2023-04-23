@@ -14,9 +14,9 @@
         <tr *ngFor="let user of users; let i = index">
             <th scope="row">{{i + 1}}
                 <div *ngIf="icons" style="display: inline;">
-                    <i [ngClass]=eyeToggle(i) (click)="onDetail(user,i)"></i>
-                    <i class="bi bi-pencil" (click)="onEdit(user)"></i>
-                    <i class="bi bi-trash" (click)="onDelete(user)"></i>
+                    <i style="cursor: pointer;" [ngClass]=eyeToggle(i) (click)="onDetail(user,i)"></i>
+                    <i style="cursor: pointer;" class="bi bi-pencil" (click)="onEdit(user)"></i>
+                    <i style="cursor: pointer;" class="bi bi-trash" (click)="onDelete(user)"></i>
                 </div>
             </th>
             <td *ngIf="user['first_name']">{{user['first_name']}}</td>
