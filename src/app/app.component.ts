@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { SessionService } from './core/assists.service';
+import { AuthService } from './core/auth.service';
 
 
 @Component({
@@ -9,11 +9,11 @@ import { SessionService } from './core/assists.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements AfterViewInit {
-  constructor(private session: SessionService) { }
+  constructor(private auth: AuthService) { }
 
   title = 'Angular-Project';
 
   ngAfterViewInit(): void {
-    this.session.homeRedirect()
+    this.auth.homeRedirect()
   }
 }

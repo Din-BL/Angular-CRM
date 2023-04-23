@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/core/api.service';
+import { HelperService } from 'src/app/core/helper.service';
 import { AuthService } from 'src/app/core/auth.service';
 import { User } from 'src/app/core/type.model';
 
@@ -12,22 +14,36 @@ import { User } from 'src/app/core/type.model';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private loginApi: ApiService, private auth: AuthService) { }
+  constructor(private router: Router, private loginApi: ApiService,
+    private auth: AuthService, private theme: HelperService) { }
 
   ngOnInit(): void {
     this.auth.authenticated.next(null)
+    this.theme.themeMode.subscribe(colorStatus => this.themeColor = colorStatus);
   }
 
   @ViewChild('myForm') formField!: NgForm
 
+  themeColor = false;
   registered = true
   errorStatus = false
   errorMsg = ""
 
+  onColorChanged(style: string) {
+    return { [style]: this.themeColor ? 'white' : 'black' };
+  }
+
+  onBackgroundClass(value?: boolean): string {
+    if (value) return this.themeColor ? 'bg-light' : 'bg-dark'
+    return this.themeColor ? 'bg-dark' : 'bg-light'
+  }
+
+  onInputClass(): string {
+    return this.themeColor ? 'form-control bg-dark text-white' : 'form-control bg-light text-dark'
+  }
+
   authStatus(value?: boolean): string {
-    if (value) {
-      return this.registered ? 'Sign Up' : 'Log In'
-    }
+    if (value) return this.registered ? 'Sign Up' : 'Log In'
     return this.registered ? 'Log In' : 'Sign Up'
   }
 

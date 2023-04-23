@@ -1,18 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Person } from './type.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SessionService {
+export class HelperService {
 
-  constructor(private router: Router) { }
-
-  homeRedirect() {
-    this.router.navigate(['customers'])
-  }
+  constructor() { }
 
   themeMode = new Subject<boolean>()
   customerID = new Subject<string>()

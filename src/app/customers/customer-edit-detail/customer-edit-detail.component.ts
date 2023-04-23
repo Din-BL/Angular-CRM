@@ -4,7 +4,7 @@ import { Person, Title } from 'src/app/core/type.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/core/api.service';
-import { SessionService } from 'src/app/core/assists.service';
+import { HelperService } from 'src/app/core/helper.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -24,7 +24,7 @@ export class CustomerEditDetailComponent implements OnInit {
   customer!: Person
 
   constructor(public editForm: ValidationService, private router: Router,
-    private route: ActivatedRoute, private customerApi: ApiService, private customerInfo: SessionService) { }
+    private route: ActivatedRoute, private customerApi: ApiService, private customerInfo: HelperService) { }
 
   fields: Array<string> = ['first_name', 'last_name', 'email', 'phone', 'address']
 

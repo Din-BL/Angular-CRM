@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/core/api.service';
-import { SessionService } from 'src/app/core/assists.service';
+import { HelperService } from 'src/app/core/helper.service';
 import { Person } from 'src/app/core/type.model';
 import { ValidationService } from 'src/app/core/validation.service';
 import Swal from 'sweetalert2'
@@ -16,7 +16,7 @@ export class CustomerAddComponent implements OnInit {
 
   @Input() users?: Array<Person>
 
-  constructor(public addForm: ValidationService, private customerApi: ApiService, private btnStatus: SessionService) { }
+  constructor(public addForm: ValidationService, private customerApi: ApiService, private btnStatus: HelperService) { }
 
   addStatus?: boolean
 

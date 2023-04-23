@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
-import { SessionService } from 'src/app/core/assists.service';
+import { HelperService } from 'src/app/core/helper.service';
 import { Person } from 'src/app/core/type.model';
 import Swal from 'sweetalert2';
 
@@ -34,7 +34,7 @@ export class TableComponent implements OnInit {
   employeeList?: Array<Person>
 
   constructor(private router: Router, private route: ActivatedRoute,
-    private api: ApiService, private personInfo: SessionService) { }
+    private api: ApiService, private personInfo: HelperService) { }
 
   @Input() icons?: boolean
 
@@ -90,8 +90,6 @@ export class TableComponent implements OnInit {
           )
         }
       })
-
-
     }
   }
 

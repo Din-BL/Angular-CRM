@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SessionService } from 'src/app/core/assists.service';
+import { HelperService } from 'src/app/core/helper.service';
 
 @Component({
   selector: 'theme',
@@ -7,7 +7,7 @@ import { SessionService } from 'src/app/core/assists.service';
 })
 
 export class ThemeComponent {
-  constructor(private theme: SessionService) { }
+  constructor(private theme: HelperService) { }
 
   darkMode = false
 

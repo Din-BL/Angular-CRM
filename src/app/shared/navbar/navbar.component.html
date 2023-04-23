@@ -1,7 +1,6 @@
-<nav style="border-bottom: 1px solid;" [ngStyle]="onColorChanged('border-color')"
-    [ngClass]=" themeColor ? 'navbar navbar-expand-lg navbar-light bg-light': 'navbar navbar-expand-lg navbar-dark bg-dark' ">
+<nav [ngClass]="onClassChanged() ">
     <div class=" container-fluid">
-        <a href="#">
+        <a routerLink="">
             <img class="navbar-brand" style="height: 45px;" src="assets\images\crm.png" alt="crm-logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"

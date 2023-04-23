@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { SessionService } from 'src/app/core/assists.service';
+import { HelperService } from 'src/app/core/helper.service';
 
 @Component({
   selector: 'employee-search',
@@ -7,7 +7,7 @@ import { SessionService } from 'src/app/core/assists.service';
 })
 export class EmployeeSearchComponent implements AfterViewInit {
 
-  constructor(private employee: SessionService) { }
+  constructor(private employee: HelperService) { }
 
   @ViewChild('search') searchField!: ElementRef
 

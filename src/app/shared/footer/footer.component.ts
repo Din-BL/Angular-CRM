@@ -1,30 +1,21 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { SessionService } from 'src/app/core/assists.service';
+import { Component, OnInit } from '@angular/core';
+import { HelperService } from 'src/app/core/helper.service';
 
 @Component({
     selector: 'footer',
     templateUrl: './footer.component.html',
 })
-export class FooterComponent implements OnInit, OnDestroy {
+export class FooterComponent implements OnInit {
 
-    constructor(private theme: SessionService) { }
-
-    private activatedSub!: Subscription
+    constructor(private theme: HelperService) { }
 
     themeColor = false
 
     ngOnInit(): void {
-        this.theme.themeMode.subscribe(colorStatus => {
-            this.themeColor = colorStatus
-        })
+        this.theme.themeMode.subscribe(colorStatus => this.themeColor = colorStatus)
     }
-
-    ngOnDestroy(): void {
-        this.activatedSub.unsubscribe()
-    }
-    onColorChanged(style: string) {
-        return { [style]: this.themeColor ? 'black' : 'white' };
+    onClassChanged() {
+        return this.themeColor ? 'bg-dark text-white py-3' : 'bg-light text-dark py-3'
     }
 
 }
