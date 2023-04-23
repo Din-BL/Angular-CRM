@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class TableComponent implements OnInit {
 
   ngOnInit(): void {
+    this.themeColor = this.personInfo.themeCapture
     this.personInfo.themeMode.subscribe(theme => this.themeColor = theme)
     if (this.router.url.includes('customers')) {
       this.personInfo.customerID.subscribe((id) => this.customerId = id),

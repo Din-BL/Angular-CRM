@@ -21,6 +21,11 @@ export class HelperService {
     return theme ? 'form-control bg-light text-dark' : 'form-control bg-dark text-white'
   }
 
+  onThemeCapture(status: boolean): void {
+    this.themeCapture = status
+  }
+
+  themeCapture = false
   themeMode = new Subject<boolean>()
   customerID = new Subject<string>()
   addCustomer = new Subject<boolean>()

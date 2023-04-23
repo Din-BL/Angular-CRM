@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/core/api.service';
 import { HelperService } from 'src/app/core/helper.service';
 import { Person, Title } from 'src/app/core/type.model';
@@ -7,15 +8,21 @@ import { Person, Title } from 'src/app/core/type.model';
   selector: 'customer-page',
   templateUrl: './customer-page.component.html'
 })
-export class CustomerPageComponent implements OnInit {
+export class CustomerPageComponent implements OnInit, OnDestroy {
   constructor(public customerApi: ApiService, private theme: HelperService) { }
 
   customers?: Person[]
   themeColor = false;
+  nullifyTheme?: Subscription
 
   ngOnInit(): void {
     this.customerApi.getCustomers().subscribe((data: Person[]) => this.customers = data)
-    this.theme.themeMode.subscribe(theme => this.themeColor = theme)
+    this.nullifyTheme = this.theme.themeMode.subscribe(theme => this.themeColor = theme)
+    this.themeColor = this.theme.themeCapture
+  }
+
+  ngOnDestroy(): void {
+    this.nullifyTheme?.unsubscribe()
   }
 
   onBackgroundClass(theme: boolean): string {

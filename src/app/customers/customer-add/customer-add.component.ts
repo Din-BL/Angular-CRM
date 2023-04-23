@@ -25,6 +25,7 @@ export class CustomerAddComponent implements OnInit {
     this.addForm.customerForm
     this.propertyStatus.addCustomer.subscribe(status => this.addStatus = status)
     this.propertyStatus.themeMode.subscribe(theme => this.themeColor = theme)
+    this.themeColor = this.propertyStatus.themeCapture
   }
 
   onInputClass(theme: boolean): string {

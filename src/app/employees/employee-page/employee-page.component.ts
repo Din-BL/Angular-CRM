@@ -20,6 +20,7 @@ export class EmployeePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.themeColor = this.theme.themeCapture
     this.theme.themeMode.subscribe(theme => this.themeColor = theme)
     this.employeeApi.createEmployees().subscribe({
       next: (() => {

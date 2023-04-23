@@ -14,5 +14,6 @@ export class ThemeComponent {
   toggleMode() {
     this.darkMode = !this.darkMode
     this.theme.themeMode.next(this.darkMode)
+    this.theme.onThemeCapture(this.darkMode)
   }
 }

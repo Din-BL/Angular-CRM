@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.auth.authenticated.next(null)
     this.theme.themeMode.subscribe(colorStatus => this.themeColor = colorStatus);
+    this.themeColor = this.theme.themeCapture
   }
 
   @ViewChild('myForm') formField!: NgForm

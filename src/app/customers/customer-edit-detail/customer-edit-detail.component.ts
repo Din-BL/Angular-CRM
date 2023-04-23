@@ -30,10 +30,10 @@ export class CustomerEditDetailComponent implements OnInit {
   fields: Array<string> = ['first_name', 'last_name', 'email', 'phone', 'address']
 
   ngOnInit(): void {
+    this.themeColor = this.customerInfo.themeCapture
     this.customerInfo.themeMode.subscribe(theme => this.themeColor = theme)
     this.editMode = this.router.url.includes('edit')
     this.editForm.customerForm
-
     this.route.params.subscribe(
       (params: Params) => {
         this.id = (params['id']);
