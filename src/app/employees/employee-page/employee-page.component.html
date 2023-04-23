@@ -1,9 +1,12 @@
-<div class="container" style="min-height: 85dvh;">
+<div class="pt-4" [ngClass]="onBackgroundClass(themeColor)">
 
-    <app-title [title]="getTitle"></app-title>
+    <div class="container-md" style="min-height: 85dvh;">
 
-    <employee-search></employee-search>
+        <app-title [title]="getTitle"></app-title>
 
-    <app-table *ngIf="!isLoading" [users]="employees"></app-table>
+        <employee-search></employee-search>
 
+        <app-table *ngIf="!isLoading" [users]="employees"></app-table>
+
+    </div>
 </div>

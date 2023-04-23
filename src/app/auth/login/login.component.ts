@@ -30,17 +30,18 @@ export class LoginComponent implements OnInit {
   errorMsg = ""
 
 
-  onColorChanged(style: string, theme: boolean) {
-    return this.theme.onColorChanged(style, theme)
-  }
 
   onBackgroundClass(theme: boolean, value?: boolean): string {
     if (value) return this.themeColor ? 'bg-dark' : 'bg-light'
     return this.theme.onBackgroundClass(theme)
   }
 
-  onInputClass(theme: boolean): string {
-    return this.theme.onInputClass(theme)
+  onColorChanged(style: string) {
+    return { [style]: this.themeColor ? 'white' : 'black' };
+  }
+
+  onInputClass(): string {
+    return this.themeColor ? 'form-control bg-dark text-white' : 'form-control bg-light text-dark'
   }
 
   authStatus(value?: boolean): string {

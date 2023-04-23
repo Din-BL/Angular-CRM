@@ -35,10 +35,6 @@ export class TableComponent implements OnInit {
   customerId = ''
   employeeList?: Array<Person>
 
-  onColorChanged(style: string, theme: boolean) {
-    return this.personInfo.onColorChanged(style, theme)
-  }
-
   constructor(private router: Router, private route: ActivatedRoute,
     private api: ApiService, private personInfo: HelperService) { }
 

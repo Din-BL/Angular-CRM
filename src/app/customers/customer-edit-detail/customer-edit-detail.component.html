@@ -1,6 +1,6 @@
 <app-title [title]="getTitle"></app-title>
 
-<form [formGroup]="editForm.customerForm" (ngSubmit)="onSubmit()" class="row g-3 mb-3">
+<form [formGroup]="editForm.customerForm" (ngSubmit)="onSubmit()" class="row g-3 pb-3">
     <div class="col-md-6">
         <label for="first_name" class="form-label"><span class="text-danger">*</span> First Name</label>
         <input [hidden]="!editMode" formControlName="first_name" type="text" [ngClass]="onInputClass(themeColor)"

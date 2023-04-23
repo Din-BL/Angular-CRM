@@ -1,4 +1,4 @@
-<table [ngStyle]="onColorChanged('color',themeColor)" class="table table-hover mt-4">
+<table [ngClass]="{'table-dark': themeColor !== true}" class="table table-hover mt-4">
     <thead>
         <tr>
             <th scope="col">No.</th>

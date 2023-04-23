@@ -1,8 +1,9 @@
 <div class="row">
     <div class="col-6">
         <div class="input-group flex-nowrap">
-            <span class="input-group-text" id="addon-wrapping"><i class="bi bi-search"></i></span>
-            <input #search (input)="searchEmployee($event)" type="search" class="form-control"
+            <span [ngClass]="{'search-color': themeColor !== true}" class="input-group-text" id="addon-wrapping"><i
+                    class="bi bi-search"></i></span>
+            <input #search (input)="searchEmployee($event)" type="search" [ngClass]="onInputClass(themeColor)"
                 placeholder="Search Employee" aria-label="Username" aria-describedby="addon-wrapping">
         </div>
     </div>
