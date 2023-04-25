@@ -2,22 +2,27 @@
     <div class=" container-fluid">
         <a routerLink="">
             <img class="navbar-brand" style="height: 45px;" src="assets\images\crm.png" alt="crm-logo">
+            <theme class="d-lg-none"></theme>
         </a>
+        <a *ngIf="isAuthenticated" class="nav-link text-primary d-lg-none me-3">{{username}}</a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a *ngIf="isAuthenticated" class="nav-link" routerLinkActive="active"
+                <a *ngIf="isAuthenticated" class="nav-link text-center" routerLinkActive="active"
                     routerLink="customers">Customers</a>
-                <a *ngIf="isAuthenticated" class="nav-link" routerLinkActive="active"
+                <a *ngIf="isAuthenticated" class="nav-link text-center" routerLinkActive="active"
                     routerLink="employees">Employees</a>
             </div>
-            <div class="navbar-nav"> <a *ngIf="isAuthenticated" class="nav-link text-primary">{{username}}</a>
-                <a *ngIf="isAuthenticated" class="nav-link" (click)="logOut()" routerLink="login">Log Out</a>
+            <div class="navbar-nav">
+                <a *ngIf="isAuthenticated" class="nav-link text-primary d-none d-lg-block">{{username}}</a>
+                <a *ngIf="isAuthenticated" class="nav-link text-center" (click)="logOut()" routerLink="login">Log
+                    Out</a>
                 <a *ngIf="!isAuthenticated" class="nav-link" routerLinkActive="active" routerLink="login">Log in</a>
-                <theme></theme>
+                <theme class="d-none d-lg-block"></theme>
             </div>
         </div>
     </div>
