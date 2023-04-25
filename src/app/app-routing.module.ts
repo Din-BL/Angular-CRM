@@ -11,17 +11,18 @@ import { AuthService } from './core/auth.service';
 const routes: Routes = [
   {
     path: '', canActivateChild: [AuthService],
-    children: [
-      {
-        path: 'customers', component: CustomerPageComponent,
-        children: [
-          { path: ':id/edit', component: CustomerEditDetailComponent },
-          { path: ':id', component: CustomerEditDetailComponent }
-        ]
-      },
-      { path: 'employees', component: EmployeePageComponent },
-      { path: '', redirectTo: 'customers', pathMatch: 'full' }
-    ]
+    children:
+      [
+        {
+          path: 'customers', component: CustomerPageComponent,
+          children:
+            [
+              { path: ':id/edit', component: CustomerEditDetailComponent },
+              { path: ':id', component: CustomerEditDetailComponent }
+            ]
+        },
+        { path: 'employees', component: EmployeePageComponent }
+      ]
   },
   { path: 'login', component: LoginComponent },
   { path: 'not-found', component: NotFoundComponent },

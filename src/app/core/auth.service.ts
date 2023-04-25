@@ -16,9 +16,6 @@ export class AuthService implements CanActivateChild {
   }
   authenticated = new Subject<string | null>()
 
-  homeRedirect() {
-    this.router.navigate(['customers'])
-  }
 
   setToken(value: string) {
     const iat = Math.floor(Date.now() / 1000);

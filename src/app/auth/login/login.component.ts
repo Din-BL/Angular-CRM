@@ -1,14 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/core/api.service';
 import { HelperService } from 'src/app/core/helper.service';
 import { AuthService } from 'src/app/core/auth.service';
 import { User } from 'src/app/core/type.model';
 
 @Component({
-  selector: 'app-login',
+  selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -29,7 +28,6 @@ export class LoginComponent implements OnInit {
   registered = true
   errorStatus = false
   errorMsg = ""
-
 
 
   onBackgroundClass(theme: boolean, value?: boolean): string {
@@ -55,6 +53,15 @@ export class LoginComponent implements OnInit {
     this.registered = !this.registered;
   }
 
+  handleError(user: NgForm, error: any): void {
+    this.errorMsg = error.error
+    user.reset()
+    this.errorStatus = true
+    setTimeout(() => {
+      this.errorStatus = false
+    }, 2000);
+  }
+
   onSubmit(user: NgForm): void {
     if (this.registered) {
       this.loginApi.loginUser(user.value.userData).subscribe({
@@ -65,14 +72,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['customers'])
           }
         }),
-        error: ((error) => {
-          this.errorMsg = error.error
-          user.reset(),
-            this.errorStatus = true
-          setTimeout(() => {
-            this.errorStatus = false
-          }, 2000);
-        })
+        error: ((error) => this.handleError(user, error)
+        )
       })
     } else {
       this.loginApi.registerUser(user.value.userData).subscribe({
@@ -80,16 +81,8 @@ export class LoginComponent implements OnInit {
           user.reset()
           this.registered = true
         }),
-        error: ((error) => {
-          this.errorMsg = error.error
-          user.reset(),
-            this.errorStatus = true
-          setTimeout(() => {
-            this.errorStatus = false
-          }, 2000);
-        })
+        error: ((error) => this.handleError(user, error))
       })
     }
-
   }
 }
