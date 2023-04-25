@@ -44,12 +44,14 @@ export class CustomerEditDetailComponent implements OnInit {
                 this.fields.forEach((field) => {
                   this.setFormValue(field, this.customer[field] as Person)
                 })
-            }
+            },
+            error: () => this.router.navigate(['not-found'])
           })
         } else {
           this.customerInfo.customerID.next(this.id)
           this.customer = this.customerApi.getCustomer(this.id).subscribe({
-            next: (data: Person) => this.customer = data
+            next: (data: Person) => this.customer = data,
+            error: () => this.router.navigate(['not-found'])
           })
         }
       })
@@ -74,7 +76,7 @@ export class CustomerEditDetailComponent implements OnInit {
           this.customerInfo.addCustomer.next(false)
         Swal.fire({
           icon: 'success',
-          title: `${data['first_name']} has been updated`,
+          title: `${data['email']} has been updated`,
           showConfirmButton: false,
           timer: 1500
         })

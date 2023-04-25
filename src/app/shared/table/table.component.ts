@@ -88,7 +88,7 @@ export class TableComponent implements OnInit {
           })
           Swal.fire(
             'Deleted!',
-            `${item['first_name']} ${item['last_name']} has been deleted.`,
+            `${item['email']} has been deleted`,
             'success'
           )
         }

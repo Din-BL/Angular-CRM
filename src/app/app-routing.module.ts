@@ -21,7 +21,8 @@ const routes: Routes = [
               { path: ':id', component: CustomerEditDetailComponent }
             ]
         },
-        { path: 'employees', component: EmployeePageComponent }
+        { path: 'employees', component: EmployeePageComponent },
+        { path: '', redirectTo: 'customers', pathMatch: 'full' }
       ]
   },
   { path: 'login', component: LoginComponent },

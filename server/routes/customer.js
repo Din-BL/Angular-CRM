@@ -6,7 +6,6 @@ const Customer = require("../models/customer");
 const User = require("../models/user");
 const { userValidate, userAuthenticate } = require("../utils/middleware");
 
-
 // Endpoints
 
 router.post("/", userAuthenticate, userValidate, async (req, res) => {

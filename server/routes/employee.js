@@ -23,7 +23,6 @@ router.post("/init", (req, res) => {
     } catch (error) {
         res.status(400).send(error.message);
     }
-
 });
 
 router.get("", userAuthenticate, async (req, res) => {
