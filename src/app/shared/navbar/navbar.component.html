@@ -1,11 +1,7 @@
 <nav [ngClass]="onColorChanged() ">
     <div class=" container-fluid">
-        <a routerLink="">
-            <img class="navbar-brand" style="height: 45px;" src="assets\images\crm.png" alt="crm-logo">
-            <theme class="d-lg-none"></theme>
-        </a>
-        <a *ngIf="isAuthenticated" class="nav-link text-primary d-lg-none me-3">{{username}}</a>
-
+        <a routerLink=""><img class="navbar-brand" style="height: 45px;" src="assets\images\crm.png" alt="crm-logo"></a>
+        <a *ngIf="isAuthenticated" class="nav-link text-primary d-lg-none">{{username}}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +19,7 @@
                     Out</a>
                 <a *ngIf="!isAuthenticated" class="nav-link text-center" routerLinkActive="active"
                     routerLink="login">Log in</a>
-                <theme class="d-none d-lg-block"></theme>
+                <theme class="text-center d-none d-lg-block"></theme>
             </div>
         </div>
     </div>
