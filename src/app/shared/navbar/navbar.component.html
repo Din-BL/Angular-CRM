@@ -21,7 +21,8 @@
                 <a *ngIf="isAuthenticated" class="nav-link text-primary d-none d-lg-block">{{username}}</a>
                 <a *ngIf="isAuthenticated" class="nav-link text-center" (click)="logOut()" routerLink="login">Log
                     Out</a>
-                <a *ngIf="!isAuthenticated" class="nav-link" routerLinkActive="active" routerLink="login">Log in</a>
+                <a *ngIf="!isAuthenticated" class="nav-link text-center" routerLinkActive="active"
+                    routerLink="login">Log in</a>
                 <theme class="d-none d-lg-block"></theme>
             </div>
         </div>

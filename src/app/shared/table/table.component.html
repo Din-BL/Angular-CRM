@@ -1,30 +1,32 @@
-<table [ngClass]="{'table-dark': themeColor !== true}" class="table table-hover mt-4">
-    <thead>
-        <tr>
-            <th scope="col">No.</th>
-            <th *ngIf="!users?.[0]?.full" scope="col">First Name</th>
-            <th *ngIf="!users?.[0]?.full" scope="col">Last Name</th>
-            <th *ngIf="users?.[0]?.full" scope="col">Full Name</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Email</th>
-            <th *ngIf="users?.[0]?.birthday" scope="col">Birthday</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of users; let i = index">
-            <th scope="row">{{i + 1}}
-                <div *ngIf="icons" style="display: inline;">
-                    <i style="cursor: pointer;" [ngClass]=eyeToggle(i) (click)="onDetail(user,i)"></i>
-                    <i style="cursor: pointer;" class="bi bi-pencil" (click)="onEdit(user)"></i>
-                    <i style="cursor: pointer;" class="bi bi-trash" (click)="onDelete(user)"></i>
-                </div>
-            </th>
-            <td *ngIf="user['first_name']">{{user['first_name']}}</td>
-            <td *ngIf="user['last_name']">{{user['last_name']}}</td>
-            <td *ngIf="user.full">{{user.full}}</td>
-            <td>{{user.phone}}</td>
-            <td>{{user.email}}</td>
-            <td *ngIf="user.birthday">{{user.birthday}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table [ngClass]="{'table-dark': themeColor !== true}" class="table table-hover mt-4">
+        <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th *ngIf="!users?.[0]?.full" scope="col">First Name</th>
+                <th *ngIf="!users?.[0]?.full" scope="col">Last Name</th>
+                <th *ngIf="users?.[0]?.full" scope="col">Full Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th *ngIf="users?.[0]?.birthday" scope="col">Birthday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; let i = index">
+                <th scope="row">{{i + 1}}
+                    <div *ngIf="icons" style="display: inline;">
+                        <i style="cursor: pointer;" [ngClass]=eyeToggle(i) (click)="onDetail(user,i)"></i>
+                        <i style="cursor: pointer;" class="bi bi-pencil" (click)="onEdit(user)"></i>
+                        <i style="cursor: pointer;" class="bi bi-trash" (click)="onDelete(user)"></i>
+                    </div>
+                </th>
+                <td *ngIf="user['first_name']">{{user['first_name']}}</td>
+                <td *ngIf="user['last_name']">{{user['last_name']}}</td>
+                <td *ngIf="user.full">{{user.full}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.email}}</td>
+                <td *ngIf="user.birthday">{{user.birthday}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
