@@ -1,8 +1,16 @@
+<div style="display: flex;">
+<img height="250" width="320" alt="צילום מסך 2023-04-26 082540" src="https://user-images.githubusercontent.com/93730629/234478101-30d0e78c-895d-416a-b222-f187e77633ba.png">
+
+<img height="250" width="320" alt="צילום מסך 2023-04-26 082615" src="https://user-images.githubusercontent.com/93730629/234478410-b2234b32-f877-476e-84d1-8e04f59bb5e5.png">
+
+<img height="250" width="320" alt="צילום מסך 2023-04-26 082809" src="https://user-images.githubusercontent.com/93730629/234478462-2862005a-62bc-47e5-9bad-2b07a6b7ab6f.png">
+
+
 # CRM App
 This is a Customer Relationship Management (CRM) app built with Angular and a REST API server.<br>
 This README file explains how to run the app.
 
-<h3>Installation<h3/><br>
+  Installation<br>
 To install the app, follow these steps:
 
 Clone the repository to your local machine.<br>
