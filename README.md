@@ -12,7 +12,7 @@
 This is a Customer Relationship Management (CRM) app built with Angular and a REST API server.<br>
 This README file explains how to run the app.
 
- ## Installation<br>
+ ### Installation<br>
 Clone the repository to your local machine.<br>
 Install dependencies by running npm install in the root directory of the project.<br>
 
