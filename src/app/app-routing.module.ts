@@ -6,6 +6,7 @@ import { CustomerPageComponent } from './customers/customer-page/customer-page.c
 import { EmployeePageComponent } from './employees/employee-page/employee-page.component';
 import { CustomerEditDetailComponent } from './customers/customer-edit-detail/customer-edit-detail.component';
 import { AuthService } from './core/auth.service';
+import { HelperService } from './core/helper.service';
 
 
 const routes: Routes = [
@@ -13,10 +14,11 @@ const routes: Routes = [
     path: '', canActivateChild: [AuthService], children:
       [
         {
-          path: 'customers', component: CustomerPageComponent, children:
+          path: 'customers', component: CustomerPageComponent,
+          children:
             [
               { path: ':id/edit', component: CustomerEditDetailComponent },
-              { path: ':id', component: CustomerEditDetailComponent }
+              { path: ':id', component: CustomerEditDetailComponent, canActivate: [HelperService] }
             ]
         },
         { path: 'employees', component: EmployeePageComponent },

@@ -8,14 +8,17 @@ import { Observable, Subject } from 'rxjs';
 export class AuthService implements CanActivateChild {
 
   constructor(private router: Router) { }
+
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | boolean | Promise<boolean> {
     if (this.getToken()) return true
     return this.router.navigate(['login']);
   }
-  authenticated = new Subject<string | null>()
 
+
+
+  authenticated = new Subject<string | null>()
 
   setToken(value: string) {
     const iat = Math.floor(Date.now() / 1000);
@@ -42,3 +45,4 @@ export class AuthService implements CanActivateChild {
     localStorage.removeItem('token');
   }
 }
+

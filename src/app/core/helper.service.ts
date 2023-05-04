@@ -1,13 +1,22 @@
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Person } from './type.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HelperService {
+export class HelperService implements CanActivate {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  canActivate(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | boolean | Promise<boolean> {
+    this.addCustomer.subscribe(eyeStatus => this.detailPage = eyeStatus)
+    if (this.detailPage) return true
+    return this.router.navigate(['/']);
+  }
 
   onColorChanged(style: string, theme: boolean) {
     return { [style]: theme ? 'black' : 'white' };
@@ -25,10 +34,11 @@ export class HelperService {
     this.themeCapture = status
   }
 
+  detailPage = false
   themeCapture = false
   themeMode = new Subject<boolean>()
   customerID = new Subject<string>()
-  addCustomer = new Subject<boolean>()
+  addCustomer = new BehaviorSubject<boolean>(false)
   editCustomer = new Subject<Person>()
   searchEmployee = new Subject<string>()
 }
