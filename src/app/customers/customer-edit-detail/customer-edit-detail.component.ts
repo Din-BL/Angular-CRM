@@ -10,13 +10,18 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'customer-edit-detail',
   templateUrl: './customer-edit-detail.component.html',
+  styles: [`.disabled-input {background-color: #343a40; color: #fff;}`],
   providers: [ValidationService]
 })
 export class CustomerEditDetailComponent implements OnInit {
 
-  getTitle: Title = {
-    name: 'Edit Customers',
+  editTitle: Title = {
+    name: 'Edit Customer',
     class: 'bi bi-pencil-fill'
+  }
+  viewTitle: Title = {
+    name: 'View Customer',
+    class: 'bi bi-info-circle-fill'
   }
 
   themeColor = false;

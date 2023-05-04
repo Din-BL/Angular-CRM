@@ -10,12 +10,10 @@ import { AuthService } from './core/auth.service';
 
 const routes: Routes = [
   {
-    path: '', canActivateChild: [AuthService],
-    children:
+    path: '', canActivateChild: [AuthService], children:
       [
         {
-          path: 'customers', component: CustomerPageComponent,
-          children:
+          path: 'customers', component: CustomerPageComponent, children:
             [
               { path: ':id/edit', component: CustomerEditDetailComponent },
               { path: ':id', component: CustomerEditDetailComponent }
@@ -27,7 +25,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'not-found', component: NotFoundComponent },
-  { path: '**', redirectTo: 'not-found' },
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({
