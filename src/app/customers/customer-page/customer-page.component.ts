@@ -10,15 +10,14 @@ import { Person, Title } from 'src/app/core/type.model';
   templateUrl: './customer-page.component.html'
 })
 export class CustomerPageComponent implements OnInit, OnDestroy {
-  constructor(public customerApi: ApiService,
-    private router: Router, private theme: HelperService) { }
+  constructor(public customerApi: ApiService, private router: Router, private theme: HelperService) { }
 
   customers?: Person[]
   themeColor = false;
   nullifyTheme?: Subscription
 
   ngOnInit(): void {
-    // this.router.navigate(['/']);
+    if (this.router.url.includes('edit')) this.router.navigate(['/'])
     this.customerApi.getCustomers().subscribe((data: Person[]) => this.customers = data)
     this.nullifyTheme = this.theme.themeMode.subscribe(theme => this.themeColor = theme)
     this.themeColor = this.theme.themeCapture

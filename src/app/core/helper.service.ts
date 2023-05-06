@@ -36,9 +36,9 @@ export class HelperService implements CanActivate {
 
   detailPage = false
   themeCapture = false
-  themeMode = new Subject<boolean>()
-  customerID = new Subject<string>()
+  themeMode = new BehaviorSubject<boolean>(false)
   addCustomer = new BehaviorSubject<boolean>(false)
+  customerID = new Subject<string>()
   editCustomer = new Subject<Person>()
   searchEmployee = new Subject<string>()
 }

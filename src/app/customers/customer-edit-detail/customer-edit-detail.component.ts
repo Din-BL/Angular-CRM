@@ -29,8 +29,8 @@ export class CustomerEditDetailComponent implements OnInit {
   id!: string
   customer!: Person
 
-  constructor(public editForm: ValidationService, private router: Router,
-    private route: ActivatedRoute, private customerApi: ApiService, private customerInfo: HelperService) { }
+  constructor(public editForm: ValidationService, private router: Router, private route: ActivatedRoute,
+    private customerApi: ApiService, private customerInfo: HelperService) { }
 
   fields: Array<string> = ['first_name', 'last_name', 'email', 'phone', 'address']
 

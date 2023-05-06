@@ -14,8 +14,7 @@ const routes: Routes = [
     path: '', canActivateChild: [AuthService], children:
       [
         {
-          path: 'customers', component: CustomerPageComponent,
-          children:
+          path: 'customers', component: CustomerPageComponent, children:
             [
               { path: ':id/edit', component: CustomerEditDetailComponent },
               { path: ':id', component: CustomerEditDetailComponent, canActivate: [HelperService] }

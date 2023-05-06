@@ -16,8 +16,6 @@ export class AuthService implements CanActivateChild {
     return this.router.navigate(['login']);
   }
 
-
-
   authenticated = new Subject<string | null>()
 
   setToken(value: string) {
