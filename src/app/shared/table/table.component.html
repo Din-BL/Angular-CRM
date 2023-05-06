@@ -3,12 +3,12 @@
         <thead>
             <tr>
                 <th scope="col">No.</th>
-                <th *ngIf="!users?.[0]?.full" scope="col">First Name</th>
-                <th *ngIf="!users?.[0]?.full" scope="col">Last Name</th>
-                <th *ngIf="users?.[0]?.full" scope="col">Full Name</th>
+                <th *ngIf="users?.[0]?.full || urlStatus('employees')" scope="col">Full Name</th>
+                <th *ngIf="users?.[0]?.last_name || urlStatus('customers')" scope="col">First Name</th>
+                <th *ngIf="users?.[0]?.first_name || urlStatus('customers')" scope="col">Last Name</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Email</th>
-                <th *ngIf="users?.[0]?.birthday" scope="col">Birthday</th>
+                <th *ngIf="users?.[0]?.birthday || urlStatus('employees')" scope="col">Birthday</th>
             </tr>
         </thead>
         <tbody>

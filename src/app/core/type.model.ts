@@ -5,8 +5,8 @@ export interface Title {
 
 export interface Person {
     _id?: string | null,
-    first?: string | null;
-    last?: string | null;
+    first_name?: string | null;
+    last_name?: string | null;
     full?: string,
     phone?: string | null;
     email?: string | null,

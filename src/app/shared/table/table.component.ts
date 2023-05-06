@@ -43,6 +43,10 @@ export class TableComponent implements OnInit {
 
   @Input() users?: Array<Person>
 
+  urlStatus(url: string): boolean {
+    return this.router.url.includes(url)
+  }
+
   onEdit(item: Person) {
     if (this.router.url.includes('edit') || this.router.url.length > 10) "";
     else {
