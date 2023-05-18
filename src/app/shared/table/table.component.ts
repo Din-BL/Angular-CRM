@@ -43,11 +43,6 @@ export class TableComponent implements OnInit {
 
   @Input() users?: Array<Person>
 
-  convertBirthday(date: string | Date): string {
-    date = new Date(date);
-    return date.toLocaleDateString();
-  }
-
   urlStatus(url: string): boolean {
     return this.router.url.includes(url)
   }

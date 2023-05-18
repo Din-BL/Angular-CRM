@@ -25,7 +25,7 @@
                 <td *ngIf="user.full">{{user.full}}</td>
                 <td>{{user.phone}}</td>
                 <td>{{user.email}}</td>
-                <td *ngIf="user.birthday">{{convertBirthday(user.birthday)}}</td>
+                <td *ngIf="user.birthday">{{user.birthday| date: 'dd/MM/yyyy'}}</td>
             </tr>
         </tbody>
     </table>
