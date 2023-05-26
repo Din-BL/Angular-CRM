@@ -1,11 +1,10 @@
 <div style="display: flex;">
+  
 <img height="250" width="260" alt="צילום מסך 2023-04-26 101942" src="https://user-images.githubusercontent.com/93730629/234499738-b70060be-a893-4a40-843a-c02a10862dc3.png">
-
-
 
 <img height="250" width="260" alt="צילום מסך 2023-04-26 101215" src="https://user-images.githubusercontent.com/93730629/234498284-e5442381-46d6-431e-a0f3-78414e9553e1.png">
 
-<img height="250" width="260" alt="צילום מסך 2023-04-26 101239" src="https://user-images.githubusercontent.com/93730629/234498544-97305c7d-ce80-471e-a449-7dd49405f5ec.png">
+<img height="250" width="260" alt="צילום מסך 2023-05-26 230923" src="https://github.com/DinBoy5/Angular-CRM/assets/93730629/26ece15e-c979-4694-afc8-29d452a9b7c9">
 
 
 # CRM App
@@ -14,7 +13,8 @@ This README file explains how to run the app.
 
  ### Installation<br>
 Clone the repository to your local machine.<br>
-Run npm install -g @angular/cli
+Make sure to have Node.js installed on your machine.<br>
+Run npm install -g @angular/cli 
 
 ## Running the App<br>
 To run the app, you need to open two terminals:<br>
