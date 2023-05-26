@@ -31,5 +31,5 @@ Navigate to the server directory.<br>
 Install dependencies by running npm install<br>
 Run npm start to start the REST API server.<br>
 
-The app should now be running and you can access it by navigating to http://localhost:4200 in your browser.
+The app should now be running and you can access it by navigating to http://localhost:4200 in your browser.<br>
 If you encounter any issues, please refer to the documentation or raise an issue on the repository.
