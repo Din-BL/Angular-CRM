@@ -19,10 +19,8 @@ export class AuthService implements CanActivateChild {
   authenticated = new Subject<string | null>()
 
   setToken(value: string) {
-    const iat = Math.floor(Date.now() / 1000);
-    const exp = iat + 60 * 60;
-    const token = { value, exp };
-    localStorage.setItem('token', JSON.stringify(token));
+    const token = value;
+    localStorage.setItem('token', token);
   }
 
   getToken(): string | null {
@@ -30,17 +28,13 @@ export class AuthService implements CanActivateChild {
     if (!token) {
       return null;
     }
-    const { value, exp } = JSON.parse(token);
-    const now = Math.floor(Date.now() / 1000);
-    if (now > exp) {
-      localStorage.removeItem('token');
-      return null;
-    }
-    return value;
+    return token;
   }
 
   deleteToken() {
     localStorage.removeItem('token');
   }
 }
+
+
 
