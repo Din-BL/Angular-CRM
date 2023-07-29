@@ -1,6 +1,6 @@
 <div class="table-responsive">
     <table [ngClass]="{'table-dark': themeColor !== true}" class="table table-hover mt-4">
-        <thead>
+        <thead *ngIf="users && users.length > 0 ; else errorMsg">
             <tr>
                 <th scope="col">No.</th>
                 <th *ngIf="users?.[0]?.full || urlStatus('employees')" scope="col">Full Name</th>
@@ -11,6 +11,13 @@
                 <th *ngIf="users?.[0]?.birthday || urlStatus('employees')" scope="col">Birthday</th>
             </tr>
         </thead>
+
+        <ng-template #errorMsg>
+            <div class="alert alert-dark" role="alert">
+                There are no registered customers available
+            </div>
+        </ng-template>
+
         <tbody>
             <tr *ngFor="let user of users; let i = index">
                 <th scope="row">{{i + 1}}
