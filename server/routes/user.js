@@ -25,7 +25,7 @@ router.post("/register", userValidate, async (req, res) => {
 router.post("/login", userValidate, async (req, res) => {
   try {
     let findUser = await User.findOne({ email: req.body.email });
-    if (!findUser) return res.status(404).send("Email doest exist");
+    if (!findUser) return res.status(404).send("Email doesn't exist");
     if (await bcrypt.compare(req.body.password, findUser.password)) {
       const iat = Math.floor(Date.now() / 1000);
       const exp = iat + 60 * 60;
@@ -47,7 +47,7 @@ router.post("/login", userValidate, async (req, res) => {
 router.get("/", userAuthenticate, async (req, res) => {
   try {
     const userDetails = await User.findOne({ email: req.user.sub });
-    if (!userDetails) return res.status(404).send("User doest exist");
+    if (!userDetails) return res.status(404).send("User doesn't exist");
     res.status(200).json(_.pick(userDetails, ["_id", "username", "email"]));
   } catch (error) {
     res.status(400).send(error.message);

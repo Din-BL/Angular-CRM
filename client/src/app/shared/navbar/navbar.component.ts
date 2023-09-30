@@ -7,8 +7,8 @@ import { AuthService } from 'src/app/core/auth.service';
   selector: 'navbar',
   templateUrl: './navbar.component.html'
 })
-export class NavbarComponent {
 
+export class NavbarComponent {
   themeColor = false;
   isAuthenticated: string | null;
   username?: string | null;
@@ -16,7 +16,7 @@ export class NavbarComponent {
   constructor(private theme: HelperService, private auth: AuthService, private userApi: ApiService) {
     this.auth.authenticated.subscribe(token => {
       this.isAuthenticated = token
-      this.userApi.getUser().subscribe((user) => this.username = user.username)
+      this.isAuthenticated && this.userApi.getUser().subscribe((user) => this.username = user.username)
     });
     this.isAuthenticated = this.auth.getToken();
     if (this.isAuthenticated) this.userApi.getUser().subscribe((user) => this.username = user.username)
