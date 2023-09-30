@@ -4,22 +4,22 @@ https://github.com/DinBoy5/Angular-CRM/assets/93730629/a0328a63-b797-4758-a33a-e
 This is a Customer Relationship Management (CRM) app built with Angular and a REST API server.<br>
 This README file explains how to run the app.
 
- ### Installation<br>
+### Installation
 Clone the repository to your local machine.<br>
 Make sure to have Node.js and MongoDB installed on your machine.<br>
 Run npm install -g @angular/cli 
 
-## Running the App<br>
+## Running the App
 To run the app, you need to open two terminals:<br>
 one for the Angular server and one for the Node.js server.
 
-### Angular Server<br>
+### Angular Server
 Open a terminal in the root directory of the project.<br>
 Navigate to the "client" directory.<br>
 Install dependencies by running npm install<br>
 Run ng serve --open to start the Angular server and open a browser window.
 
-### Node.js Server<br>
+### Node.js Server
 Open another terminal in the root directory of the project.<br>
 Navigate to the "server" directory.<br>
 Install dependencies by running "npm install"<br>
