@@ -73,3 +73,12 @@ export class ApiService {
     return this.http.get<Person[]>(this.server + 'employees', { headers })
   }
 }
+
+
+
+
+
+
+
+
+

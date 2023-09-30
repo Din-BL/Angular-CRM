@@ -28,7 +28,7 @@ router.post("/init", (req, res) => {
 router.get("", userAuthenticate, async (req, res) => {
     try {
         const userInfo = await User.findOne({ email: req.user.sub });
-        if (!userInfo) return res.status(404).send("User doest exist");
+        if (!userInfo) return res.status(404).send("User doesn't exist");
         const findEmployees = await Employee.find({});
         if (!findEmployees) return res.status(404).send("User has no registered employees");
         res.status(200).json(findEmployees);
