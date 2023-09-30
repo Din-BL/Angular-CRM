@@ -1,4 +1,4 @@
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Person } from './type.model';
@@ -6,7 +6,7 @@ import { Person } from './type.model';
 @Injectable({
   providedIn: 'root'
 })
-export class HelperService implements CanActivate {
+export class HelperService  {
 
   constructor(private router: Router) { }
 
