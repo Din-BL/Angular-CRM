@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
-const { registerSchema, loginSchema, customerSchema } = require("./Validations");
+const { registerSchema, loginSchema, customerSchema } = require("./validations");
 
 module.exports.userValidate = (req, res, next) => {
   if (req.baseUrl === "/customers") schema = customerSchema;
