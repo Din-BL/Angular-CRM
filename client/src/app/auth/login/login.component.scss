@@ -15,5 +15,9 @@ main {
         span {
             margin-left: 5px;
         }
+
+        input::placeholder {
+            color: #999;
+        }
     }
 }

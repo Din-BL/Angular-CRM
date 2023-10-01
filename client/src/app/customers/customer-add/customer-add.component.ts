@@ -10,7 +10,8 @@ import Swal from 'sweetalert2'
 @Component({
   selector: 'customer-add',
   templateUrl: './customer-add.component.html',
-  providers: [ValidationService]
+  providers: [ValidationService],
+  styles: [` input::placeholder { color: #999;}`]
 })
 export class CustomerAddComponent implements OnInit {
 

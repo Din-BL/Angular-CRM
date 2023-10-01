@@ -1,1 +1,7 @@
-/*# sourceMappingURL=app.component.css.map */
+.form-control.ng-pristine.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.form-control.ng-dirty.ng-invalid.ng-touched {
+  border: 1px solid red;
+}/*# sourceMappingURL=app.component.css.map */
