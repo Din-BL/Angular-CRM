@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styles: [`.bi {margin-left: 10px;} @media (max-width: 579px){.bi {margin-left: 0;}}`]
+  styles: [`.bi {margin-left: 10px; padding: 10px 0} @media (max-width: 769px){.bi { margin-left: 0;}}`]
 })
 export class TableComponent implements OnInit {
 

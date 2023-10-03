@@ -3,6 +3,7 @@ main {
   justify-content: center;
   align-items: center;
   padding: 60px 0px;
+  height: 80dvh;
 }
 main form {
   flex-direction: column;

@@ -3,9 +3,9 @@
         <thead *ngIf="users && users.length > 0 ; else errorMsg">
             <tr>
                 <th scope="col">No.</th>
-                <th *ngIf="users?.[0]?.full || urlStatus('employees')" scope="col">Full Name</th>
-                <th *ngIf="users?.[0]?.last_name || urlStatus('customers')" scope="col">First Name</th>
-                <th *ngIf="users?.[0]?.first_name || urlStatus('customers')" scope="col">Last Name</th>
+                <th *ngIf="users?.[0]?.full || urlStatus('employees')" scope="col">Full name</th>
+                <th *ngIf="users?.[0]?.last_name || urlStatus('customers')" scope="col">First name</th>
+                <th *ngIf="users?.[0]?.first_name || urlStatus('customers')" scope="col">Last name</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Email</th>
                 <th *ngIf="users?.[0]?.birthday || urlStatus('employees')" scope="col">Birthday</th>
@@ -21,10 +21,12 @@
         <tbody>
             <tr *ngFor="let user of users; let i = index">
                 <th scope="row">{{i + 1}}
-                    <div *ngIf="icons" style="display: inline;">
-                        <i style="cursor: pointer;" [ngClass]=eyeToggle(i) (click)="onDetail(user,i)"></i>
-                        <i style="cursor: pointer;" class="bi bi-pencil" (click)="onEdit(user)"></i>
-                        <i style="cursor: pointer;" class="bi bi-trash" (click)="onDelete(user)"></i>
+                    <div *ngIf="icons" class="d-block d-md-inline pt-3">
+                        <i style=" cursor: pointer;" [ngClass]=eyeToggle(i) d-block d-md-inline
+                            (click)="onDetail(user,i)"></i>
+                        <i style="cursor: pointer;" class="bi bi-pencil d-block d-md-inline" (click)="onEdit(user)"></i>
+                        <i style="cursor: pointer;" class="bi bi-trash d-block d-md-inline"
+                            (click)="onDelete(user)"></i>
                     </div>
                 </th>
                 <td *ngIf="user['first_name']">{{user['first_name']}}</td>

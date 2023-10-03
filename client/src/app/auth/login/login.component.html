@@ -1,4 +1,4 @@
-<main [ngClass]="onBackgroundClass(themeColor)">
+<main [ngClass]=" onBackgroundClass(themeColor)">
     <form [ngClass]="onBackgroundClass(themeColor,true)" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" class="row g-3">
         <h1 [ngStyle]="onColorChanged('color')" class="display-6 text-center pb-2">{{authStatus()}}
             <i class="bi bi-person-fill-lock"></i>
