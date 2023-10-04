@@ -2,8 +2,9 @@
     <div class=" container-fluid">
         <a routerLink=""><img class="navbar-brand" style="height: 45px;" src="assets\images\crm.png" alt="crm-logo"></a>
         <a *ngIf="isAuthenticated" class="nav-link text-primary d-lg-none">{{username}}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button *ngIf="isAuthenticated" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
@@ -17,8 +18,6 @@
                 <a *ngIf="isAuthenticated" class="nav-link text-primary d-none d-lg-block">{{username}}</a>
                 <a *ngIf="isAuthenticated" class="nav-link text-center" (click)="logOut()" routerLink="login">Log
                     Out</a>
-                <a *ngIf="!isAuthenticated" class="nav-link text-center" routerLinkActive="active"
-                    routerLink="login">Log in</a>
                 <theme class="text-center d-none d-lg-block"></theme>
             </div>
         </div>

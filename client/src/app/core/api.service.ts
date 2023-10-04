@@ -12,6 +12,7 @@ export class ApiService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   server = 'http://localhost:3000/'
+  // server = 'https://crm-angular-874ed575950d.herokuapp.com/'
 
   //////// User ////////
 
