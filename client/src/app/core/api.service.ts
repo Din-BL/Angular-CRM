@@ -16,15 +16,15 @@ export class ApiService {
   //////// User ////////
 
   registerUser(user: User): Observable<User> {
-    return this.http.post<User>(this.server + 'register', user)
+    return this.http.post<User>(this.server + 'user_api/register', user)
   }
   loginUser(user: User): Observable<User> {
-    return this.http.post<User>(this.server + 'login', user)
+    return this.http.post<User>(this.server + 'user_api/login', user)
   }
   getUser(): Observable<User> {
     const token = this.auth.getToken();
     const headers = token ? { "authorization": token } : undefined;
-    return this.http.get<User>(this.server, { headers });
+    return this.http.get<User>(this.server + 'user_api', { headers });
   }
 
   //////// Customer ////////
@@ -32,32 +32,32 @@ export class ApiService {
   getCustomers(): Observable<Person[]> {
     const token = this.auth.getToken();
     const headers = token ? { "authorization": token } : undefined;
-    return this.http.get<Person[]>(this.server + 'customers', { headers })
+    return this.http.get<Person[]>(this.server + 'customers_api', { headers })
   }
   getCustomer(id: string): Observable<Person> {
     const token = this.auth.getToken();
     const headers = token ? { "authorization": token } : undefined;
-    return this.http.get<Person>(this.server + `customers/${id}`, { headers })
+    return this.http.get<Person>(this.server + `customers_api/${id}`, { headers })
   }
   getCustomerEdit(id: string): Observable<Person> {
     const token = this.auth.getToken();
     const headers = token ? { "authorization": token } : undefined;
-    return this.http.get<Person>(this.server + `customers/${id}/edit`, { headers })
+    return this.http.get<Person>(this.server + `customers_api/${id}/edit`, { headers })
   }
   addCustomer(customer: Person): Observable<Person> {
     const token = this.auth.getToken();
     const headers = token ? { "authorization": token } : undefined;
-    return this.http.post<Person>(this.server + 'customers', customer, { headers })
+    return this.http.post<Person>(this.server + 'customers_api', customer, { headers })
   }
   editCustomer(id: string, data: Person): Observable<Person> {
     const token = this.auth.getToken();
     const headers = token ? { "authorization": token } : undefined;
-    return this.http.put<Person>(this.server + `customers/${id}`, data, { headers })
+    return this.http.put<Person>(this.server + `customers_api/${id}`, data, { headers })
   }
   deleteCustomer(id: string): Observable<void> {
     const token = this.auth.getToken();
     const headers = token ? { "authorization": token } : undefined;
-    return this.http.delete<void>(this.server + `customers/${id}`, { headers })
+    return this.http.delete<void>(this.server + `customers_api/${id}`, { headers })
   }
 
   //////// Employee ////////
@@ -65,12 +65,12 @@ export class ApiService {
   createEmployees(): Observable<void> {
     const token = this.auth.getToken();
     const headers = token ? { "authorization": token } : undefined;
-    return this.http.post<void>(this.server + 'employees/init', "", { headers })
+    return this.http.post<void>(this.server + 'employees_api/init', "", { headers })
   }
   getEmployees(): Observable<Person[]> {
     const token = this.auth.getToken();
     const headers = token ? { "authorization": token } : undefined;
-    return this.http.get<Person[]>(this.server + 'employees', { headers })
+    return this.http.get<Person[]>(this.server + 'employees_api', { headers })
   }
 }
 
