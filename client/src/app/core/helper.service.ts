@@ -6,7 +6,7 @@ import { Person } from './type.model';
 @Injectable({
   providedIn: 'root'
 })
-export class HelperService  {
+export class HelperService {
 
   constructor(private router: Router) { }
 
@@ -38,7 +38,7 @@ export class HelperService  {
   themeCapture = false
   themeMode = new BehaviorSubject<boolean>(false)
   addCustomer = new BehaviorSubject<boolean>(false)
-  customerID = new Subject<string>()
   editCustomer = new Subject<Person>()
+  customerID = new Subject<string>()
   searchEmployee = new Subject<string>()
 }

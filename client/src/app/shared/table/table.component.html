@@ -1,14 +1,14 @@
 <div class="table-responsive">
-    <table [ngClass]="{'table-dark': themeColor !== true}" class="table table-hover mt-4">
+    <table [ngClass]="{'table-dark': themeColor !== true}" class="table table-hover mt-4 ">
         <thead *ngIf="users && users.length > 0 ; else errorMsg">
             <tr>
-                <th scope="col">No.</th>
-                <th *ngIf="users?.[0]?.full || urlStatus('employees')" scope="col">Full name</th>
-                <th *ngIf="users?.[0]?.last_name || urlStatus('customers')" scope="col">First name</th>
-                <th *ngIf="users?.[0]?.first_name || urlStatus('customers')" scope="col">Last name</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Email</th>
-                <th *ngIf="users?.[0]?.birthday || urlStatus('employees')" scope="col">Birthday</th>
+                <th>No.</th>
+                <th *ngIf="users?.[0]?.full || urlStatus('employees')">Full name</th>
+                <th *ngIf="users?.[0]?.last_name || urlStatus('customers')">First name</th>
+                <th *ngIf="users?.[0]?.first_name || urlStatus('customers')">Last name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th *ngIf="users?.[0]?.birthday || urlStatus('employees')">Birthday</th>
             </tr>
         </thead>
 
@@ -20,13 +20,14 @@
 
         <tbody>
             <tr *ngFor="let user of users; let i = index">
-                <th scope="row">{{i + 1}}
-                    <div *ngIf="icons" class="d-block d-md-inline pt-3">
-                        <i style=" cursor: pointer;" [ngClass]=eyeToggle(i) d-block d-md-inline
-                            (click)="onDetail(user,i)"></i>
-                        <i style="cursor: pointer;" class="bi bi-pencil d-block d-md-inline" (click)="onEdit(user)"></i>
-                        <i style="cursor: pointer;" class="bi bi-trash d-block d-md-inline"
-                            (click)="onDelete(user)"></i>
+                <th>
+                    <div class="d-flex">
+                        <span>{{i + 1}}</span>
+                        <div *ngIf="icons" class="d-inline ps-3 ">
+                            <i style=" cursor: pointer;" [ngClass]=eyeToggle(i) (click)="onDetail(user,i)"></i>
+                            <i style="cursor: pointer;" class="bi bi-pencil" (click)="onEdit(user)"></i>
+                            <i style="cursor: pointer;" class="bi bi-trash" (click)="onDelete(user)"></i>
+                        </div>
                     </div>
                 </th>
                 <td *ngIf="user['first_name']">{{user['first_name']}}</td>

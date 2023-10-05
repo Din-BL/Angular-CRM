@@ -1,25 +1,25 @@
 <form [formGroup]="addForm.customerForm" (ngSubmit)="onSubmit()" class="row g-2">
-    <div class="col">
+    <div class="col-md">
         <input formControlName="first_name" type="text" [ngClass]="onInputClass(themeColor)" placeholder="First name">
         <customers-error [errorMsg]="getError('first_name')"></customers-error>
     </div>
-    <div class="col">
+    <div class="col-md">
         <input formControlName="last_name" type="text" [ngClass]="onInputClass(themeColor)" placeholder="Last name">
         <customers-error [errorMsg]="getError('last_name')"></customers-error>
     </div>
-    <div class="col">
+    <div class="col-md">
         <input formControlName="phone" type="tel" [ngClass]="onInputClass(themeColor)" placeholder="Phone">
         <customers-error [errorMsg]="getError('phone')"></customers-error>
     </div>
-    <div class="col">
+    <div class="col-md">
         <input formControlName="email" type="email" [ngClass]="onInputClass(themeColor)" placeholder="Email">
         <customers-error [errorMsg]="getError('email')"></customers-error>
     </div>
-    <div class="col">
-        <button [disabled]="addStatus || addForm.customerForm.invalid" type="submit" class="btn btn-primary">
+    <div class="col-md">
+        <button style="white-space: nowrap" [disabled]="addStatus || addForm.customerForm.invalid" type="submit"
+            class="btn btn-primary w-100">
             <i class="bi bi-plus-circle"></i>
-            <span class="d-none d-md-inline p-1">Add</span>
-            <span class="d-none d-lg-inline">Customer</span>
+            Add customer
         </button>
     </div>
 </form>

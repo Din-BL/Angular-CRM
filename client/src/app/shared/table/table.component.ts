@@ -8,8 +8,9 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styles: [`.bi {margin-left: 10px; padding: 10px 0} @media (max-width: 769px){.bi { margin-left: 0;}}`]
+  styleUrls: ['./table.component.scss'],
 })
+
 export class TableComponent implements OnInit {
 
   ngOnInit(): void {
@@ -40,7 +41,6 @@ export class TableComponent implements OnInit {
     private api: ApiService, private personInfo: HelperService) { }
 
   @Input() icons?: boolean
-
   @Input() users?: Array<Person>
 
   urlStatus(url: string): boolean {
@@ -54,6 +54,7 @@ export class TableComponent implements OnInit {
       this.personInfo.addCustomer.next(true)
     }
   }
+
   onDetail(item: Person, index: number) {
     if (this.router.url.includes('edit')) ""
     else {

@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
   selector: 'customer-add',
   templateUrl: './customer-add.component.html',
   providers: [ValidationService],
-  styles: [` input::placeholder { color: #999;}`]
+  styleUrls: ['./customer-add.component.scss']
 })
 
 export class CustomerAddComponent implements OnInit {
@@ -21,6 +21,7 @@ export class CustomerAddComponent implements OnInit {
 
   addStatus?: boolean
   themeColor = false;
+  isSmallScreen = window.innerWidth < 477;
 
   ngOnInit(): void {
     this.addForm.customerForm

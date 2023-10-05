@@ -4,7 +4,7 @@ const { registerSchema, loginSchema, customerSchema } = require("./validations")
 
 module.exports.userValidate = (req, res, next) => {
   if (req.baseUrl === "/customers_api") schema = customerSchema;
-  else req.path === "/register_api" ? (schema = registerSchema) : (schema = loginSchema);
+  else req.path === "/register" ? (schema = registerSchema) : (schema = loginSchema);
   const { error } = schema.validate(req.body);
   if (error) res.status(400).send(error.details);
   else next();
