@@ -8,7 +8,6 @@ import { CustomerEditDetailComponent } from './customers/customer-edit-detail/cu
 import { AuthService } from './core/auth.service';
 import { HelperService } from './core/helper.service';
 
-
 const routes: Routes = [
   {
     path: '', canActivateChild: [AuthService], children:

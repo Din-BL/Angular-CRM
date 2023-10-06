@@ -42,7 +42,8 @@ export class CustomerAddComponent implements OnInit {
     this.customerApi.addCustomer(this.addForm.customerForm.value).subscribe({
       next: (data: Person) => {
         this.users?.push(data),
-          this.addForm.customerForm.reset()
+          console.log(this.users);
+        this.addForm.customerForm.reset()
       },
       error: (error) => {
         let errorMsg: string = error.error[0].message ? error.error[0].message : error.error

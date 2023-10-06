@@ -89,7 +89,11 @@ export class TableComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
           this.api.deleteCustomer(item._id as string).subscribe({
-            next: () => this.users = this.users?.filter(customer => customer._id !== item._id)
+            // next: () => this.users = this.users?.filter(customer => customer._id !== item._id)
+            next: () => {
+              this.users = this.users?.filter(customer => customer._id !== item._id)
+              console.log(this.users);
+            }
           })
           Swal.fire(
             'Deleted!',
