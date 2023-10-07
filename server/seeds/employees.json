@@ -3,25 +3,25 @@
     {
       "full": "John Doe",
       "email": "john.doe@example.com",
-      "phone": "+1 555-555-5555",
+      "phone": "050-471-179",
       "birthday": "1980-01-01"
     },
     {
       "full": "Jane Smith",
       "email": "jane.smith@example.com",
-      "phone": "+44 (20) 1234-5678",
+      "phone": "053-411-582",
       "birthday": "1990-05-10"
     },
     {
       "full": "Bob Johnson",
       "email": "bob.johnson@example.com",
-      "phone": "555-555-5555",
+      "phone": "050-481-358",
       "birthday": "1985-11-15"
     },
     {
       "full": "Emily Davis",
       "email": "emily.davis@example.com",
-      "phone": "+1 555-123-4567",
+      "phone": "055-383-398",
       "birthday": "1995-03-20"
     },
     {
@@ -33,7 +33,7 @@
     {
       "full": "Karen Lee",
       "email": "karen.lee@example.com",
-      "phone": "555-987-6543",
+      "phone": "052-343-768",
       "birthday": "1989-12-05"
     }
   ]
