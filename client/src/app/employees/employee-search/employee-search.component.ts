@@ -4,7 +4,7 @@ import { HelperService } from 'src/app/core/helper.service';
 @Component({
   selector: 'employee-search',
   templateUrl: './employee-search.component.html',
-  styles: [`.search-color{background-color: black; color: white;}`]
+  styles: [`.search-color{background-color: black; color: white;} input::placeholder {color: #999}`]
 })
 export class EmployeeSearchComponent implements OnInit, AfterViewInit {
 

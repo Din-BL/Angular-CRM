@@ -4,4 +4,31 @@
 
 .form-control.ng-dirty.ng-invalid.ng-touched {
   border: 1px solid red;
+}
+
+#formFields input::-moz-placeholder {
+  color: #999;
+}
+
+#formFields input::placeholder {
+  color: #999;
+}
+
+@media screen and (max-width: 768px) {
+  #formFields input::-moz-placeholder {
+    font-size: small;
+  }
+  #formFields input::placeholder {
+    font-size: small;
+  }
+}
+.table th,
+.table td {
+  white-space: nowrap;
+}
+
+#t_Icons,
+#t_Icons + i {
+  margin-left: 10px;
+  padding: 10px 0;
 }/*# sourceMappingURL=app.component.css.map */

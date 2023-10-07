@@ -88,8 +88,14 @@ export class TableComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
           this.api.deleteCustomer(item._id as string).subscribe({
-            next: () => this.users = this.users?.filter(customer => customer._id !== item._id)
+            next: () => {
+              const index = this.users?.findIndex((customer) => customer._id === item._id);
+              if (index !== undefined && index !== -1) {
+                this.users?.splice(index, 1);
+              }
+            }
           })
+
           Swal.fire(
             'Deleted!',
             `${item['email']} has been deleted`,
