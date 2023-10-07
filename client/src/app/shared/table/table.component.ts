@@ -7,8 +7,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
+  templateUrl: './table.component.html'
 })
 
 export class TableComponent implements OnInit {
@@ -89,11 +88,7 @@ export class TableComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
           this.api.deleteCustomer(item._id as string).subscribe({
-            // next: () => this.users = this.users?.filter(customer => customer._id !== item._id)
-            next: () => {
-              this.users = this.users?.filter(customer => customer._id !== item._id)
-              console.log(this.users);
-            }
+            next: () => this.users = this.users?.filter(customer => customer._id !== item._id)
           })
           Swal.fire(
             'Deleted!',
@@ -108,8 +103,6 @@ export class TableComponent implements OnInit {
   eyeToggle(index: number): string {
     if (this.users![index].detail == true) {
       return 'bi bi-eye-slash'
-    } else {
-      return 'bi bi-eye'
-    }
+    } return 'bi bi-eye'
   }
 }

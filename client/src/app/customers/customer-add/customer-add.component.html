@@ -1,4 +1,4 @@
-<form [formGroup]="addForm.customerForm" (ngSubmit)="onSubmit()" class="row g-2">
+<form id="formFields" [formGroup]="addForm.customerForm" (ngSubmit)="onSubmit()" class="row g-2">
     <div class="col-md">
         <input formControlName="first_name" type="text" [ngClass]="onInputClass(themeColor)" placeholder="First name">
         <customers-error [errorMsg]="getError('first_name')"></customers-error>

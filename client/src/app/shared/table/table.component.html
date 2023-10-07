@@ -25,7 +25,7 @@
                         <span>{{i + 1}}</span>
                         <div *ngIf="icons" class="d-inline ps-3 ">
                             <i style=" cursor: pointer;" [ngClass]=eyeToggle(i) (click)="onDetail(user,i)"></i>
-                            <i style="cursor: pointer;" class="bi bi-pencil" (click)="onEdit(user)"></i>
+                            <i style="cursor: pointer;" id="t_Icons" class="bi bi-pencil" (click)="onEdit(user)"></i>
                             <i style="cursor: pointer;" class="bi bi-trash" (click)="onDelete(user)"></i>
                         </div>
                     </div>

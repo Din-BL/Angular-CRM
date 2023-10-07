@@ -27,13 +27,7 @@ router.post("/login", userValidate, async (req, res) => {
     let findUser = await User.findOne({ email: req.body.email });
     if (!findUser) return res.status(404).send("Email doesn't exist");
     if (await bcrypt.compare(req.body.password, findUser.password)) {
-      const iat = Math.floor(Date.now() / 1000);
-      const exp = iat + 60 * 60;
-      const payload = {
-        sub: req.body.email,
-        iat: iat,
-        exp: exp,
-      };
+      const payload = { sub: req.body.email };
       const token = jwt.sign(payload, config.get("ACCESS_TOKEN_SECRET"));
       findUser = findUser.toObject();
       findUser.token = token;

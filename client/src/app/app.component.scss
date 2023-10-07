@@ -1,7 +1,34 @@
+// Validation
+
 .form-control.ng-pristine.ng-invalid.ng-touched {
     border: 1px solid red;
 }
 
 .form-control.ng-dirty.ng-invalid.ng-touched {
     border: 1px solid red;
+}
+
+// Add
+
+#formFields input::placeholder {
+    color: #999;
+}
+
+@media screen and (max-width: 768px) {
+    #formFields input::placeholder {
+        font-size: small
+    }
+}
+
+// Table
+
+.table th,
+.table td {
+    white-space: nowrap;
+}
+
+#t_Icons,
+#t_Icons+i {
+    margin-left: 10px;
+    padding: 10px 0
 }
