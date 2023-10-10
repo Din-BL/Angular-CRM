@@ -93,9 +93,8 @@ export class TableComponent implements OnInit {
               if (index !== undefined && index !== -1) {
                 this.users?.splice(index, 1);
               }
-            }
+            }, error: (error) => console.log(error)
           })
-
           Swal.fire(
             'Deleted!',
             `${item['email']} has been deleted`,

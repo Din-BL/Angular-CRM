@@ -55,10 +55,10 @@ export class ApiService {
     const headers = token ? { "authorization": token } : undefined;
     return this.http.put<Person>(this.server + `customers_api/${id}`, data, { headers })
   }
-  deleteCustomer(id: string): Observable<void> {
+  deleteCustomer(id: string): Observable<Person> {
     const token = this.auth.getToken();
     const headers = token ? { "authorization": token } : undefined;
-    return this.http.delete<void>(this.server + `customers_api/${id}`, { headers })
+    return this.http.delete<Person>(this.server + `customers_api/${id}`, { headers })
   }
 
   //////// Employee ////////
