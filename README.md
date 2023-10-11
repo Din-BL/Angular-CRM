@@ -1,4 +1,4 @@
-https://github.com/DinBoy5/Angular-CRM/assets/93730629/a0328a63-b797-4758-a33a-e1f098ae97b8
+https://github.com/Din-BL/Angular-CRM/assets/93730629/a05e4582-4310-40bc-b89c-b9ed7ee61c95
 
 # CRM App
 This is a Customer Relationship Management (CRM) app built with Angular and a REST API server.<br>
